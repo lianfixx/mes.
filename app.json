@@ -1,0 +1,23 @@
+{
+  "expo": {
+    "name": "Mes · Finanzas",
+    "slug": "mes-finanzas",
+    "version": "0.1.2",
+    "orientation": "portrait",
+    "userInterfaceStyle": "automatic",
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.sistemasdigitales.mes"
+    },
+    "android": {
+      "package": "com.sistemasdigitales.mes"
+    },
+    "web": {
+      "bundler": "metro",
+      "name": "Mes · Finanzas",
+      "shortName": "Mes",
+      "themeColor": "#111111",
+      "description": "Tus próximos pagos y tu mes, en un solo lugar. Versión de prueba de Sistemas Digitales."
+    }
+  }
+}

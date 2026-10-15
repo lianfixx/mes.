@@ -1,0 +1,19 @@
+MES · CÓDIGO FUENTE · VERSIÓN 0.1.2
+Commit: 1590eb3c52aae6b777287964fddd86dc10c1a379
+Recuperado el 15 de octubre de 2026.
+Código original sin cambios. Demostración con datos ficticios y sesión temporal.
+
+PARA ABRIR EL PROYECTO EN TU MAC
+1. Instala Node.js 24 con npm si aún no lo tienes.
+2. Descomprime el ZIP y abre la carpeta Mes en tu editor.
+3. Abre una terminal dentro de esa carpeta y ejecuta, en orden:
+   npm ci
+   npm test
+   npm run typecheck
+   npm run build
+   npm run dev
+4. Abre la dirección local que aparezca en la terminal.
+
+El código fuente requiere esos pasos para ejecutarse. La copia TXT sirve para
+leer el código o compartirlo con Claude. El ZIP incluye package-lock.json.
+Auditoría y limitaciones: docs/AUDIT_0.1.2.md.

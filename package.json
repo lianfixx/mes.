@@ -1,0 +1,36 @@
+{
+  "name": "mes-finanzas",
+  "version": "0.1.2",
+  "private": true,
+  "main": "index.ts",
+  "scripts": {
+    "start": "expo start",
+    "android": "expo start --android",
+    "ios": "expo start --ios",
+    "web": "expo start --web",
+    "build": "node scripts/build.mjs",
+    "typecheck": "tsc --noEmit",
+    "test": "node --import tsx src/domain/model.test.ts",
+    "dev": "vite",
+    "format": "prettier --write App.tsx index.ts src scripts vite.config.ts",
+    "format:check": "prettier --check App.tsx index.ts src scripts vite.config.ts"
+  },
+  "dependencies": {
+    "@expo/metro-runtime": "~57.0.16",
+    "expo": "~57.0.26",
+    "expo-haptics": "~57.0.3",
+    "expo-status-bar": "~57.0.1",
+    "react": "19.2.3",
+    "react-dom": "^19.2.3",
+    "react-native": "0.86.3",
+    "react-native-safe-area-context": "~5.7.0",
+    "react-native-web": "^0.21.3"
+  },
+  "devDependencies": {
+    "@types/react": "~19.2.2",
+    "prettier": "^3.9.9",
+    "tsx": "^4.21.0",
+    "typescript": "~6.0.3",
+    "vite": "^8.3.2"
+  }
+}
