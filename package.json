@@ -10,7 +10,7 @@
     "web": "expo start --web",
     "build": "node scripts/build.mjs",
     "typecheck": "tsc --noEmit",
-    "test": "node --import tsx src/domain/model.test.ts",
+    "test": "node --import tsx --test src/domain/model.test.ts src/domain/derive.test.ts",
     "dev": "vite",
     "format": "prettier --write App.tsx index.ts src scripts vite.config.ts",
     "format:check": "prettier --check App.tsx index.ts src scripts vite.config.ts"
