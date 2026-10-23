@@ -189,11 +189,13 @@ export const DateField = forwardRef<
   const count = Number(endOfMonth(month).slice(-2));
   const shown = valid
     ? fullDate(value)
-    : value
-      ? "Fecha incompleta"
-      : optional
-        ? "Sin fecha"
-        : "Elegir fecha";
+    : /^\d{4}-\d{2}-\d{2}$/.test(value)
+      ? "Fecha no válida"
+      : value
+        ? "Fecha incompleta"
+        : optional
+          ? "Sin fecha"
+          : "Elegir fecha";
   return (
     <View style={{ gap: space.xs }}>
       <Txt variant="secondary" weight="500">
@@ -203,7 +205,7 @@ export const DateField = forwardRef<
         ref={ref}
         accessibilityRole="button"
         accessibilityLabel={`${label}: ${valid ? longDate(value) : shown.toLowerCase()}. Cambiar fecha`}
-        accessibilityState={{ expanded: open }}
+        aria-expanded={open}
         {...webAria({
           "aria-invalid": error ? true : undefined,
           "aria-describedby": describedBy(id, error, help),
@@ -265,8 +267,8 @@ export const DateField = forwardRef<
                 <View key={date} style={{ width: "20%", padding: 2 }}>
                   <Pressable
                     accessibilityRole="button"
-                    accessibilityLabel={`${longDate(date)}${isToday ? ", hoy" : ""}`}
-                    accessibilityState={{ selected, disabled }}
+                    accessibilityLabel={`${longDate(date)}${isToday ? ", hoy" : ""}${selected ? ", fecha elegida" : ""}`}
+                    aria-disabled={disabled}
                     disabled={disabled}
                     onPress={() => {
                       onChange(date);
@@ -431,7 +433,7 @@ export function QuickDate({
               key={key}
               accessibilityRole="radio"
               accessibilityLabel={a11y}
-              accessibilityState={{ checked: selected }}
+              aria-checked={selected}
               onPress={() => {
                 if (key === "today") {
                   setOther(false);
@@ -522,6 +524,7 @@ export function SearchField({
           fontFamily,
           ...type.bodySm,
           color: t.ink,
+          minHeight: size.touch,
           paddingVertical: 12,
         }}
       />

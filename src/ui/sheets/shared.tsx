@@ -117,7 +117,7 @@ export function CurrencyPicker({
                   <Pressable
                     key={c}
                     accessibilityRole="radio"
-                    accessibilityState={{ checked: selected }}
+                    aria-checked={selected}
                     accessibilityLabel={`${c}, ${currencyName[c]}`}
                     onPress={() => {
                       onChange(c);

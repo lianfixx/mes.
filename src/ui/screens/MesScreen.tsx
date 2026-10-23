@@ -124,7 +124,7 @@ function DueSection() {
   const pastDueTotal = pastDue.reduce((s, o) => s + o.r.amount, 0);
   const hasRules = app.baseRecurring.length > 0;
   return (
-    <View style={{ gap: space.md }}>
+    <View style={{ gap: narrow ? space.sm : space.md }}>
       {!pastMonth ? (
         <View style={{ gap: space.xxs }}>
           <SectionHeader

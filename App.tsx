@@ -139,7 +139,7 @@ function Shell() {
           keyboardShouldPersistTaps="handled"
           contentContainerStyle={{
             paddingHorizontal: desktop ? 40 : space.md,
-            paddingTop: desktop ? space.xl : narrow ? space.sm : space.md,
+            paddingTop: desktop ? space.xl : narrow ? space.xs : space.md,
             paddingBottom: desktop ? 120 + insets.bottom : space.xl,
           }}
         >
@@ -324,7 +324,7 @@ function NavItem({
   return (
     <Pressable
       accessibilityRole="tab"
-      accessibilityState={{ selected }}
+      aria-selected={selected}
       accessibilityLabel={name}
       onPress={() => app.navigate(name)}
       style={({ pressed }) =>

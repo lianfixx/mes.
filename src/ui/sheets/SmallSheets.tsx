@@ -150,7 +150,7 @@ export function SpacesBody() {
             <Pressable
               key={s}
               accessibilityRole="radio"
-              accessibilityState={{ checked: selected }}
+              aria-checked={selected}
               accessibilityLabel={`${spaceLabel[s]}. ${copy[s]}`}
               onPress={() => app.setSpace(s)}
               style={({ pressed }) => ({

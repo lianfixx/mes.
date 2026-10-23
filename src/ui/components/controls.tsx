@@ -1,5 +1,5 @@
 import React, { forwardRef } from "react";
-import { Pressable, Switch, View } from "react-native";
+import { Pressable, View } from "react-native";
 import { Icon, IconName } from "../icons";
 import { radius, size, space } from "../tokens";
 import { useUI } from "./theme";
@@ -55,10 +55,8 @@ export const Button = forwardRef<
       accessibilityRole="button"
       accessibilityLabel={accessibilityLabel}
       accessibilityHint={accessibilityHint}
-      accessibilityState={{
-        disabled,
-        ...(expanded === undefined ? {} : { expanded }),
-      }}
+      aria-disabled={disabled}
+      aria-expanded={expanded}
       disabled={disabled}
       onPress={onPress}
       style={({ pressed }) => ({
@@ -128,7 +126,7 @@ export const IconButton = forwardRef<
       testID={testID}
       accessibilityRole="button"
       accessibilityLabel={label}
-      accessibilityState={{ disabled: !!disabled }}
+      aria-disabled={!!disabled}
       disabled={disabled}
       onPress={onPress}
       style={({ pressed }) => ({
@@ -187,7 +185,8 @@ export function ChipGroup<T extends string>({
             ref={refFor?.(o.value)}
             accessibilityRole="radio"
             accessibilityLabel={o.accessibilityLabel}
-            accessibilityState={{ checked: selected, disabled: !!o.disabled }}
+            aria-checked={selected}
+            aria-disabled={!!o.disabled}
             disabled={o.disabled}
             onPress={() => onChange(o.value)}
             style={({ pressed }) => ({
@@ -247,7 +246,7 @@ export const Checkbox = forwardRef<
     <Pressable
       ref={ref}
       accessibilityRole="checkbox"
-      accessibilityState={{ checked }}
+      aria-checked={checked}
       accessibilityLabel={help ? `${label}. ${help}` : label}
       onPress={() => onChange(!checked)}
       style={({ pressed }) => ({
@@ -314,7 +313,8 @@ export const RadioCard = forwardRef<
     <Pressable
       ref={ref}
       accessibilityRole="radio"
-      accessibilityState={{ checked: selected, disabled }}
+      aria-checked={selected}
+      aria-disabled={disabled}
       accessibilityLabel={`${title}. ${disabledReason ?? description}`}
       disabled={disabled}
       onPress={onPress}
@@ -368,6 +368,8 @@ export const RadioCard = forwardRef<
   );
 });
 
+/** Interruptor: toda la fila es el objetivo táctil (≥48) con rol switch. La
+ * pista se dibuja con tokens para conservar contraste en ambos temas. */
 export function SwitchRow({
   label,
   help,
@@ -381,13 +383,20 @@ export function SwitchRow({
 }) {
   const { t } = useUI();
   return (
-    <View
-      style={{
+    <Pressable
+      accessibilityRole="switch"
+      aria-checked={value}
+      accessibilityLabel={help ? `${label}. ${help}` : label}
+      onPress={() => onChange(!value)}
+      style={({ pressed }) => ({
         flexDirection: "row",
         alignItems: "center",
         gap: space.md,
         minHeight: size.touch,
-      }}
+        paddingVertical: space.xxs,
+        borderRadius: radius.md,
+        backgroundColor: pressed ? t.surface : "transparent",
+      })}
     >
       <View style={{ flex: 1, minWidth: 0, gap: 2 }}>
         <Txt variant="secondary" weight="500">
@@ -399,15 +408,28 @@ export function SwitchRow({
           </Txt>
         ) : null}
       </View>
-      <Switch
-        accessibilityLabel={label}
-        value={value}
-        onValueChange={onChange}
-        trackColor={{ false: t.control, true: t.strong }}
-        thumbColor={t.raised}
-        ios_backgroundColor={t.control}
-      />
-    </View>
+      <View
+        style={{
+          width: 46,
+          height: 28,
+          borderRadius: 14,
+          padding: 3,
+          borderWidth: 1.5,
+          borderColor: value ? t.strong : t.control,
+          backgroundColor: value ? t.strong : "transparent",
+          alignItems: value ? "flex-end" : "flex-start",
+        }}
+      >
+        <View
+          style={{
+            width: 19,
+            height: 19,
+            borderRadius: 10,
+            backgroundColor: value ? t.onStrong : t.control,
+          }}
+        />
+      </View>
+    </Pressable>
   );
 }
 

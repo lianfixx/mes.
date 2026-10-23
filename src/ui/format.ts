@@ -167,6 +167,6 @@ export function plural(n: number, one: string, many: string): string {
 export function percent(value: number): string {
   return (
     new Intl.NumberFormat("es-MX", { maximumFractionDigits: 1 }).format(value) +
-    " %"
+    "\u00A0%"
   );
 }

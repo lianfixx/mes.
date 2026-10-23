@@ -400,11 +400,14 @@ export function useMesApp(layout: { desktop: boolean }) {
   useEffect(() => {
     draftBaseline.current = draft;
   }, [sheet]);
-  const dirty =
+  // Se compara al cerrar (como en 0.1.2): la línea base se fija en un efecto
+  // posterior al render, así que calcularlo durante el render daría falsos
+  // «cambios sin guardar» en la primera apertura.
+  const isDirty = () =>
     ["entry", "recurring", "payment", "budget", "goal"].includes(sheet ?? "") &&
     draft !== draftBaseline.current;
   const close = () => {
-    if (dirty) {
+    if (isDirty()) {
       setConfirm("discard");
       sheetScroll.current?.scrollTo({ y: 0, animated: !reduceMotion });
       if (Platform.OS !== "web")
