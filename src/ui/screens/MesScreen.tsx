@@ -125,7 +125,9 @@ function DueSection() {
   const hasRules = app.baseRecurring.length > 0;
   return (
     <View style={{ gap: narrow ? space.sm : space.md }}>
-      {!pastMonth ? (
+      {!hasRules && all.length === 0 && pastDue.length === 0 ? (
+        <SectionHeader title={`Por pagar · ${monthLower(month)}`} />
+      ) : !pastMonth ? (
         <View style={{ gap: space.xxs }}>
           <SectionHeader
             title={`Por pagar · ${interval(start > today ? start : today, end)}`}
@@ -361,32 +363,34 @@ function SpendSection() {
           al pagar algo; puedes anotarlo después.
         </Txt>
       )}
-      <View>
-        <Divider />
-        <KeyValue
-          label="Ingresos registrados"
-          value={
-            <MoneyText
-              amount={totals.income}
-              currency={currency}
-              variant="secondary"
-            />
-          }
-        />
-        <KeyValue
-          label="Cuotas de deuda pagadas"
-          value={
-            <MoneyText
-              amount={totals.debtPaid}
-              currency={currency}
-              variant="secondary"
-            />
-          }
-        />
-        <Txt variant="meta" tone="muted">
-          Ingresos y cuotas se muestran aparte; no forman un saldo.
-        </Txt>
-      </View>
+      {entries.length > 0 && (
+        <View>
+          <Divider />
+          <KeyValue
+            label="Ingresos registrados"
+            value={
+              <MoneyText
+                amount={totals.income}
+                currency={currency}
+                variant="secondary"
+              />
+            }
+          />
+          <KeyValue
+            label="Cuotas de deuda pagadas"
+            value={
+              <MoneyText
+                amount={totals.debtPaid}
+                currency={currency}
+                variant="secondary"
+              />
+            }
+          />
+          <Txt variant="meta" tone="muted">
+            Ingresos y cuotas se muestran aparte; no forman un saldo.
+          </Txt>
+        </View>
+      )}
     </View>
   );
 }
@@ -517,36 +521,48 @@ function GoalSection() {
           ) : undefined
         }
       />
-      <View
-        style={{
-          flexDirection: "row",
-          alignItems: "baseline",
-          flexWrap: "wrap",
-          gap: space.xs,
-        }}
-      >
-        <MoneyText
-          amount={goal.saved}
-          currency={goal.currency}
-          variant="heading"
-        />
+      {goal.saved === 0 ? (
         <Txt variant="secondary" tone="muted">
-          aportados de {formatMoney(goal.target, goal.currency)} ·{" "}
-          {percent(Math.floor(pct))}
+          Aún no registras aportes. Objetivo:{" "}
+          {formatMoney(goal.target, goal.currency)} (puedes cambiarlo). Aportar
+          es anotar dinero que ya apartaste.
         </Txt>
-      </View>
-      <Meter
-        value={pct}
-        label={`Meta ${goal.name}: ${percent(Math.floor(pct))} aportado`}
-      />
-      <Txt variant="meta" tone="muted">
-        {goal.saved >= goal.target
-          ? "Meta alcanzada con lo que registraste como apartado."
-          : `Faltan ${formatMoney(goal.target - goal.saved, goal.currency)}. Solo cuenta lo que registras como apartado.`}
-        {goal.currency !== currency
-          ? ` La meta está en ${goal.currency} y no cambia con el filtro de moneda.`
-          : ""}
-      </Txt>
+      ) : (
+        <>
+          <View
+            style={{
+              flexDirection: "row",
+              alignItems: "baseline",
+              flexWrap: "wrap",
+              gap: space.xs,
+            }}
+          >
+            <MoneyText
+              amount={goal.saved}
+              currency={goal.currency}
+              variant="heading"
+            />
+            <Txt variant="secondary" tone="muted">
+              aportados de {formatMoney(goal.target, goal.currency)} ·{" "}
+              {percent(Math.floor(pct))}
+            </Txt>
+          </View>
+          <Meter
+            value={pct}
+            label={`Meta ${goal.name}: ${percent(Math.floor(pct))} aportado`}
+          />
+          <Txt variant="meta" tone="muted">
+            {goal.saved >= goal.target
+              ? "Meta alcanzada con lo que registraste como apartado."
+              : `Faltan ${formatMoney(goal.target - goal.saved, goal.currency)}. Solo cuenta lo que registras como apartado.`}
+          </Txt>
+        </>
+      )}
+      {goal.currency !== currency ? (
+        <Txt variant="meta" tone="muted">
+          La meta está en {goal.currency} y no cambia con el filtro de moneda.
+        </Txt>
+      ) : null}
       <Button
         variant="secondary"
         compact

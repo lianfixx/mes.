@@ -146,7 +146,11 @@ function Shell() {
           <View
             style={{
               width: "100%",
-              maxWidth: desktop ? (wide ? size.content : 760) : 680,
+              maxWidth: desktop
+                ? wide && app.tab === "Mes"
+                  ? size.content
+                  : size.readable + 40
+                : 680,
               alignSelf: "center",
               gap: narrow ? space.md : space.lg,
             }}

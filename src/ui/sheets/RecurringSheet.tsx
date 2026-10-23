@@ -244,7 +244,9 @@ export function RecurringBody() {
         />
         <Txt variant="meta" tone="muted">
           {nextDates.length
-            ? `Próximos cobros: ${nextDates.map(fullDate).join(" · ")}.`
+            ? nextDates[0] < app.today
+              ? `Vencimiento por confirmar: ${fullDate(nextDates[0])}. Después: ${nextDates.slice(1).map(fullDate).join(" · ")}.`
+              : `Próximos cobros: ${nextDates.map(fullDate).join(" · ")}.`
             : draft
               ? "Sin cobros en esa fecha con las condiciones actuales (pausa, cancelación o última cuota)."
               : "Elige la fecha para ver los próximos cobros."}

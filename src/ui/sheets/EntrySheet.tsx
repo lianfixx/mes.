@@ -1,7 +1,7 @@
 // Captura rápida: importe → favoritos → fecha → categoría → Guardar (zona fija).
 // Lo complementario queda en Detalles. El destino se lee en el título de la hoja
 // y en el botón final.
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import { TextInput, View } from "react-native";
 import { EntryKind, categories, parseMoney } from "../../domain/model";
 import { useApp } from "../../app/context";
@@ -16,6 +16,7 @@ import {
   Notice,
   QuickDate,
   Txt,
+  focusElement,
   useUI,
   webAria,
 } from "../components";
@@ -55,6 +56,13 @@ export function EntryBody() {
     favorites.find((x) => x.name === f.title && x.category === f.category)
       ?.name ?? "";
   const amountError = fe("amount");
+  const retire = useRef<View>(null);
+  useEffect(() => {
+    if (app.confirm !== "delete") return;
+    app.sheetScroll.current?.scrollToEnd({ animated: !app.reduceMotion });
+    const id = setTimeout(() => focusElement(retire.current), 120);
+    return () => clearTimeout(id);
+  }, [app.confirm]);
   return (
     <>
       <View style={{ gap: space.xs }}>
@@ -264,7 +272,12 @@ export function EntryBody() {
             title="¿Retirar este movimiento?"
             actions={
               <>
-                <Button label="Retirar" onPress={app.retireEntry} compact />
+                <Button
+                  ref={retire}
+                  label="Retirar"
+                  onPress={app.retireEntry}
+                  compact
+                />
                 <Button
                   variant="secondary"
                   label="Cancelar"
