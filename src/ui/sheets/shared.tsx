@@ -39,17 +39,19 @@ export function CurrencyPicker({
   value,
   onChange,
   label = "Moneda",
+  plain = false,
 }: {
   value: Currency;
   onChange: (c: Currency) => void;
   label?: string;
+  plain?: boolean;
 }) {
   const { t, reduceMotion } = useUI();
   const [open, setOpen] = useState(false);
   return (
     <View>
       <Button
-        variant="secondary"
+        variant={plain ? "plain" : "secondary"}
         compact
         label={value}
         iconRight="chevronDown"

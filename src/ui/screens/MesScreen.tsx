@@ -107,6 +107,7 @@ function DueRows({
 
 function DueSection() {
   const app = useApp();
+  const { desktop, narrow } = useUI();
   const { split, today, month, currency, pastDue } = app;
   const start = month + "-01";
   const end = endOfMonth(month);
@@ -128,32 +129,27 @@ function DueSection() {
         <View style={{ gap: space.xxs }}>
           <SectionHeader
             title={`Por pagar · ${interval(start > today ? start : today, end)}`}
+            right={
+              <Txt variant="meta" tone="muted">
+                {currency}
+              </Txt>
+            }
           />
-          <View
-            style={{
-              flexDirection: "row",
-              alignItems: "baseline",
-              gap: space.xs,
-            }}
-          >
-            <View style={{ flex: 1, minWidth: 0 }}>
-              <MoneyText
-                amount={split.upcomingTotal}
-                currency={currency}
-                variant={app.layout.desktop ? "displayWide" : "display"}
-                fit
-                smallCents
-                minSize={20}
-              />
-            </View>
-            <Txt variant="meta" tone="muted">
-              {currency}
-            </Txt>
-          </View>
+          <MoneyText
+            amount={split.upcomingTotal}
+            currency={currency}
+            variant={desktop ? "displayWide" : narrow ? "amount" : "display"}
+            fit
+            smallCents
+            minSize={20}
+          />
           <Txt variant="meta" tone="muted">
             {split.upcoming.length
               ? `${plural(split.upcoming.length, "pago", "pagos")}${split.upcomingEstimated ? " · incluye importes estimados" : ""}`
               : "Nada pendiente en este intervalo"}
+            {pastDue.length
+              ? ` · aparte, ${pastDue.length} de meses anteriores por confirmar`
+              : ""}
           </Txt>
         </View>
       ) : (
@@ -175,28 +171,6 @@ function DueSection() {
             Fechas pasadas sin pago registrado. Confírmalas cuando las veas en
             tu banco.
           </Txt>
-        </View>
-      )}
-      {pastDue.length > 0 && (
-        <View style={{ gap: space.xs }}>
-          <Button
-            variant="secondary"
-            compact
-            icon="pending"
-            iconRight={app.showPastDue ? "chevronUp" : "chevronDown"}
-            expanded={app.showPastDue}
-            label={`${plural(pastDue.length, "pago", "pagos")} de meses anteriores por confirmar · ${formatMoney(pastDueTotal, currency)}`}
-            onPress={() => app.setShowPastDue(!app.showPastDue)}
-          />
-          {app.showPastDue && (
-            <View>
-              <Txt variant="meta" tone="muted">
-                Anteriores a {monthLower(month)}. No se suman al total de este
-                mes.
-              </Txt>
-              <DueRows rows={pastDue} />
-            </View>
-          )}
         </View>
       )}
       {all.length ? (
@@ -229,6 +203,29 @@ function DueSection() {
           action="Agregar recurrente"
           onAction={app.newRecurring}
         />
+      )}
+      {pastDue.length > 0 && (
+        <View style={{ gap: space.xs }}>
+          <Button
+            variant="plain"
+            align="flex-start"
+            icon="pending"
+            iconRight={app.showPastDue ? "chevronUp" : "chevronDown"}
+            expanded={app.showPastDue}
+            label={`Meses anteriores: ${pastDue.length} por confirmar · ${formatMoney(pastDueTotal, currency)}`}
+            accessibilityLabel={`${plural(pastDue.length, "pago", "pagos")} de meses anteriores por confirmar, ${formatMoney(pastDueTotal, currency)}. No se suman al total de ${monthLower(month)}`}
+            onPress={() => app.setShowPastDue(!app.showPastDue)}
+          />
+          {app.showPastDue && (
+            <View>
+              <Txt variant="meta" tone="muted">
+                Anteriores a {monthLower(month)}. No se suman al total de este
+                mes.
+              </Txt>
+              <DueRows rows={pastDue} />
+            </View>
+          )}
+        </View>
       )}
     </View>
   );

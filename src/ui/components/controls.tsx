@@ -5,7 +5,9 @@ import { radius, size, space } from "../tokens";
 import { useUI } from "./theme";
 import { Txt } from "./Txt";
 
-type Variant = "primary" | "secondary" | "quiet";
+/** primary: relleno · secondary: contorno · quiet: enlace subrayado ·
+ * plain: texto sin contorno para selectores de contexto y revelados. */
+type Variant = "primary" | "secondary" | "quiet" | "plain";
 
 /** Botón con objetivo táctil mínimo de 48. «quiet» es para acciones de texto
  * (ver más, cambiar) sin contorno; el foco visible lo da el anillo global. */
@@ -70,10 +72,14 @@ export const Button = forwardRef<
         maxWidth: "100%",
         flexShrink: 1,
         paddingHorizontal:
-          variant === "quiet" ? space.xxs : compact ? space.md : 20,
+          variant === "quiet" || variant === "plain"
+            ? space.xxs
+            : compact
+              ? space.md
+              : 20,
         paddingVertical: space.xs,
         borderRadius: radius.pill,
-        borderWidth: variant === "quiet" ? 0 : 1,
+        borderWidth: variant === "quiet" || variant === "plain" ? 0 : 1,
         borderColor: variant === "primary" ? t.strong : t.control,
         backgroundColor:
           variant === "primary"

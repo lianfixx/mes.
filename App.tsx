@@ -104,7 +104,7 @@ function useWebDocument(t: Theme, dark: boolean) {
 
 function Shell() {
   const app = useApp();
-  const { t, desktop, wide } = useUI();
+  const { t, desktop, wide, narrow } = useUI();
   const insets = useSafeAreaInsets();
   const scroll = useRef<ScrollView>(null);
   useEffect(() => {
@@ -139,7 +139,7 @@ function Shell() {
           keyboardShouldPersistTaps="handled"
           contentContainerStyle={{
             paddingHorizontal: desktop ? 40 : space.md,
-            paddingTop: desktop ? space.xl : space.md,
+            paddingTop: desktop ? space.xl : narrow ? space.sm : space.md,
             paddingBottom: desktop ? 120 + insets.bottom : space.xl,
           }}
         >
@@ -148,10 +148,10 @@ function Shell() {
               width: "100%",
               maxWidth: desktop ? (wide ? size.content : 760) : 680,
               alignSelf: "center",
-              gap: space.lg,
+              gap: narrow ? space.md : space.lg,
             }}
           >
-            <View style={{ gap: space.sm }}>
+            <View style={{ gap: narrow ? space.xxs : space.xs }}>
               <ScreenHeader />
               <ContextStrip />
             </View>
@@ -222,7 +222,7 @@ function Brand({ large }: { large?: boolean }) {
 
 function TopBar() {
   const app = useApp();
-  const { t } = useUI();
+  const { t, narrow } = useUI();
   return (
     <View
       style={{
@@ -240,7 +240,9 @@ function TopBar() {
       <View style={{ flex: 1, minWidth: 0 }}>
         <Brand />
         <Txt variant="meta" tone="muted">
-          Prueba · tus cambios se borran al recargar
+          {narrow
+            ? "Prueba · se borra al recargar"
+            : "Prueba · tus cambios se borran al recargar"}
         </Txt>
       </View>
       <IconButton
@@ -488,26 +490,35 @@ function ScreenHeader() {
 function ContextStrip() {
   const app = useApp();
   return (
-    <View style={{ gap: space.xxs }}>
-      <View style={{ flexDirection: "row", flexWrap: "wrap", gap: space.xs }}>
-        <Button
-          variant="secondary"
-          compact
-          label={app.spaceName}
-          iconRight="chevronDown"
-          accessibilityLabel={`Espacio: ${app.spaceName}. Cambiar espacio`}
-          onPress={() => app.open("spaces")}
-        />
-        <CurrencyPicker
-          value={app.currency}
-          onChange={app.setCurrency}
-          label="Moneda de la vista"
-        />
-      </View>
+    <View
+      style={{
+        flexDirection: "row",
+        flexWrap: "wrap",
+        alignItems: "center",
+        columnGap: space.md,
+      }}
+    >
+      <Button
+        variant="plain"
+        compact
+        label={app.spaceName}
+        iconRight="chevronDown"
+        accessibilityLabel={`Espacio: ${app.spaceName}. Cambiar espacio`}
+        onPress={() => app.open("spaces")}
+      />
+      <CurrencyPicker
+        value={app.currency}
+        onChange={app.setCurrency}
+        label="Moneda de la vista"
+        plain
+      />
       {app.otherCurrencies.length > 0 && (
-        <Txt variant="meta" tone="muted">
-          Viendo solo {app.currency}. También hay registros en{" "}
-          {app.otherCurrencies.join(" y ")}; no se suman ni se convierten.
+        <Txt
+          variant="meta"
+          tone="muted"
+          accessibilityLabel={`También hay registros en ${app.otherCurrencies.join(" y ")}; se ven por separado y no se suman.`}
+        >
+          También hay {app.otherCurrencies.join(" y ")}
         </Txt>
       )}
     </View>
