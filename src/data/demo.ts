@@ -3,6 +3,8 @@ import {
   Entry,
   Recurring,
   SpaceId,
+  changeMonth,
+  endOfMonth,
   todayLocal,
 } from "../domain/model";
 export function createDemo(now = new Date()): AppData {
@@ -57,17 +59,41 @@ export function createDemo(now = new Date()): AppData {
     note: "",
     createdBy: space === "shared" && n % 2 ? "Alex" : "Tú",
   });
+  // 0.1.3: registros añadidos al final (los índices 0–5 los usan las pruebas)
+  // para mostrar un estimado, un vencimiento anterior sin confirmar, un
+  // aumento de precio y una segunda moneda con su propio presupuesto.
+  const previousMonth = changeMonth(month, -1);
+  const icloud = r("r4", "iCloud", 4900, "Servicios", 16);
+  icloud.priceHistory = [
+    { date: `${previousMonth}-16`, previous: 3900, next: 4900 },
+  ];
+  const light = {
+    ...r("r7", "Luz", 42000, "Servicios", 20, "service"),
+    variable: true,
+  };
+  const phone = {
+    ...r("r8", "Teléfono", 29900, "Servicios", 28, "service"),
+    nextDate: `${previousMonth}-${String(Math.min(28, Number(endOfMonth(previousMonth).slice(-2)))).padStart(2, "0")}`,
+  };
+  const storage: Recurring = {
+    ...r("r9", "Almacenamiento web", 2999, "Servicios", 27),
+    currency: "USD",
+    frequency: "yearly",
+  };
   return {
     schemaVersion: 1,
     recurring: [
       r("r1", "Spotify", 12900, "Entretenimiento", 6),
       r("r2", "Internet", 59900, "Servicios", 9, "service"),
       r("r3", "Laptop", 120000, "Educación", 12, "debt"),
-      r("r4", "iCloud", 4900, "Servicios", 16),
+      icloud,
       r("r5", "Gimnasio", 54900, "Salud", 22, "service"),
       r("r6", "Dentista", 45000, "Salud", 25, "service"),
       r("s1", "Renta", 850000, "Servicios", 5, "service", "shared"),
       r("s2", "Internet de casa", 59900, "Servicios", 9, "service", "shared"),
+      light,
+      phone,
+      storage,
     ],
     entries: [
       e(1, "Comida", 18500, "Comida", 0),
@@ -96,7 +122,10 @@ export function createDemo(now = new Date()): AppData {
       } as Entry,
     ],
     budgets: {
-      personal: { MXN: { amount: 800000, currency: "MXN" } },
+      personal: {
+        MXN: { amount: 800000, currency: "MXN" },
+        USD: { amount: 10000, currency: "USD" },
+      },
       shared: { MXN: { amount: 1400000, currency: "MXN" } },
     },
     goals: {

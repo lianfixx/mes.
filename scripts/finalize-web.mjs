@@ -1,16 +1,30 @@
 import fs from "node:fs";
-const icon =
-  '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" rx="16" fill="#171717"/><path d="M15 43V26q0-9 8-9t8 9v17M31 26q0-9 8-9t8 9v17" fill="none" stroke="white" stroke-width="6" stroke-linecap="round"/></svg>';
-fs.writeFileSync("dist/favicon.svg", icon);
-fs.mkdirSync("assets", { recursive: true });
-fs.writeFileSync("assets/mark.svg", icon);
+// Favicon: variante óptica de 16 px, con tema claro/oscuro dentro del SVG.
+fs.copyFileSync("assets/brand/mark-16.svg", "dist/favicon.svg");
 let html = fs.readFileSync("dist/index.html", "utf8");
 html = html
   .replace(/<title>.*?<\/title>/, "<title>Mes · Finanzas</title>")
   .replace(/<html[^>]*>/, '<html lang="es-MX">');
+// El foco visible usa --mes-focus, que la app fija según el tema (App.tsx).
+// Los elementos con tabindex=-1 (títulos de hoja) reciben foco programático sin
+// anillo; los controles conservan el suyo.
+const css = [
+  "html,body,#root{height:100%;margin:0}",
+  "html{height:100dvh}",
+  "body{background:var(--mes-bg,#fff);color:var(--mes-ink,#171717);overscroll-behavior:none}",
+  "*{box-sizing:border-box}",
+  "[dir=auto]{overflow-wrap:anywhere}",
+  "button,[role=button],[role=radio],[role=checkbox],[role=tab]{-webkit-tap-highlight-color:transparent}",
+  "*:focus-visible{outline:2px solid var(--mes-focus,#171717);outline-offset:2px}",
+  '[tabindex="-1"]:focus{outline:none}',
+  "input,textarea{outline-offset:2px}",
+  "::-webkit-scrollbar{width:6px}",
+  "::-webkit-scrollbar-thumb{background:var(--mes-thumb,#858585);border-radius:3px}",
+  "@media(prefers-reduced-motion:no-preference){[role=button],[role=radio],[role=tab]{transition:opacity .16s ease,background-color .16s ease}}",
+].join("");
 html = html.replace(
   "</head>",
-  '<meta name="description" content="Tus próximos pagos y tu mes, en un solo lugar. Versión de prueba de Sistemas Digitales."/><meta name="theme-color" content="#171717"/><link rel="icon" href="/favicon.svg" type="image/svg+xml"/><style>html,body,#root{height:100%;margin:0}html{height:100dvh}*{box-sizing:border-box} [dir=auto]{overflow-wrap:anywhere}button,[role=button]{-webkit-tap-highlight-color:transparent}*:focus-visible{outline:2px solid currentColor;outline-offset:4px}input,textarea{outline-offset:2px}body{overscroll-behavior:none}::-webkit-scrollbar{width:5px}::-webkit-scrollbar-thumb{background:#999;border-radius:3px}@media(prefers-reduced-motion:no-preference){[role=button]{transition:opacity .16s ease,background-color .16s ease}}</style></head>',
+  `<meta name="description" content="Tus próximos pagos y tu mes, en un solo lugar. Versión de prueba de Sistemas Digitales."/><meta name="theme-color" content="#FFFFFF"/><meta name="color-scheme" content="light dark"/><link rel="icon" href="/favicon.svg" type="image/svg+xml"/><style>${css}</style></head>`,
 );
 fs.writeFileSync("dist/index.html", html);
 fs.writeFileSync(

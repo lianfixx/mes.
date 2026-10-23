@@ -10,7 +10,7 @@
     "web": "expo start --web",
     "build": "node scripts/build.mjs",
     "typecheck": "tsc --noEmit",
-    "test": "node --import tsx --test src/domain/model.test.ts src/domain/derive.test.ts",
+    "test": "node --import tsx --test src/domain/model.test.ts src/domain/derive.test.ts src/ui/format.test.ts",
     "dev": "vite",
     "format": "prettier --write App.tsx index.ts src scripts vite.config.ts",
     "format:check": "prettier --check App.tsx index.ts src scripts vite.config.ts"
@@ -24,6 +24,7 @@
     "react-dom": "^19.2.3",
     "react-native": "0.86.3",
     "react-native-safe-area-context": "~5.7.0",
+    "react-native-svg": "15.15.4",
     "react-native-web": "^0.21.3"
   },
   "devDependencies": {
