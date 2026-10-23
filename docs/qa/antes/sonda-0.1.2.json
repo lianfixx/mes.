@@ -1,0 +1,87 @@
+{
+  "firstRow_390x844": {
+    "rowTop": 431,
+    "rowBottom": 483,
+    "actionTop": 721,
+    "viewportH": 844
+  },
+  "firstRow_320x568": {
+    "rowTop": 489,
+    "rowBottom": 541,
+    "actionTop": 445,
+    "viewportH": 568
+  },
+  "firstRow_1440x900": {
+    "rowTop": 434,
+    "rowBottom": 486,
+    "actionTop": 820,
+    "viewportH": 900
+  },
+  "focusRingDark": {
+    "label": "Personal ⌄",
+    "outlineColor": "rgb(0, 0, 0)",
+    "outlineStyle": "solid",
+    "outlineWidth": "2px",
+    "bodyBg": "rgba(0, 0, 0, 0)"
+  },
+  "settingsSheet": {
+    "dialogName": "Formulario de Mes",
+    "activeLabel": "Cerrar ventana",
+    "activeRect": {
+      "x": 0,
+      "y": 0,
+      "width": 390,
+      "height": 844,
+      "top": 0,
+      "right": 390,
+      "bottom": 844,
+      "left": 0
+    }
+  },
+  "afterEscapeSettings": {
+    "dialogs": 0,
+    "active": "Ajustes"
+  },
+  "entrySheet": {
+    "dialogName": "Formulario de Mes",
+    "active": "Importe del movimiento"
+  },
+  "zeroAmountError": {
+    "alert": "Usa un importe positivo con hasta dos decimales, sin separadores de miles.",
+    "active": null,
+    "ariaInvalid": null,
+    "describedBy": null
+  },
+  "returnFocusAfterEscape": {
+    "dialogs": 0,
+    "active": "BODY"
+  },
+  "focusAfterResize": "BODY",
+  "casaLink": [
+    "Ver los 2 pagos pendientes"
+  ],
+  "hugeAmount320": {
+    "vw": 320,
+    "scrollW": 320,
+    "over": []
+  },
+  "lastInstalmentPicker": [
+    "Hoy",
+    "Escribir fecha"
+  ],
+  "dateButtonNames": [
+    null,
+    null,
+    null
+  ],
+  "rows_Recurrentes": [
+    156,
+    156,
+    156
+  ],
+  "rows_Movimientos": [
+    136,
+    136,
+    136
+  ]
+}

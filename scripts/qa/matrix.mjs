@@ -15,7 +15,7 @@ const OUT = args.includes("--out")
 const SHOTS = args.includes("--shots");
 const DIST = path.resolve("dist");
 const FIXED = new Date("2026-10-03T12:00:00-06:00");
-fs.mkdirSync(path.join(OUT, "after"), { recursive: true });
+fs.mkdirSync(path.join(OUT, "despues"), { recursive: true });
 
 // Servidor estático mínimo para dist/ (SPA).
 const types = {
@@ -78,7 +78,7 @@ async function open({ w, h, scheme = "light" }) {
 }
 const close = (page) => page.context().close();
 const shot = async (page, name) =>
-  SHOTS && page.screenshot({ path: path.join(OUT, "after", `${name}.png`) });
+  SHOTS && page.screenshot({ path: path.join(OUT, "despues", `${name}.png`) });
 
 /** Desborde horizontal y objetivos táctiles < 48 en lo visible. */
 const audit = (page) =>
