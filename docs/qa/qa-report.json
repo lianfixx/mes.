@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-23T19:31:17.116Z",
+  "generated": "2026-10-24T17:43:27.467Z",
   "fixedClock": "2026-10-03T18:00:00.000Z",
   "base": "dist/ (exportación web)",
   "layout": [
@@ -1422,7 +1422,7 @@
     "extremeAmount": {
       "hero": {
         "text": "$10,000,003,129.49",
-        "height": 41,
+        "height": 40,
         "fontSize": 29,
         "singleLine": true
       },
@@ -1459,6 +1459,10 @@
       "futureDisabled": "true",
       "needsChoice": "Elige cómo cambiar el calendario: mover desde este vencimiento o conservar pendientes y cambiar los cobros futuros.",
       "savedRow": "Ver detalle. Spotify, 129.00 pesos mexicanos, vence el 4 de octubre de 2026, Suscripción · mensual, Siguiente · mañana"
+    },
+    "sameDayDue": {
+      "dueToday": 5,
+      "taggedToday": 5
     }
   },
   "axe": [

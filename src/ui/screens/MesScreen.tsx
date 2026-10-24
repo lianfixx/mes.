@@ -45,7 +45,9 @@ function DueRows({
         const tags: Tag[] = [];
         if (o.date < app.today)
           tags.push({ kind: "toConfirm", label: "Por confirmar" });
-        if (o === firstUpcoming) {
+        // Todas las filas del mismo día que el siguiente vencimiento: si vencen
+        // varias hoy, cada una dice «Vence hoy».
+        if (firstUpcoming && o.date === firstUpcoming.date) {
           const days = daysBetween(app.today, o.date);
           const rel = relativeDue(days);
           tags.push({

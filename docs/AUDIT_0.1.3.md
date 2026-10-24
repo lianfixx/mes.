@@ -51,6 +51,10 @@ No se repiten como hallazgos los defectos que 0.1.1/0.1.2 ya habían cerrado.
 
 La primera iteración calculaba «cambios sin guardar» durante el render. La primera apertura de cada hoja pedía confirmación al cerrar sin cambios. La QA la detectó (Escape no cerraba la hoja de pago) y se corrigió volviendo a comparar al cerrar, como hacía 0.1.2. Hay una comprobación propia en `npm run qa` (`closeUnchangedFirstTime`).
 
+### Detectado al revisar el prototipo con la fecha real
+
+Con el reloj real (24 oct 2026), el demo heredado de 0.1.2 agrupa en hoy las reglas cuyo día ancla ya pasó: cinco pagos vencen hoy. Solo el primero decía «Vence hoy». Ahora lo dicen todas las filas de ese día. Comprobación `sameDayDue` en `npm run qa` (5 de 5). La generación del demo no se cambió.
+
 ## Invariantes conservadas
 
 - **Pruebas:** las 27 de dominio de 0.1.2 siguen sin cambios y en verde. Se añaden 9 de `derive.test.ts` y 3 de `format.test.ts`; 39 en total.
@@ -86,6 +90,7 @@ Origen: **H** = heredada de 0.1.2 (no repetida aquí salvo indicación); **P** =
 | Foco visible | Primer control enfocable | 390×844 | oscuro | estilo calculado | Anillo #F5F5F5 sobre #111111 (17.3:1) | P |
 | Error asociado | Importe 0 | 390×844 | claro | `npm run qa` | Foco, `aria-invalid`, descripción y campos conservados | P |
 | Fechas parcial/inválida/límite | «2026-», 2026-02-30, 2101-01-01, 1899-12-31 | 320×568 | claro | `npm run qa` | Sin rotura; «Fecha incompleta» / «Fecha no válida»; mensajes del dominio | P |
+| Varios vencen hoy | Mes, demo con reloj 24 oct | 390×844 | claro | `npm run qa` | 5 de 5 filas dicen «Vence hoy» | P |
 | Importe máximo | Gasto neto | 320×568 | claro | `npm run qa` + captura | Una línea, sin desborde | P |
 | Nombre de 120 caracteres | Movimientos | 320×568 | claro | `npm run qa` | Sin desborde | P |
 | axe-core 4.10.3 (WCAG 2.0–2.2 A/AA automáticas) | 3 pantallas y 5 hojas | 390×844 | claro y oscuro | `npm run qa` | Sin infracciones automáticas | P |

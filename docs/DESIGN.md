@@ -158,7 +158,7 @@ Notas de medición (fórmula WCAG 2.x, script en la auditoría):
 2. **«Por confirmar · 1–2 oct (N)»** aparte: vencimientos pasados del mes sin pago registrado.
    - No se llaman «vencidos», porque el banco pudo haberlos cobrado.
    - La suma de ambas cifras concilia con `summary().upcoming` (prueba en `derive.test.ts`).
-3. **Lista por fecha.** El primer vencimiento desde hoy lleva «Siguiente · en N días» o «Vence hoy». Se muestran 5 filas; «Ver los N pagos de octubre» aparece solo si hay más.
+3. **Lista por fecha.** El siguiente vencimiento desde hoy lleva «Siguiente · en N días» o «Vence hoy»; si varios caen ese mismo día, todos lo llevan. Se muestran 5 filas; «Ver los N pagos de octubre» aparece solo si hay más.
 4. **«Meses anteriores: N por confirmar · $X»**: grupo desplegable propio después de la lista. No se suma al total del mes.
 5. **Gasto neto del mes** y las categorías en una línea (barra rellena; las devoluciones netas en contorno con «−»).
    - Leyenda: «Cada barra compara la categoría con la mayor; no son porcentajes del total. Las categorías suman el gasto neto.»

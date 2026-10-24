@@ -54,7 +54,7 @@ const report = {
   errors: [],
 };
 
-async function open({ w, h, scheme = "light" }) {
+async function open({ w, h, scheme = "light", at = FIXED }) {
   const ctx = await browser.newContext({
     viewport: { width: w, height: h },
     timezoneId: "America/Mexico_City",
@@ -70,7 +70,7 @@ async function open({ w, h, scheme = "light" }) {
       m.type() === "error" &&
       report.errors.push(`${w}x${h} ${scheme}: ${m.text()}`),
   );
-  await page.clock.setFixedTime(FIXED);
+  await page.clock.setFixedTime(at);
   await page.goto(BASE);
   await page.getByTestId("add-expense").first().waitFor();
   await page.waitForTimeout(250);
@@ -522,6 +522,27 @@ for (const [w, h, scheme] of [
       .getByRole("button", { name: /^Ver detalle\. Spotify/ })
       .getAttribute("aria-label"),
   };
+  await close(page);
+}
+
+{
+  // Varios vencimientos el mismo día: cada fila dice «Vence hoy». El 24 oct el
+  // demo agrupa en hoy las reglas cuyo día ancla ya pasó.
+  const page = await open({
+    w: 390,
+    h: 844,
+    at: new Date("2026-10-24T12:00:00-06:00"),
+  });
+  report.flows.sameDayDue = await page.evaluate(() => {
+    const rows = [
+      ...document.querySelectorAll('[aria-label^="Ver detalle."]'),
+    ].map((el) => el.getAttribute("aria-label"));
+    const today = rows.filter((l) => l.includes("vence el 24 de octubre"));
+    return {
+      dueToday: today.length,
+      taggedToday: today.filter((l) => l.includes("Vence hoy")).length,
+    };
+  });
   await close(page);
 }
 
