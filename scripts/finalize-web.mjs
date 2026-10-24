@@ -4,7 +4,10 @@ fs.copyFileSync("assets/brand/mark-16.svg", "dist/favicon.svg");
 let html = fs.readFileSync("dist/index.html", "utf8");
 html = html
   .replace(/<title>.*?<\/title>/, "<title>Mes · Finanzas</title>")
-  .replace(/<html[^>]*>/, '<html lang="es-MX">');
+  .replace(/<html[^>]*>/, '<html lang="es-MX">')
+  // Expo inserta description y theme-color desde app.json; se sustituyen por
+  // las de abajo para que App.tsx actualice una sola etiqueta theme-color.
+  .replace(/<meta name="(description|theme-color)"[^>]*>\s*/g, "");
 // El foco visible usa --mes-focus, que la app fija según el tema (App.tsx).
 // Los elementos con tabindex=-1 (títulos de hoja) reciben foco programático sin
 // anillo; los controles conservan el suyo.
