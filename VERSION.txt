@@ -1,19 +1,23 @@
-MES · CÓDIGO FUENTE · VERSIÓN 0.1.2
-Commit: 1590eb3c52aae6b777287964fddd86dc10c1a379
-Recuperado el 15 de octubre de 2026.
-Código original sin cambios. Demostración con datos ficticios y sesión temporal.
+MES · CÓDIGO FUENTE · VERSIÓN 0.1.3 (refinamiento de diseño implementado)
+Base: 0.1.2, commit 1590eb3c52aae6b777287964fddd86dc10c1a379
+  (Mes_Codigo_v0_1_2_2026_10_15.zip, verificado con su SHA256SUMS.json e
+  importado sin cambios como primer commit de esta rama).
+Rama: claude/mes-design-refinement-qpbxfs del repositorio lianfixx/mes.
+El commit exacto de esta entrega es el último de esa rama (git log -1); no se
+escribe aquí para que este archivo no quede desfasado.
+Demostración con datos ficticios y sesión temporal (se borra al recargar).
 
-PARA ABRIR EL PROYECTO EN TU MAC
-1. Instala Node.js 24 con npm si aún no lo tienes.
-2. Descomprime el ZIP y abre la carpeta Mes en tu editor.
-3. Abre una terminal dentro de esa carpeta y ejecuta, en orden:
+PARA ABRIR EL PROYECTO
+1. Instala Node.js 24 con npm (las comprobaciones de esta entrega también
+   pasaron con Node 22.22).
+2. Abre la carpeta del proyecto en tu editor y, en una terminal, ejecuta:
    npm ci
    npm test
    npm run typecheck
    npm run build
    npm run dev
-4. Abre la dirección local que aparezca en la terminal.
+3. Abre la dirección local que aparezca en la terminal.
+4. Opcional, QA reproducible: npx playwright install chromium && npm run qa
 
-El código fuente requiere esos pasos para ejecutarse. La copia TXT sirve para
-leer el código o compartirlo con Claude. El ZIP incluye package-lock.json.
-Auditoría y limitaciones: docs/AUDIT_0.1.2.md.
+Diseño: docs/DESIGN.md · Auditoría y comprobaciones: docs/AUDIT_0.1.3.md ·
+Traspaso: docs/HANDOFF.md · Historial: docs/AUDIT_0.1.2.md.

@@ -6,6 +6,18 @@ Expo React Native permite compartir UI y reglas entre iOS, Android y web. TypeSc
 
 La interfaz es un primer recorrido completo, con componentes comunes y tokens de color. Antes de conectar cuentas, dividir `App.tsx` por pantallas y formularios, y extraer comandos a una capa de aplicación. El dominio ya está separado y probado. No presentar el estado React como almacenamiento para finanzas reales.
 
+**Actualización 0.1.3 (2026-10):**
+
+- `App.tsx` ya está dividido:
+  - estado y comandos en `src/app/useMesApp.ts`;
+  - pantallas en `src/ui/screens`;
+  - hojas en `src/ui/sheets`;
+  - componentes y tokens en `src/ui/components` y `src/ui/tokens.ts`.
+- Los cálculos de presentación (separar pendientes, vista previa de calendario, qué queda tras un pago) viven en `src/domain/derive.ts`, como funciones puras con pruebas. Reutilizan `model.ts` en lugar de duplicar reglas.
+- **Estados accesibles:** en web se expresan con props `aria-*`, porque react-native-web 0.21 no traduce `accessibilityState`.
+- `npm run qa` ejecuta una matriz de reflujo, foco y recorridos sobre la exportación web.
+- Detalle en `docs/DESIGN.md` y `docs/HANDOFF.md`.
+
 ## Reglas financieras vigentes
 
 - Importes en unidades menores enteras, exactamente dos decimales para las tres monedas de esta alfa. No sumar monedas distintas ni asumir tipos de cambio.

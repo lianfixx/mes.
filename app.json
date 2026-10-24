@@ -2,7 +2,7 @@
   "expo": {
     "name": "Mes · Finanzas",
     "slug": "mes-finanzas",
-    "version": "0.1.2",
+    "version": "0.1.3",
     "orientation": "portrait",
     "userInterfaceStyle": "automatic",
     "ios": {
