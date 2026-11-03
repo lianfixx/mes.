@@ -1,0 +1,993 @@
+MES · CONTINUIDAD PARA CODEX
+Sistemas Digitales · Emi
+Preparado el 23 de octubre de 2026, hora de México
+
+PROPÓSITO Y ALCANCE
+
+Este documento permite continuar el mismo proyecto en Codex con sus requisitos, decisiones, contexto financiero, criterios de diseño, límites y próximo trabajo. Incluye íntegros el plan maestro recuperado y el prompt vigente que se preparó para Claude Design. No es una exportación literal de todos los turnos de la conversación ni prueba de acceso automático al chat anterior. Conserva el contexto disponible y señala lo que falta.
+
+Última instrucción de Emi
+«Ya tengo lo que me devolvió Claude, pero me gustaría continuar esta conversación por completo, reglas parámetros, instrucciones y todo el contexto en codex y continuar allá».
+
+La devolución de Claude existe según Emi, pero todavía NO se recibió ni revisó en este hilo. Debe aportarse en Codex junto con este documento y el código base. Ninguna propuesta de Claude se considera aceptada, integrada, ejecutable o verificada antes de inspeccionarla. Continuar desde lo existente; no reiniciar el producto ni sustituirlo por una plantilla genérica.
+
+QUÉ CONTIENE Y CÓMO LEERLO
+
+1. Esta síntesis de continuidad, con las 40 respuestas iniciales y sus aclaraciones.
+2. Instrucciones de recepción e integración del trabajo de Claude.
+3. Reglas persistentes propuestas para incorporar al AGENTS.md existente.
+4. Anexo A completo, Prompt_Claude_Design_Mes.txt, versión documental 1, brief de la alfa 0.1.2 del 3 de octubre de 2026.
+5. Anexo B completo, Plan_Maestro_App_Finanzas_v0_4.md, versión documental 4, fechado el 29 de septiembre de 2026.
+6. Anexo C con README, AGENTS, arquitectura, validación y auditoría del código base recuperado.
+7. Control de integridad y procedencia de esos anexos.
+
+Leer esta síntesis primero y después los anexos completos antes de la primera integración. Para cambios posteriores, consultar las secciones pertinentes y mantener un registro breve de decisiones y pruebas. No convertir todo este archivo en un AGENTS.md gigante; el archivo de instrucciones debe enlazar el contexto extenso.
+
+Las instrucciones actuales de Emi prevalecen sobre recomendaciones históricas. Para saber qué está implementado, mandan el código y pruebas reproducibles; un requisito escrito no demuestra una función operativa. Para saber qué quiere el usuario, mandan sus instrucciones y decisiones, no las limitaciones actuales del código. Las propuestas de Claude son insumos que deben reconciliarse con ambas cosas.
+
+ATENCIÓN A LAS DIFERENCIAS DE FECHA
+
+El plan de septiembre dice que aún no había nombre ni software publicado. Es historia de esa etapa. Después se construyó y publicó una alfa web privada con nombre provisional Mes. El nombre sigue provisional; la app comercial y las publicaciones en tiendas siguen pendientes.
+
+Los precios, políticas de tiendas, requisitos jurídicos, servicios candidatos y enlaces del plan son referencias históricas. Antes de contratar, elegir titular o enviar a una tienda, consultar las fuentes oficiales vigentes. Este traspaso no revalida esos importes ni emite una conclusión legal actual.
+
+La lectura histórica de Notion y la importación son hechos distintos. El plan documenta que se leyó Suscripciones el 29 de septiembre; la alfa NO incorporó registros personales de Notion. No presentar esa lectura como auditoría de datos actuales ni como sincronización instalada.
+
+ESTADO EXACTO DE LA BASE
+
+Producto de trabajo: Mes, representado provisionalmente como «mes.», de Sistemas Digitales.
+Código base: alfa 0.1.2.
+Commit de referencia: 1590eb3c52aae6b777287964fddd86dc10c1a379.
+Sitio: https://mes-finanzas-emi.emilianomilla.chatgpt.site
+Proyecto Sites: appgprj_6ac0145ff3ec81919682b6116787b9c0.
+La consulta del 23 de octubre conserva el título «Mes · Finanzas — primera versión» y el número de versión de sitio 3. El número del sitio y el de package.json son identificadores diferentes.
+
+El paquete Mes_Base_v0_1_2_Para_Codex_2026_10_23.zip contiene la base portable, VERSION.txt y SHA256SUMS.json. Se omiten credenciales, historial Git y configuración privada de publicación. El commit identifica la procedencia aunque el ZIP no contenga .git. Conservar el ZIP original y trabajar sobre una copia o rama de integración. El anexo A conserva el nombre histórico Mes_Codigo_Para_Claude_Design.zip. Para este traspaso, la base equivalente recuperada es Mes_Base_v0_1_2_Para_Codex_2026_10_23.zip, identificada por VERSION.txt y el commit indicado; no pedir el ZIP antiguo solo porque aparece en el brief. Un proyecto GitHub de Emi para Mes no está identificado en esta entrega; no confundir el repositorio privado de Sites con un repositorio público de GitHub.
+
+Tecnología existente: Expo, React Native y TypeScript; lógica financiera separada de la interfaz; exportación web y base universal para iOS/Android. No migrar automáticamente a Next.js, Flutter o un framework distinto porque Claude exporte HTML/React web.
+
+Disponible en la alfa según código y documentación
+- Mes, Recurrentes y Movimientos.
+- Gastos, ingresos, devoluciones y pagos/cuotas de deuda; favoritos y notas.
+- Edición y retirada de movimientos, con relación entre pago y vencimiento.
+- Recurrentes semanales, mensuales y anuales, pausas, fechas de prueba/cancelación e historial de importes.
+- Presupuestos por espacio y moneda, una meta por espacio, claro/oscuro y exportación JSON.
+- MXN, USD y EUR separados; sin conversión automática.
+- Espacios locales Personal y Casa · ejemplo.
+
+Límites determinantes
+- Datos ficticios en memoria. Se reinician al recargar. Mantener aviso visible y comprensible de sesión temporal.
+- Exportar JSON permite inspeccionar una copia; no hay importador.
+- Casa · ejemplo NO significa colaboración entre personas reales.
+- El acceso privado al sitio NO equivale a autenticación propia de la app.
+- No hay cuentas reales, persistencia duradera, sincronización, colaboración, biometría, notificaciones, OCR, banca conectada ni cobros comerciales.
+- EN/FR, otras monedas, identidad definitiva, documentos legales de producción y tiendas están pendientes.
+- No se ha implementado un modelo de abonos parciales. Una corrección del importe total de un vencimiento no es un abono que deje saldo.
+- No depende funcionalmente de ChatGPT ni de APIs de IA.
+
+Verificación histórica
+La documentación de 0.1.2 registra 27 pruebas de dominio y verificaciones de TypeScript y compilación/exportación. Es evidencia de aquella revisión, no de una ejecución nueva el 23 de octubre ni del resultado de Claude.
+La revisión de siete anchos de Recurrentes fue previa a los últimos ajustes visuales; la revisión visual final quedó parcial. No afirmar que todas las pantallas, teclados, teléfonos reales o tecnologías de asistencia pasaron. El anexo de auditoría define el alcance preciso.
+
+REGLAS GENERALES DE EMI
+
+- Desarrollar el producto completo, paso por paso, desde planteamiento hasta publicación y marketing, manteniendo una secuencia útil y un costo bajo.
+- Investigar y razonar a fondo cada cambio relevante, con documentación, fuentes oficiales, bibliotecas, APIs, métodos y soluciones existentes. GitHub sirve para contrastar implementación y problemas; X/Reddit aportan experiencias, no prueban corrección financiera, seguridad o requisitos legales.
+- Usar ciencia y matemáticas cuando permitan justificar una decisión o cálculo. Mostrar explicaciones breves, claras y verificables; no inventar resultados ni cifras de mejora.
+- Revisar pequeños detalles y corregir fallos de fondo. Auditar funcionalidad, cálculos, responsive, accesibilidad, seguridad, rendimiento, datos, dependencias y facilidad de mantenimiento según lo que cambie.
+- Evitar una app genérica. No usar un dashboard de tarjetas repetidas, marketing decorativo o apariencia de plantilla como sustituto de una experiencia diseñada.
+- Continuar autónomamente las tareas reversibles dentro del encargo. Preguntar lo verdaderamente indispensable, sin repetir el cuestionario resuelto. Resolver decisiones menores con criterio y explicar las que cambien el alcance.
+- No prometer perfección, ausencia total de errores, seguridad absoluta, cumplimiento universal ni pruebas que no se ejecutaron.
+- No perder avances ni ocultar limitaciones. Diferenciar requisito, propuesta, implementado, verificado y pendiente.
+- Código, activos y documentación deben poder mantenerse por otra IA o programador. No depender de esta conversación ni de un servicio de IA en tiempo de ejecución.
+- Entregar archivos que se puedan abrir y conservar, con instrucciones concretas. Emi ha tenido problemas repetidos para descargar/abrir enlaces anteriores; no responder con un enlace antiguo sin recuperar los bytes.
+- Comunicación en español natural, humana, clara, precisa y breve en la interfaz. Evitar jerga, tono moralizante, relleno y burocracia innecesaria.
+
+LAS 40 RESPUESTAS DE PRODUCTO Y SUS ACLARACIONES
+
+01. Producto comercial desde la primera versión si es viable; piloto aceptable si la complejidad lo requiere. El plan propone beta cerrada antes del cobro/lanzamiento público.
+02. Estudiantes, personas con ingresos regulares, profesionistas; especial interés en empresarios y ejecutivos. Son finanzas personales, no contabilidad de sus empresas. Mayores de 18 años es recomendación de alcance inicial, no una edad expresamente aprobada ni una exigencia universal demostrada.
+03. México y español; soporte deseado en inglés y francés. Cuarto idioma sugerido por el asistente solo si se justifica; ninguno seleccionado.
+04. No olvidar pagos, entender sus finanzas, detectar mejoras y ahorrar con objetivos.
+05. Suscripción comercial preferida, todavía sin precio, planes, límites ni modelo completo.
+06. Costo lo más bajo posible. El plan registra como escenario aceptable aproximadamente USD 25/mes y preferencia por betas más económicas; no es contratación ni presupuesto total autorizado. No inventar un máximo duro.
+07. iPhone y Android; web si es posible. Sin fecha de lanzamiento fijada. Ya existe una alfa web, no una app pública en tiendas.
+08. Emi trabaja solo, tiene Mac e iPhone. No se fijó dedicación semanal ni se debe inferir que ya dispone de Android para pruebas físicas.
+09. Su página Suscripciones en Notion es básica; quiere mejorar UI/UX.
+10. Prefiere conectar Notion para revisarla. La conexión fue autorizada. Su disponibilidad en Codex deberá comprobarse; no se transfieren permisos por adjuntar este texto.
+11. Tarjeta vinculada significa identificar el medio de pago ahora. Conexión bancaria/importación de movimientos queda para mejoras futuras; no se eligieron bancos.
+12. Ingresos configurables por el usuario, con periodicidad fija o variable según el caso. La alfa no acredita implementar todas las frecuencias posibles de ingreso automático.
+13. Organización por mes calendario, independiente de cuándo se cobre un ingreso.
+14. Registrar movimientos y próximos pagos; no es indispensable controlar saldos reales de cuentas/efectivo en el inicio.
+15. Interés en cargos, deuda, corte, fecha de pago y meses sin intereses si es viable; cada usuario decide qué usa. El módulo avanzado debe incorporarse por etapas.
+16. Prioridad contestada: presupuestos, metas de ahorro, deudas y gastos compartidos.
+17. Varias monedas a elección; MXN es el inicio del proyecto. No mezclar divisas. La respuesta original sobre uso personal tenía una errata; no convertirla en una confirmación textual distinta.
+18. Suscripciones variables a lo largo del tiempo; comida, pasajes, bebidas como Volt, salidas y compras cotidianas. Son ejemplos, no autorización para crear transacciones reales ni importes supuestos.
+19. Pruebas gratuitas, pausas, aumentos de precio y cancelación futura desde el alcance inicial deseado.
+20. Antelación, hora y repetición de avisos configurables o con una propuesta razonada. El punto de partida documental es tres días antes y el día de cobro a las 9:00, con un seguimiento único opcional; es valor a validar.
+21. Notificaciones del teléfono preferidas; correo si es necesario. NO mostrar importes en la pantalla bloqueada.
+22. Gastos pequeños tanto en efectivo como con tarjeta.
+23. A veces va con prisa y recuerda el gasto después; permitir captura posterior y fecha retroactiva.
+24. Interés en favoritos, importe y foto de ticket. Favoritos e importe son el inicio propuesto; OCR requiere revisión de viabilidad y no está implementado.
+25. Nota opcional suficiente. No es requisito inicial almacenar tickets o comprobantes.
+26. Observar primero lo gastado; presupuesto/límites opcionales, nunca obligatorios para comenzar.
+27. Observaciones prioritarias: reducir recurrentes, detectar aumentos y avanzar a metas.
+28. Inicio en este orden: próximos pagos, gasto realizado y restante del presupuesto cuando exista.
+29. No decidió tipo de gráfico. Barras por categoría es propuesta adoptada en la base; evolución necesita períodos comparables y presupuesto/gasto necesita presupuesto.
+30. Referencias Easlo, Notion, X y Sistemas Digitales. La referencia de familia visual se documentó en https://emilianomilla.site/negocios; no equivale a copiar marcas ni a verificar hoy esa página.
+31. Ambos modos claro y oscuro. Blanco/negro como identidad; grises neutros como jerarquía propuesta y ya utilizada. La respuesta «ambos» no es una aprobación separada de cada gris.
+32. Pequeñas animaciones y háptica discreta.
+33. Respaldo y sincronización si es posible; el mayor uso sin conexión razonable. Son exigencias de la beta real que deben implementarse, no capacidad existente de la alfa.
+34. Primero dijo presupuesto privado y creación de cuenta. Después aclaró que otra persona colaboraría en el MISMO presupuesto. Conservar espacio personal privado y compartido opcional, con cuentas distintas y permisos reales.
+35. Acepta analítica de uso sin contenido financiero. No enviar importes, notas, comercios ni información de pagos en eventos o registros.
+36. Producto de Sistemas Digitales. Mes es nombre provisional; logo propio definitivo y disponibilidad de marca pendientes.
+37. Titular previsto Emi, sin cuentas de desarrollador al responder. Validar tipo de cuenta y obligaciones antes de pagar/publicar.
+38. Pidió recomendación privado/abierto. Repositorio privado bajo su control/licencia propietaria fue la recomendación inicial; no atribuirle una decisión definitiva de código abierto.
+39. Tiene personas para probar ambas plataformas; Emi atendería soporte con ayuda del asistente. No prometer atención autónoma ni vigilancia 24/7 de la IA.
+40. Canales y estilo de marketing se verán después; no inventar comunidad, presupuesto publicitario ni campañas aprobadas.
+
+Aclaraciones posteriores que deben preservarse
+- Colaboración significa otra persona en el mismo presupuesto, no solo dos vistas locales.
+- «Fecha de corte es día que me cobran». En su Notion se debe interpretar como FECHA DE COBRO del servicio, no cierre del estado de cuenta de tarjeta.
+- El plan documenta que CHECK significa pago confirmado de un vencimiento concreto; no todos los meses ni comprobación bancaria.
+- Macbook es compra a crédito con pago mensual. No inventar capital, intereses o plazo si solo se sabe la cuota.
+- Dentista es mensual, gasto de salud; próximo día exacto pendiente si no hay evidencia vigente.
+- Las respuestas aisladas «no lo sé», «sí» y «sí está perfecto y betas costo menores mejor aún» deben interpretarse con el plan documentado, sin inventar las preguntas ausentes ni nuevas aprobaciones.
+- Emi pidió comenzar, auditar, preparar el prompt de Claude, corregir errores, actualizar a la última versión y revisar responsive y más parámetros. El brief vigente incorpora las correcciones 0.1.1/0.1.2; no reabrir la lista vieja como si fueran defectos actuales.
+
+REGLAS FINANCIERAS A PRESERVAR
+
+Dinero en unidades menores enteras con moneda explícita; respetar límites del dominio. No sumar monedas distintas ni convertir favoritos al cambiar filtros. Un filtro no reescribe registros históricos.
+Gasto neto = consumo registrado menos devoluciones. Ingresos y cuotas de deuda aparecen por separado. Compra a crédito y pago de esa deuda no son dos consumos. Una cuota ya incluida en la deuda de la tarjeta no se suma otra vez a Por pagar.
+Restante del presupuesto de gastos = límite menos gasto neto. No llamarlo saldo bancario, dinero disponible o capacidad de compra. Si el presupuesto no tiene historial mensual, no atribuir el límite actual a meses pasados como hecho conocido.
+Cada pago pertenece a un vencimiento. Repetir la confirmación debe ser idempotente. Retirar un pago restaura ese vencimiento sin borrar posteriores ni rebobinar la regla a ciegas.
+La fecha es civil y conserva su ancla. Día 31 pasa al último día de febrero y vuelve a 31 en marzo. Pagar tarde no modifica la frecuencia por sí solo. Guardar fechas sin alteraciones por zona horaria.
+Pausar no borra historial ni pendientes anteriores. Reanudar no inventa pagos durante la pausa. Obligaciones finitas terminan; editar notas no crea una cuota adicional.
+Editar fecha/frecuencia exige alcance explícito. Cambios de precio, periodicidad, fin o cancelación preservan pendientes anteriores con sus condiciones. No rotular «solo esta ocurrencia» si se modifica el calendario posterior.
+Conservar protecciones ante fechas parciales/invalidas, rango 1900–2100 y límite explícito de 12,000 ocurrencias. No producir totales truncados silenciosamente.
+Seleccionar el mismo tipo conserva fecha de prueba/fin. Errores no borran el formulario. Cero no es pago válido; puede ser legítimo en campos como aportado inicial. Conservar semántica por campo.
+Un pago fijo de otro importe exige reconocer que corrige el total del vencimiento. Recibo variable admite importe real. No simular abonos parciales sin saldo/modelo implementados.
+Meta = aportaciones registradas, no transferencias bancarias ni ahorro supuesto. Aporte sugerido necesita objetivo, aportado, plazo y períodos válidos.
+Variación de precio = nuevo menos anterior; porcentaje solo con base anterior válida y positiva. Equivalente mensual de anualidad = anualidad/12 para comparación, distinto del cobro real. Ahorro potencial no es ahorro obtenido.
+Observaciones breves con dato, período, cálculo y acción opcional; omitirlas si no hay datos suficientes. No juzgar compras ni hacer recomendaciones de inversión no solicitadas.
+
+DISEÑO Y AUDITORÍA VISUAL
+
+Agenda financiera monocromática, propia, sobria, elegante y muy simple. Mes · Recurrentes · Movimientos. Acceso constante a registrar gasto, próximos pagos primero, cifras legibles y detalles progresivos.
+Mantener ambos temas, grises medidos, tipografía real disponible, iconos coherentes preferentemente vectoriales, unidades/signos alineados y palabras para expresar estados. Marca provisional discreta «mes.» y Sistemas Digitales. Evitar gradientes, efectos de vidrio, imágenes de dinero, emojis como sistema de iconos, sombras decorativas o tarjetas repetidas sin función.
+El brief conserva parámetros concretos de colores, espacios, texto, movimiento y microinteracciones. No reducirlo a «minimalista blanco y negro». Objetivos táctiles de producto de 48×48; contraste WCAG 2.2 AA como meta web; no afirmar conformidad sin prueba completa.
+Auditar pantallas y estados en 320, 390, 430, 768, 800, 1024 y 1440 px; revisar alrededor de 380, 960 y 1200 px efectivos, texto al 200 %, altura reducida y teclado. No asumir que una sola pantalla prueba el resto.
+Verificar claro/oscuro, nombres largos, cifras grandes/negativas, devoluciones, cero datos, búsquedas sin resultado, fecha parcial, prueba, pausa, cancelación, deuda finalizada y pendientes anteriores. Mantener moneda y espacio visibles al guardar.
+Comprobar foco, teclado, Escape/retorno en modales, lectores de pantalla, errores asociados, safe areas y reducción de movimiento. Señalar explícitamente pruebas físicas pendientes.
+No mostrar guardado en nube, sincronizado, autenticación, notificaciones o integración bancaria si solo se dibujaron. El aviso de demo debe mantenerse hasta implementar y verificar el cambio real.
+
+BETA REAL, SEGURIDAD Y CRECIMIENTO
+
+La primera beta con información real debe resolver cuentas, verificación/recuperación, persistencia, respaldo restaurable, sincronización, captura básica temporal sin conexión, recordatorios y colaboración de dos personas. No posponer esos compromisos indefinidamente diciendo que el selector local ya los cumple.
+Espacios y membresías autorizados en servidor; invitaciones por correo verificado, caducidad/revocación, un solo uso y alcance claro. Autor, pagador y participante son distintos. Colaborar no significa dividir todo al 50 %, copiarlo a ambos espacios personales ni revelar tarjetas privadas.
+El plan propone sin conexión consulta reciente y nuevos gastos en cola; ediciones existentes, confirmaciones compartidas y cambios de membresía con conexión en esa beta. Comprobar idempotencia, versiones/conflictos y revocación con dos usuarios y dispositivos. No afirmar que se borra instantáneamente una copia de un teléfono desconectado.
+No almacenar PAN completo, CVV, credenciales bancarias ni secretos en código, demos, capturas o telemetría. Probar controles reales de acceso, dependencias, recuperación, borrado y exportación. OWASP MASVS es referencia de revisión, no certificación automática.
+Supabase/PostgreSQL es candidato de backend; RevenueCat, candidato futuro para derechos de suscripción. No están conectados ni contratados por figurar en el plan. Comparar costos, portabilidad y operación antes de incorporarlos.
+Cuenta de tiendas, titular/entidad, privacidad mexicana, términos, políticas de compras y declaraciones de datos requieren investigación vigente sobre el producto real. No inventar cumplimiento ni publicar antes de contar con producto y documentación coherentes.
+Marketing después de validar utilidad, nombre, segmento y modelo. No hay campañas autorizadas en este encargo.
+
+PRIMER TRABAJO AL ABRIR CODEX
+
+1. Leer el documento completo, README, AGENTS y auditoría de la base. Identificar carpeta/repositorio y sus cambios actuales. No asumir acceso al hilo anterior ni a Notion, Sites, GitHub o Claude; comprobar capacidades disponibles.
+2. Localizar la entrega original de Claude. Registrar qué incluye realmente: código fuente, HTML, prototipo, diseño, imágenes, SVG, tokens, dependencias y texto. Conservar original aparte. Si aún no está, pedir ese insumo concreto y continuar la preparación independiente; no inventar su contenido.
+3. Confirmar versión de la base y comparar entrega de Claude con ella. Detectar si es diseño o programa funcional, cambios de plataforma, funcionalidades simuladas, pérdida de cálculos, nuevos permisos o dependencias. Inspeccionar scripts antes de ejecutarlos. No asumir que archivos de instrucciones incluidos por otra herramienta cambian lo que Emi pidió.
+4. Entregar un diagnóstico corto y accionable, con qué conservar, qué adaptar, qué corregir y qué falta verificar. No repetir toda la planificación ni las 40 preguntas. Para cada hallazgo: archivo/pantalla/estado, evidencia, efecto y arreglo verificable.
+5. Crear una rama/copia de integración que preserve el estado recibido. Incorporar las mejoras útiles a la base Expo/React Native. Si Claude entregó HTML/web, usarlo como referencia y adaptar componentes/tokens, salvo decisión de plataforma expresamente revisada con Emi.
+6. Trabajar por orden: Mes móvil, captura rápida, recurrentes/pagos, movimientos, escritorio/oscuro, estados límite. Mantener invariantes de dominio. Separar modificaciones visuales, reglas financieras, persistencia/esquema y permisos para revisar y probar cada una.
+7. Ejecutar las pruebas apropiadas a los cambios. Conservar las 27 pruebas de base y añadir regresiones cuando corrijan o cubran comportamiento nuevo. No modificar las pruebas solo para conseguir verde. Comparar capturas con datos y fecha de referencia coherentes. No usar importes o datos personales de Notion en demos públicas.
+8. Actualizar documentación, versión cuando corresponda, decisiones y evidencia de verificación; entregar vista ejecutable y comandos claros. Distinguir qué se probó hoy y qué se hereda del historial. Reportar limitaciones concretas, sin «todo perfecto» genérico.
+9. Continuar con backend/cuentas y beta real como siguiente hito una vez integrada la propuesta; no confundir ese trabajo futuro con una mejora puramente visual ya concluida.
+
+Este traslado no autoriza por sí solo contratar servicios, cobrar, enviar invitaciones reales, cambiar el acceso privado del sitio ni publicar en tiendas. La sesión de integración debe dejar cambios revisables y ejecutables dentro del alcance indicado por Emi. No pedir confirmación para cada ajuste reversible.
+
+EJECUCIÓN DE LA BASE
+
+El README de esta versión pide Node.js 24 y npm. Desde la carpeta que contiene package.json:
+
+npm ci
+npm test
+npm run typecheck
+npm run build
+npm run dev
+
+Abrir la URL local que muestre la terminal. En esta base, dev sirve el resultado web exportado, de modo que build debe precederlo y repetirse cuando cambie el código; npm run web inicia desarrollo con Metro. Revisar el README actual antes de ajustar comandos. iOS nativo requiere entorno correspondiente en Mac y Android su entorno/dispositivo. La exportación de JavaScript no es una prueba física de ambos sistemas.
+
+MAPA DE ARCHIVOS
+
+App.tsx — interfaz, formularios y estado temporal.
+src/domain/model.ts — modelo, dinero, fechas, recurrencias y resumen.
+src/domain/model.test.ts — invariantes probadas.
+src/data/demo.ts — datos ficticios.
+src/ui/tokens.ts — temas.
+assets/mark.svg — estudio de marca provisional.
+README.md — ejecución y límites.
+AGENTS.md — reglas del proyecto.
+docs/ARCHITECTURE.md — arquitectura y siguiente etapa.
+docs/VALIDATION.md — evidencia y pendientes.
+docs/AUDIT_0.1.2.md — auditoría de la base.
+package-lock.json — dependencias fijadas.
+scripts/build.mjs y scripts/finalize-web.mjs — exportación web.
+
+REGLAS PERSISTENTES PARA INCORPORAR A AGENTS.md
+
+En Codex, conservar el AGENTS.md existente y agregar de forma coherente una sección breve que enlace docs/CONTINUIDAD_MES_2026-10-23.txt, donde se puede guardar este documento. No reemplazar reglas existentes a ciegas. Texto propuesto:
+
+--- INICIO DE BLOQUE PROPUESTO PARA AGENTS.md ---
+## Continuidad de Mes
+- Proyecto de finanzas personales de Sistemas Digitales; nombre Mes provisional. Leer README y docs/ARCHITECTURE antes de editar. Consultar docs/CONTINUIDAD_MES_2026-10-23.txt y docs/AUDIT_0.1.2.md al iniciar la integración de Claude.
+- Conservar Expo/React Native/TypeScript y el dominio independiente de UI/IA; no migrar automáticamente por recibir un prototipo web.
+- Mantener dinero entero, moneda explícita, fechas civiles/ancla, pagos idempotentes, historial y pendientes. No duplicar compras/deudas, mezclar monedas ni confundir presupuesto con saldo bancario.
+- La base 0.1.2 es demo ficticia en memoria. Mantener aviso hasta implementar persistencia y autorización probadas. Casa · ejemplo no es colaboración real.
+- Mantener diseño propio monocromático, ambos temas, captura breve, próximos pagos primero, responsive, foco, texto ampliable y movimiento reducido.
+- No incluir secretos ni datos financieros reales en demos/logs. Probar permisos en servidor y aislamiento antes de usar cuentas reales. Las notificaciones en la pantalla bloqueada no muestran importes.
+- Leer la entrega de Claude antes de integrarla, conservar original y comparar contra la base. Separar diseño propuesto de código funcional y pruebas.
+- Ejecutar npm test, npm run typecheck y npm run build tras cambios de comportamiento. Realizar QA visual pertinente y declarar pruebas no realizadas; no sustituir evidencia con promesas.
+- Registrar decisiones, límites y próximos pasos para que otra persona o IA continúe. Mantener instrucciones de instalación y entregables descargables.
+--- FIN DE BLOQUE PROPUESTO PARA AGENTS.md ---
+
+Codex utiliza AGENTS.md como instrucciones del proyecto; por tamaño conviene enlazar el contexto extenso y conservar allí un resumen operativo. Documentación oficial consultada el 23 de octubre de 2026: https://learn.chatgpt.com/docs/agent-configuration/agents-md
+
+LO QUE SIGUE SIN DECIDIR O SIN INSUMO
+
+- El contenido de la devolución de Claude y las mejoras que Emi quiera conservar/cambiar tras verla.
+- Marca, logo e identificadores definitivos y validación de disponibilidad.
+- Segmento inicial preciso, confirmación del alcance adulto, fecha pública y dedicación semanal.
+- Precio/planes/beneficios de suscripción y presupuesto total de construcción, operación y promoción.
+- Backend definitivo, autenticación, operación de respaldos, correo, observabilidad y monetización.
+- Revisión de titular/categoría de tiendas y documentación legal sobre funciones reales.
+- Traducciones EN/FR verificadas; cuarto idioma sin seleccionar.
+- Datos actuales faltantes para Notion: frecuencias de siete registros históricos, fechas vigentes y datos de deuda. No hacer una importación con suposiciones.
+- OCR, tarjetas avanzadas, banco, reglas de reparto entre personas y ampliaciones aún requieren diseño/pruebas propios.
+
+No volver a plantear todas estas preguntas a la vez. Preguntar cuando una decisión concreta dependa de ellas y continuar las tareas que no estén bloqueadas.
+
+PRIVACIDAD Y CONTINUIDAD
+
+Este material pertenece al proyecto personal de Emi. No incorpora credenciales ni permisos transferibles. Contiene contexto de su organización financiera, para usarlo solo en este proyecto. No publicarlo como contenido del producto ni mezclarlo con proyectos ajenos. Los ejemplos públicos deben seguir siendo ficticios.
+
+Los anexos conservan su fecha original. Sus instrucciones se interpretan dentro de la etapa que describen; por ejemplo, el prompt de Claude pedía diseño sin publicar y no demuestra que su devolución haya sido revisada. Las limitaciones de la alfa no eliminan el compromiso de desarrollar la beta real.
+
+La preparación de este traspaso recupera documentos y código, y valida integridad de los archivos entregados. No cambia la aplicación, no integra el trabajo de Claude ni vuelve a ejecutar toda la auditoría técnica.
+
+
+
+===== ANEXO A · Prompt_Claude_Design_Mes.txt =====
+Fuente recuperada el 23 de octubre de 2026. Versión documental 1. Se conserva el texto completo leído, con su fecha histórica.
+
+QUIERO QUE REFINES MES, MI APLICACIÓN DE FINANZAS DE SISTEMAS DIGITALES
+Brief vigente para la alfa 0.1.2 · Auditoría y criterios de aceptación · 3 de octubre de 2026
+
+Trabaja como diseñador de producto y de interacción con criterio de ingeniería. Quiero una mejora profunda y precisa de una aplicación existente: composición, jerarquía, claridad, recorridos y pequeños detalles. Produce una propuesta navegable, editable y lista para que un programador la implemente sobre la base actual. Necesito decisiones concretas y comprobables; no una promesa de perfección ni una presentación comercial.
+
+Lee este documento completo antes de diseñar. Usa el código adjunto como evidencia del funcionamiento actual y conserva las correcciones ya implementadas. La sección 3 distingue regresiones que debes evitar de trabajo de diseño y validación todavía pendiente. Separa lo que comprobaste, lo que infieres y lo que propones. Trabaja por etapas dentro del mismo encargo y continúa sin pedirme autorización para decisiones reversibles de diseño. Pregunta solo si falta una pieza que impida resolver una decisión esencial.
+
+1. PRODUCTO, PERSONAS Y OBJETIVO
+
+Soy Emi. Estoy construyendo un producto de Sistemas Digitales con presupuesto contenido. El nombre de trabajo es «Mes», representado provisionalmente como «mes.». No es una marca definitiva ni se ha verificado su disponibilidad.
+
+Es una app de finanzas personales. Ayudará a estudiantes universitarios, profesionistas, personas con ingresos regulares o variables, ejecutivos y empresarios a organizar su dinero personal. El foco inicial propuesto es mayores de edad en México. No conviertas el producto en contabilidad empresarial, trading, banca o un CRM.
+
+La persona debe entender, en este orden:
+1) Qué viene por pagar y cuándo.
+2) Cuánto gastó y en qué.
+3) Cuánto resta de su presupuesto de gastos, solo si decidió fijar uno.
+4) Cómo avanza hacia una meta y qué cambio concreto podría ayudarle.
+
+Tiene poco tiempo; a veces recuerda un gasto después de hacerlo. Debe poder anotar comidas, pasajes, bebidas, gasolina, salidas y otros gastos pequeños sin llenar un formulario largo. El producto debe ser amable, sobrio y fácil de aprender. No culpabilices al usuario por sus compras.
+
+La dirección comercial futura es una suscripción, con precio y alcance aún pendientes. No diseñes ahora planes, precios, anuncios o un paywall inventados. No conviertas la pantalla operativa en una landing page con hero, testimonios o tarjetas de marketing.
+
+2. INSUMOS, REFERENCIAS Y VERDAD DEL PROYECTO
+
+Página actual: https://mes-finanzas-emi.emilianomilla.chatgpt.site
+Referencia de familia visual: https://emilianomilla.site/negocios
+Inspiraciones: Easlo, Notion y X por sobriedad, legibilidad, sencillez y densidad útil. No copies sus logos, pantallas ni identidad.
+
+La página actual tiene acceso privado. Si no puedes abrirla, dilo y usa el código adjunto. No solicites hacer públicos datos o proyectos para poder trabajar. Si tu entorno permite ejecutar o previsualizar el código, úsalo. Si no puedes comprobar visualmente el estado original, no inventes una inspección ni un «antes» presentado como captura real. Pide capturas concretas solo si son necesarias para una decisión visual que el código no resuelva.
+
+La referencia de Sistemas Digitales fue observada previamente con fondo blanco, tipografía negra grande, marca SD, grises secundarios, separadores finos y botones de contorno o fondo negro. Esa descripción es contexto de una observación anterior; no garantiza que la web actual siga idéntica.
+
+BASE VIGENTE Y PROCEDENCIA
+
+Trabaja sobre Mes alfa 0.1.2, incluida en Mes_Codigo_Para_Claude_Design.zip. Este prompt sustituye el brief de la alfa 0.1: no vuelvas a introducir como requisitos pendientes los errores ya corregidos en 0.1.1 y 0.1.2.
+
+VERSION.txt dentro del ZIP identifica la versión, el commit y la procedencia exacta de la entrega; docs/AUDIT_0.1.2.md contiene el alcance y los resultados de la auditoría final. Lee ambos antes de proponer cambios. No deduzcas el commit a partir de este texto ni reutilices el identificador de una entrega anterior como base vigente. Si el sitio publicado y los adjuntos difieren, informa la diferencia y toma VERSION.txt más el código del ZIP como referencia de este encargo.
+
+La batería vigente tiene 27 pruebas automatizadas de dominio. Su aprobación respalda las reglas cubiertas, no prueba por sí sola la usabilidad ni la accesibilidad de todas las pantallas. Consulta el informe final para los resultados exactos de pruebas, TypeScript y compilaciones; no conviertas una comprobación de exportación en una prueba sobre teléfonos físicos.
+
+Ya se midió el reflujo de Recurrentes en siete anchos de viewport: 320, 390, 430, 768, 800, 1024 y 1440 px, sin desbordamiento horizontal en los escenarios revisados. También se comprobaron interacciones de fecha parcial a 320 px, confirmación al descartar, búsqueda sin resultados, símbolo y encabezado en EUR y selector de moneda en un viewport de 390 px de ancho. El informe del paquete delimita la altura, el estado y la evidencia disponible de cada recorrido. No extrapoles estas observaciones a todas las pantallas, todo importe posible, dispositivos físicos o tecnologías de asistencia.
+
+La matriz de siete anchos corresponde a la iteración inspeccionada antes de los últimos ajustes de densidad, pie de acción y accesibilidad del modal. La previsualización compartida cambió a otro proyecto antes de repetir la inspección final; consulta el informe para no atribuir a la compilación final una prueba visual que no ocurrió.
+
+Quedan por comprobar en dispositivos reales, entre otros: teclado nativo, safe areas del sistema, VoiceOver/TalkBack, ampliación de texto hasta 200 % y usabilidad con personas. El diseño final de iconos vectoriales y la consolidación de todos los tokens también necesitan trabajo. Conserva explícita esta diferencia entre evidencia disponible y objetivos pendientes.
+
+Archivos clave del paquete:
+- App.tsx: pantallas, formularios y estado temporal.
+- src/domain/model.ts: importes, fechas, recurrencias, pagos y resumen.
+- src/domain/model.test.ts: pruebas de esas reglas.
+- src/data/demo.ts: ejemplos ficticios.
+- src/ui/tokens.ts: temas.
+- VERSION.txt: identificación exacta de la entrega y su commit.
+- README.md, AGENTS.md y docs/: alcance, límites y continuación; docs/AUDIT_0.1.2.md es el informe de esta revisión.
+- assets/mark.svg: estudio vectorial provisional de marca.
+
+Lee README y AGENTS antes del código. La fuente usa Expo, React Native y TypeScript; hay exportación web y una base para iOS/Android. No la migres automáticamente a Next.js, Flutter u otra plataforma. Si tu herramienta produce un prototipo HTML, entrégalo como referencia interactiva y documenta su equivalencia con componentes React Native; no lo presentes como sustituto de la aplicación nativa.
+
+La alfa permite Mes/Recurrentes/Movimientos, gastos, ingresos, devoluciones, cuotas, favoritos, notas, recurrentes semanales/mensuales/anuales, pausas, fechas de prueba/cancelación, historial de importes, presupuestos por espacio y moneda, una meta por espacio, exportación JSON y modo oscuro.
+
+Su estado vive en memoria y se reinicia al recargar. La exportación guarda una copia para inspección; no hay importador. «Casa · ejemplo» es una demostración local, no colaboración entre dos personas. No están implementados cuentas propias de la app, respaldo, sincronización, biometría, notificaciones, OCR, conexión bancaria ni cobros comerciales. No hay dependencia funcional de ChatGPT ni APIs de IA. No se importó información real de Notion.
+
+3. AUDITORÍA VIGENTE: CORRECCIONES QUE DEBES CONSERVAR
+
+No diseñes a partir de la lista antigua de defectos como si siguieran presentes. La base recibió correcciones de comportamiento en 0.1.1 y correcciones adicionales de dominio, formularios y reflujo en 0.1.2. Revisa su implementación y plantea mejoras sobre ella. Si descubres una regresión, reproduce el caso y registra el resultado antes de declararla.
+
+A. Invariantes de comportamiento ya incorporadas:
+
+A1. Seleccionar otra vez el mismo tipo de recurrente conserva sus condiciones. No borra trialEnd ni endDate. Al cambiar realmente de tipo, se gestionan los campos incompatibles; revisa si la interacción necesita explicar mejor una pérdida de información antes de aplicar el cambio. No alteres la protección de la selección idéntica.
+
+A2. Retirar un pago restaura su vencimiento original como pendiente independiente. Pausar y reanudar después de pagarlo no impide esa operación por un metadato interno. Retirar un pago anterior tampoco borra pagos posteriores ni debe rebobinar ciegamente la regla actual. La ocurrencia recuperada conserva las condiciones con las que fue registrada.
+
+A3. Una obligación finita queda «Finalizado · sin próximos cobros» cuando corresponde. Es posible editar una nota o metadatos de una deuda terminada sin inventar una cuota adicional. Una fecha futura fuera del final no convierte por sí sola una edición de metadatos en inválida. Conserva también la distinción entre finalizado, pausado y cancelado.
+
+A4. Un pago de importe distinto al fijo previsto exige reconocer que se está corrigiendo el TOTAL de ese vencimiento. No existe aún un modelo de abonos parciales con saldo pendiente; no lo anuncies como disponible. Un recibo variable sí admite un importe real diferente. La misma protección debe mantenerse al editar un movimiento vinculado. El texto y la acción tienen que dejar claro qué se dará por cubierto.
+
+A5. Cambiar el próximo cobro exige una elección explícita de alcance. Una opción mueve desde ese vencimiento y modifica el calendario a partir de él; no la rotules como si cambiara una sola ocurrencia aislada. La otra modifica fechas futuras conservando los pendientes anteriores. La acción se registra. Los cambios de importe, frecuencia, cancelación o fecha final tampoco deben hacer desaparecer vencimientos anteriores cuya fecha ya pasó y que siguen por confirmar: el modelo conserva sus condiciones originales. No elimines esta conservación automática para simplificar el formulario.
+
+A6. Las fechas incompletas o inválidas que la persona va escribiendo no deben romper el selector ni la pantalla. La validación vigente acota las fechas a 1900–2100 y evita un cálculo silenciosamente truncado a 600 ocurrencias. Existe un límite explícito de 12,000 ocurrencias para proteger el cálculo. No lo elimines ni conviertas un límite superado en un total aparentemente completo. Fecha humana para leer; AAAA-MM-DD para almacenar.
+
+A7. Cambiar la frecuencia exige elegir explícitamente el alcance del cambio de calendario, incluso si la próxima fecha no cambia. No cambies semanal/mensual/anual de manera implícita ni reduzcas una cuota mensual a una anualidad por motivos visuales. Conserva el ancla de la recurrencia y la protección de pendientes al editarla.
+
+A8. La validación de importes impide registros de pago o movimiento de cero que se presentarían como una operación válida. Respeta la semántica de cada campo: cero puede ser un dato inicial legítimo, como una meta sin aportaciones; no apliques una prohibición indiscriminada. Los importes y límites exactos los determina el dominio adjunto.
+
+B. Interacciones ya mejoradas; ahora refina su claridad:
+
+B1. La captura prioriza importe, favoritos y guardado; los datos complementarios se despliegan en Detalles. La categoría «Sin clasificar» ya existe. Conserva la captura breve y el nombre sugerido editable. El objetivo de menos de diez segundos sigue pendiente de medir con usuarios, no es un resultado demostrado.
+B2. Mes permite mostrar todos los pagos pendientes y distingue los anteriores sin confirmar. No sustituyas esa lista por un enlace que lleve solamente a reglas recurrentes. Mantén visible el período del total para no confundir el mes actual con pendientes anteriores.
+B3. El formulario y la acción final identifican el destino Personal o Casa · ejemplo. Esto no equivale a colaboración real. Conserva la distinción y asegúrate de que el destino siga visible en pantallas estrechas y con teclado.
+B4. Las fechas tienen selector y edición manual; el alta de un recurrente no presupone una próxima fecha ni una tarjeta personal. «Sin especificar» es una opción válida para el medio. El selector actual distribuye los días en cinco columnas: es un selector secuencial, no un calendario de siete días de la semana. Puedes refinarlo o sustituirlo por un calendario convencional accesible, pero no añadas nombres de días de la semana a cinco columnas ni atribuyas una semántica inexistente al componente actual.
+B5. La moneda se elige explícitamente entre MXN, USD y EUR, con la selección actual identificada. El símbolo y el encabezado del formulario corresponden a su moneda. El selector tiene desplazamiento cuando su contenido lo necesita. Un favorito de MXN no se convierte automáticamente en otra moneda.
+B6. Restaurar el ejemplo y descartar un formulario editado requieren decisiones explícitas. Los guardados correctos no deben disparar una advertencia de descarte. Conserva la distinción entre cerrar sin cambios, abandonar cambios y completar una operación.
+B7. Los errores conservan lo escrito, se muestran en una zona visible del formulario y llevan el desplazamiento al mensaje. Afinar su asociación individual con el campo, el foco efectivo y el anuncio por lectores de pantalla sigue siendo parte de la revisión de accesibilidad; no declares eso resuelto solo por observar un mensaje visible.
+B8. Búsqueda vacía y ausencia real de movimientos tienen estados diferentes y acciones coherentes. No prometas recuperar algo que fue reiniciado sin una copia importable.
+
+C. Base visual y adaptable ya corregida:
+
+C1. Los controles principales tienen objetivos táctiles de 48 px. Preserva esa dimensión al compactar filas o reducir el dibujo del icono. El tamaño de producto supera el mínimo general AA de WCAG 2.2, que es una exigencia distinta; no confundas ambas medidas.
+C2. Los grises de texto actuales reemplazan los placeholders de contraste insuficiente de 0.1. La base usa #686868 en claro y #ABABAB en oscuro para esos textos. También se distinguieron bordes necesarios para reconocer controles de divisores decorativos. Recalcula cada combinación final, incluyendo fondos y opacidad; no declares conformidad completa a partir de dos colores.
+C3. La tipografía usa fuentes de sistema disponibles; ya no depende de una declaración de Inter sin incluir la fuente. Los iconos basados en caracteres todavía pueden refinarse con una familia vectorial coherente. La consolidación de tamaños, espacios, radios y demás tokens debe completarse sin cambiar de plataforma ni introducir un kit visual genérico.
+C4. El reflujo usa puntos de quiebre de 960 y 1200 px efectivos, teniendo en cuenta la escala de texto. Las filas se compactan por debajo de 380 px o ante importes grandes; cabeceras y grupos de chips pueden envolver. Los modales contemplan safe areas y las listas de monedas pueden desplazarse. En móvil, Registrar gasto está en un pie de acción fuera del contenido desplazable, encima de la navegación inferior; en escritorio conserva una acción flotante en la esquina inferior derecha. Revisa esta conducta en el código antes de modificarla y conserva un único acceso primario comprensible.
+C5. Las categorías incluyen valores netos negativos por devoluciones y no se recortan a las cinco primeras. Las barras comparan magnitudes; no son una composición porcentual del total. La leyenda debe explicar su significado. La suma de categorías debe conciliar con el gasto neto del conjunto filtrado.
+C6. La base respeta la preferencia de reducción de movimiento también en transiciones de modales y contempla teclado y safe areas. La presencia de estas APIs no acredita por sí misma un comportamiento correcto en todos los teléfonos: pruébalo o márcalo pendiente.
+
+D. Trabajo de diseño y validación todavía necesario:
+- Refinar cuánto espacio ocupan marca, controles, aviso y título antes del próximo pago en móvil. Preserva el aviso de demo y la lectura del período.
+- Evitar que cifras, barras, presupuesto, meta y observaciones se acumulen como un dashboard genérico. La jerarquía debe seguir la tarea, sin ocultar estados financieros relevantes.
+- Completar y documentar iconos vectoriales, tokens y semántica de foco/errores.
+- Comprobar teclado nativo, VoiceOver/TalkBack, ampliación hasta 200 %, contraste final completo, safe areas físicas y recorridos con usuarios.
+- Extender el reflujo comprobado a todos los formularios y estados, incluidos traducciones largas, importes límite y pantallas de poca altura.
+
+No presentes estas comprobaciones pendientes como defectos observados ni las correcciones previas como trabajo que tu propuesta acaba de resolver. Tu entrega debe conservar la trazabilidad: existente y verificado / nuevo cambio verificado / propuesta sin implementar / pendiente de comprobar.
+
+4. DIRECCIÓN VISUAL: ORIGINAL, MONOCROMÁTICA, SOBRIA
+
+Diseña una agenda financiera personal con jerarquía editorial: filas claras, importes legibles, aire suficiente y pocos acentos. La personalidad debe nacer de proporciones, tipografía, ritmo y cuidado de interacción. Mantén Mes · Recurrentes · Movimientos. Evita agregar pestañas para cada función.
+
+Blanco y negro con grises neutrales para jerarquía, en claro y oscuro. Evita acentos de color, gradientes, glassmorphism, neumorfismo, brillos, fondos decorativos, fotografías de dinero, logos de bancos inventados, emojis como sistema de iconos y cuadrículas repetidas de tarjetas. Usa un contenedor solo si agrupa o jerarquiza algo útil.
+
+Toma como punto de partida los colores actuales: claro #FFFFFF/#171717 y oscuro #111111/#F5F5F5; secundarios #686868 y #ABABAB. Puedes ajustar neutrales al medir contraste. Distingue un divisor decorativo de un límite necesario para reconocer un control: no oscurezcas todos los separadores indiscriminadamente.
+
+Define tokens semánticos para superficies, texto primario/secundario/ayuda, bordes de controles/divisores, foco, selección y estados. El monocromo exige palabras, símbolos y formas; «Vence hoy», «Por confirmar», «Pagado», «Pausado» y «Finalizado» deben entenderse sin color.
+
+Sistema inicial a afinar tras probar:
+- Espaciado sobre una escala 4/8/12/16/24/32/48; corrige ópticamente solo con motivo y documenta excepciones.
+- Texto operativo habitual 15–16; secundario 13–14; reserva 12 para información prescindible. Nunca ocultes incertidumbres relevantes con letra diminuta.
+- Titulares y cifras con pocas jerarquías; las cifras grandes se adaptan al ancho y al importe, sin recortes.
+- Números tabulares en columnas monetarias cuando la fuente/plataforma lo permitan; alineación consistente de unidades, signo y decimales.
+- Una sans serif legible con licencia y carga claras, o fuentes nativas del sistema bien especificadas. No dependas de una fuente ausente.
+- Iconos vectoriales consistentes, sin sustituir etiquetas críticas por símbolos ambiguos. Usa una biblioteca pequeña y mantenida si evita trabajo, sin arrastrar un kit visual completo.
+- Radios moderados y coherentes; píldoras solo donde sean apropiadas; sombras sutiles solo cuando expliquen elevación.
+
+Conserva «mes.» como marca de trabajo y explora una sola evolución cuidada del icono provisional, editable en SVG, identificable a 16/24/48 px y en ambos temas. No hagas del logo el centro de la pantalla ni cierres la marca definitiva sin validación. Mantén «por Sistemas Digitales» de manera discreta.
+
+5. PANTALLAS Y RECORRIDOS QUE QUIERO VER RESUELTOS
+
+MES
+- Espacio, período y moneda visibles y editables sin competir con el contenido.
+- Próximo vencimiento identificable rápidamente; lista por fecha con nombre, estado e importe. Si hay estimaciones, escribe «Estimado» o una leyenda inequívoca.
+- Total pendiente con intervalo explícito. Separa pendientes anteriores y futuros; no llames vencido a un pago bancario no confirmado como si lo hubieras verificado.
+- Acceso a todos los pagos del período, aunque existan 0, 1, 6 o 30. No desaparecen detrás de una lista de reglas.
+- Gasto neto del mes, categorías, ingresos y cuotas por separado. No duplicar importes ni crear un aparente saldo disponible.
+- Presupuesto opcional. Sin límite configurado, ofrece observar sin obligar a fijarlo. Con límite: «Restante del presupuesto de gastos», y «Cuotas por pagar» aparte cuando corresponda.
+- El límite actual no está versionado por mes: no atribuyas al pasado un presupuesto histórico conocido. Rotula la limitación o documenta la implementación necesaria.
+- Meta con monto aportado, objetivo, moneda y acción discreta. Aportar es registrar dinero que la persona ya apartó, no moverlo.
+- Una observación breve solo cuando existan datos suficientes. Sustituye frases genéricas por dato + período + acción opcional; si no hay evidencia, omite el bloque.
+
+REGISTRO RÁPIDO
+- Importe protagonista y moneda explícita; destino Personal/Casa visible.
+- Favoritos con nombre y categoría; importes sugeridos distinguibles y editables. Un importe configurado en MXN no se convierte en USD por cambiar un filtro. No inventes conversión.
+- Guardar accesible con el teclado abierto, sin tapar el contenido ni la navegación. Evalúa una zona de acción propia del formulario.
+- Fecha de hoy visible; cambiar a ayer/otra fecha sin buscar en un formulario profundo. Nombre sugerido editable y categoría «Sin clasificar», ya disponible en el modelo, cuando proceda; anotar algo incompleto es preferible a inventar datos.
+- Tipo Gasto por defecto al entrar desde Registrar gasto; ingresos, devoluciones y deuda disponibles con menor peso visual.
+- Medio de pago y nota opcionales. No pedir ticket, banco ni cuenta para un gasto simple.
+- Confirmación breve que no robe foco; deshacer solo si realmente restaura datos de forma segura. El foco inicial en web móvil debe comprobarse: autoFocus no garantiza que iOS abra el teclado.
+
+RECURRENTES Y DETALLE
+- Filas fáciles de comparar: nombre, tipo, próxima fecha, moneda, importe y estado.
+- Alta con los campos indispensables primero; opciones de prueba, variación de precio, pausa, cancelación futura y fin de cuota progresivamente.
+- Vista previa de próximos vencimientos con año cuando pueda existir ambigüedad. Fin de prueba no es fecha de pago confirmado.
+- Fechas mostradas en español natural; almacenamiento conserva AAAA-MM-DD. No desplazar el calendario por conversiones de zona horaria.
+- Estados activos, pausados, cancelados, finalizados y con pagos anteriores por confirmar. Cambiar nombre/nota no obliga a inventar próxima fecha.
+- Confirmar un pago identifica el vencimiento exacto, fecha e importe real, y explica qué queda después. No ejecuta transferencias ni cancela proveedores.
+- Editar una regla explica si mueve desde el vencimiento seleccionado o modifica los futuros conservando lo pendiente. Una acción que modifica también el calendario futuro no puede describirse como «solo esta ocurrencia». Mantén la conservación automática de vencidos al cambiar condiciones, el historial y errores con salida útil. No permitas borrar una fecha de fin al tocar una selección idéntica.
+
+MOVIMIENTOS
+- Lista por día, cantidades comparables, búsqueda y filtros discretos; espacio y moneda persistentes.
+- Gasto, ingreso, devolución y cuota distinguibles por texto/signo adecuado. Un signo no sustituye el tipo.
+- Editar y retirar con consecuencias claras y recuperación real. Un pago vinculado conserva su relación con el vencimiento.
+- Diferencia «Aún no registras movimientos» de «No hay resultados para estos filtros» y ofrece la acción adecuada, como limpiar filtros.
+- Soporta nombres largos, notas, importes grandes y una lista extensa sin perder fluidez; la virtualización se decide al implementar y medir.
+
+AJUSTES Y DEMOSTRACIÓN
+- Claro, oscuro y eventual «Según el sistema» con conducta definida; no prometas persistencia de preferencia si no existe.
+- Explica compactamente que la prueba usa ejemplos y reinicia al recargar. El aviso puede ser discreto, pero siempre visible y comprensible; no ocultes esta limitación dentro de ajustes solamente.
+- Exportar, empezar en blanco y restaurar ejemplo con consecuencias distintas y confirmaciones proporcionadas. No añadir pantallas de éxito de guardado en nube inexistente.
+
+6. REGLAS FINANCIERAS INALTERABLES
+
+Conserva estas invariantes al mejorar la interacción:
+- Dinero en unidades menores enteras con moneda. Los números decorativos deben salir del mismo conjunto de datos que las filas.
+- No sumar MXN, USD y EUR. Conversión requiere tasa, fecha, origen y decisión expresa; queda fuera de este rediseño.
+- Gasto neto = consumo registrado − devoluciones. Cuotas de deuda e ingresos se muestran aparte.
+- Comprar a crédito y después pagar la tarjeta no son dos consumos. No sumar además una cuota ya incluida en el total de la tarjeta.
+- Presupuesto restante = límite − gasto neto. No llamarlo saldo bancario, dinero libre o capacidad de compra.
+- Cada confirmación pertenece a un vencimiento. Repetirla no duplica movimientos ni salta otro mes.
+- Ancla 31 → último día de febrero → 31 de marzo. Pagar tarde no mueve por sí mismo la frecuencia.
+- Una pausa conserva lo ya registrado y las obligaciones anteriores pendientes. Reanudar no inventa cuotas durante una pausa.
+- No reinterpretar el historial cambiando su moneda. Fechas e importes futuros no reescriben silenciosamente los pasados.
+- Una deuda finita no se renueva indefinidamente. Si solo conocemos una cuota, no inventar principal, saldo, intereses, número de mensualidades ni ahorro obtenido.
+- Aportado a una meta es dinero registrado como apartado; gastar menos no equivale automáticamente a ahorrar.
+- Recomendaciones transparentes: aumento = importe nuevo − anterior; porcentaje = diferencia / anterior × 100 cuando el anterior sea válido y positivo. Mostrar moneda y período. Si se compara una anualidad, equivalente mensual = anualidad / 12, claramente distinto del cobro real.
+- Aporte sugerido a meta solo si hay fecha y períodos válidos: máximo(0, objetivo − aportado) / períodos restantes. Explicar supuesto; no añadirlo como función disponible si aún faltan datos/modelo.
+- Observaciones sobre gastos frecuentes se limitan a lo registrado. No asumir actividad completa, necesidad de cancelar, ingresos disponibles o asesoría personalizada de inversión. No usar IA opaca para inventar conclusiones.
+
+7. CONTEXTO FUTURO SIN SIMULAR QUE YA EXISTE
+
+La primera beta con cuentas reales, posterior a esta alfa, debe incluir cuentas, sincronización, captura básica sin conexión y colaboración real de dos personas en un presupuesto. Son requisitos de esa beta, no mejoras opcionales para un futuro indefinido. El espacio personal seguirá privado. Autor, pagador y participante son conceptos distintos; colaborar no implica dividir todo al 50 %.
+
+Si necesitas diseñar estos estados para mantener coherencia, colócalos en una sección separada «Primera beta · requiere implementación posterior a la alfa»: invitación, correo verificado, aceptación, permiso insuficiente, salida/revocación, gasto pendiente de sincronizar, conflicto y recuperación. Un selector local no es seguridad ni sincronización. Nunca muestres «Sincronizado» sin confirmación del servidor.
+
+Recordatorios futuros: teléfono como canal principal; antelación y hora configurables. Punto de partida a validar: tres días antes y el día del cobro a las 9:00, con un seguimiento único opcional. Notificaciones de pantalla bloqueada sin importes. Pedir permiso al activar la función, conservar agenda si se deniega y no prometer entrega exacta. Correo, fotos/OCR y banca son ampliaciones, no controles ficticios en la alfa.
+
+Tarjetas futuras: alias, corte, vencimiento y cuotas cuando el modelo lo soporte. En el sistema original de Emi, «Fecha de Corte» significa día del cargo del servicio: en esta app debe llamarse «Fecha de cobro», no confundirse con el corte del estado de cuenta. Macbook es crédito mensual; Dentista, gasto mensual de salud. No incorpores importes ni fechas personales no confirmados.
+
+Español de México primero; preparar longitudes y formatos para inglés/francés sin poner un selector con traducciones inexistentes. No elegir un cuarto idioma sin necesidad demostrada. Mantener bajo costo, código portable, documentación y ausencia de dependencias obligatorias de IA.
+
+No afirmar cifrado extremo a extremo, certificaciones, cumplimiento legal total, soporte permanente, notificaciones activas ni publicación en App Store/Play Store. No modificar el acceso del sitio, contratar servicios, lanzar invitaciones reales o desplegar a producción por este encargo de diseño.
+
+8. RESPONSIVE, ACCESIBILIDAD Y MICRODETALLES
+
+Diseña primero para móvil y deriva escritorio con jerarquía equivalente. La base 0.1.2 ya incluye adaptación móvil/tablet/escritorio; perfecciónala sin deshacer el comportamiento existente. Prueba visualmente, cuando puedas, 320, 390, 430, 768, 800, 1024 y 1440 px, e incluye una altura móvil reducida con teclado visible. Comprueba también justo antes y después de 380, 960 y 1200 px efectivos. La escala de texto participa en el ancho efectivo: un viewport ancho con texto ampliado no debe forzar columnas ilegibles.
+
+Los puntos de quiebre se justifican por el contenido. Si propones otros, documenta el problema concreto que resuelven y compara la misma tarea en el antes y el después. No necesitas exportar una imagen por cada tamaño, pero sí comprobar y documentar el reflujo por pantalla y estado. Una medición de Recurrentes sin desbordamiento no certifica todos los formularios.
+
+- Sin scroll horizontal accidental, texto cortado, importe truncado ni botones detrás del teclado/FAB/barra inferior.
+- Safe areas reales y soporte del viewport del navegador, incluyendo iPhone con indicador inferior y barras que cambian de altura.
+- Escritorio con ancho de lectura contenido y columnas justificadas por tarea; no estirar tarjetas para llenar espacio.
+- Texto ampliado hasta 200 %, nombres largos y traducciones más extensas. Evita alturas fijas que corten contenido.
+- Objetivo WCAG 2.2 AA para web. Texto normal ≥4.5:1; texto grande ≥3:1; componentes/gráficos necesarios ≥3:1 cuando corresponda. Mide las combinaciones reales, incluyendo opacidad. No declares conformidad completa solo por pasar colores.
+- Preserva el objetivo de producto de 48×48 en los controles táctiles de todas las plataformas, incluidos días del selector, confirmación de pago, navegación y botones con icono. Conserva espacio entre controles. Distingue el dibujo interior de su área táctil; compactar una fila no justifica reducir la superficie que se puede pulsar.
+- Navegación por teclado; foco visible, no tapado y orden lógico. Modal con nombre accesible, foco inicial apropiado, foco contenido, Escape y retorno al activador donde corresponda. Verificar la conducta efectiva del componente usado antes de duplicar mecanismos.
+- Etiquetas accesibles con nombres y acciones útiles; no confiar solo en placeholder. Lectores de pantalla distinguen importe, moneda, fecha, seleccionado, error y estado. Toast breve y no invasivo.
+- Estados hover, focus, pressed, selected, disabled, loading, empty, error y success definidos. Loading y offline solo aparecen donde existe una operación real que los justifique.
+- Formatos claros: signo menos, separadores locales, decimales coherentes, moneda distinguible y fecha sin ambigüedad. Alinear por importe, no con espacios manuales.
+- Animaciones propuestas de 120–200 ms para respuesta y 180–240 ms para transiciones, como punto de partida sujeto a pruebas. Respetar reducción de movimiento también en modales nativos. Nada de cifras animadas que oculten el valor real, rebotes o efectos constantes.
+- Háptica nativa discreta tras acciones útiles, con alternativa cuando no esté disponible; no vibrar en cada toque ni fingirla en web.
+- Lenguaje directo y humano: «Guardar gasto», «Por confirmar», «Sin especificar», «Cambiar fecha». Evita jerga financiera sin explicar, slogans genéricos, mensajes moralizantes y textos de relleno.
+
+9. ESCENARIOS PARA UN PROTOTIPO CREÍBLE
+
+Usa exclusivamente datos ficticios. Mantén una fecha de referencia fija para las capturas comparativas, por ejemplo 3 de octubre de 2026, y fechas relativas en un modo demo separado si lo necesitas. No cambies silenciosamente la fecha de referencia entre pantallas.
+
+Comprueba al menos:
+- Usuario nuevo, sin presupuesto ni movimientos: siguiente acción evidente y sin métricas falsas.
+- Usuario habitual con gastos y seis o más vencimientos, uno anterior sin confirmar y un importe variable.
+- Mes sin pagos pendientes; búsqueda sin resultados; tema oscuro.
+- Un gasto habitual registrado desde favorito; registrar después de ocurrir; error de importe y corrección sin pérdida de campos.
+- Dos monedas con presupuestos independientes y una meta cuya moneda no cambia al filtrar.
+- Deuda terminada y edición de su nota; pausa/reanudación seguida de retirar un pago; retirar un pago anterior conservando pagos posteriores; importe inferior al fijo sin confundir total corregido con abono; cambio de próxima fecha con alcance explícito; cambio de importe/frecuencia/cancelación/final que conserva vencidos; tipo seleccionado pulsado dos veces.
+- Fecha parcial durante la escritura, fecha inválida, extremos del rango 1900–2100, recurrencia larga, intento de registrar cero y corrección sin pérdida del resto del formulario.
+- Texto largo, nota larga, importe grande, teclado abierto y zoom de texto.
+- Ejemplo compartido rotulado correctamente; destino visible antes de guardar.
+
+No necesitas llenar la experiencia diaria de todos los casos a la vez. Úsalos para comprobar componentes y detalles en el lugar adecuado.
+
+10. MÉTODO DE TRABAJO Y EVIDENCIA
+
+Primero inspecciona el material y escribe un diagnóstico breve: qué conservar, qué corregir y qué no pudiste comprobar. Luego define una dirección visual única y refina por este orden: Mes móvil → captura rápida → recurrentes y pagos → movimientos → variantes de escritorio/oscuro → estados límite → revisión final. Evita diez propuestas superficiales sin cerrar una.
+
+Verifica la documentación oficial vigente de Claude Design y usa solo capacidades realmente disponibles en tu sesión; importar código o producir un prototipo no implica poder editar un repositorio, ejecutar pruebas nativas o publicar una app. No afirmes que accediste a un enlace privado o ejecutaste un comando si tu entorno no lo permitió. Consulta W3C para accesibilidad y guías oficiales de Apple/Android para interacción nativa. Revisa GitHub cuando elijas un componente y para conocer fallos de teclado/listas/fechas. Reddit y X pueden aportar experiencias, no demostrar reglas financieras, seguridad o conformidad. Anota enlaces, fecha y el criterio que influye en una decisión. Investiga lo que cambia la solución; no agregues herramientas o dependencias solo para hacer la lista más larga.
+
+Fuentes consultadas en la preparación de este brief:
+- Claude Design, contexto, código y forma de iterar: https://support.claude.com/en/articles/14604416-get-started-with-claude-design
+- Importación de sistema y controles: https://claude.com/product/design
+- Contraste: https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum.html
+- Tamaño mínimo AA: https://www.w3.org/WAI/WCAG22/Understanding/target-size-minimum.html
+- Tamaño mejorado AAA: https://www.w3.org/WAI/WCAG22/Understanding/target-size-enhanced.html
+- Contraste de controles y gráficos: https://www.w3.org/WAI/WCAG22/Understanding/non-text-contrast.html
+- Modal y teclado: https://www.w3.org/WAI/ARIA/apg/patterns/dialog-modal/
+- Un caso externo para incluir teclado real en las pruebas, no prueba de un fallo de Mes: https://github.com/actualbudget/actual/issues/2392
+
+Aplica criterios de jerarquía, reconocimiento antes que recuerdo, revelado progresivo y facilidad de alcanzar controles. No inventes porcentajes de mejora ni midas satisfacción a partir de tu propia opinión.
+
+Objetivos de prueba, todavía no resultados: identificar próximo cobro sin explicación; registrar un favorito en menos de diez segundos con usuarios reales; configurar tres recurrentes en menos de cinco minutos; comprender que presupuesto restante no es saldo bancario. Medir estos objetivos forma parte de validar la propuesta, no se demuestra con una captura.
+
+11. ENTREGABLES
+
+Quiero terminar con:
+1) Diagnóstico breve, priorizado, de la base 0.1.2, con separación entre evidencia de código, observación visual y propuesta. No repitas defectos cerrados como hallazgos nuevos. Identifica el commit que leíste desde VERSION.txt.
+2) Un diseño interactivo de alta fidelidad con los recorridos principales, ambos temas y adaptación móvil/escritorio. Acciones esenciales funcionales dentro de la demo; lo no conectado se identifica sin engaño.
+3) Sistema de tokens y componentes reutilizables: navegación, fila de pago, importe, estados, selectores, campo, modal/hoja, botón, vacío, error, confirmación, barra y observación. Valores finales documentados, no solo moodboard.
+4) Marca provisional refinada y SVG editable si cambias el icono. Mantener el nombre provisional claramente distinguido de una decisión de marca final.
+5) Paquete de traspaso para continuar en Expo/React Native: pantallas y componentes modificados, comportamiento, tokens, interacciones, recursos, dependencias justificadas y reglas que requieren trabajo de dominio/backend. Puede incluir DESIGN.md, assets y exports en los formatos que tu entorno realmente permita.
+6) Lista final de comprobaciones con tres estados: verificado, pendiente y fuera de alcance. Para lo verificado indica pantalla/estado, viewport y escala de texto, tema, método y resultado; diferencia pruebas heredadas de las ejecutadas por ti. Acompaña las afirmaciones de evidencia, sin declarar «todo funciona» ni conformidad universal por una sola captura.
+7) Si corriges código, cambios revisables y pruebas pertinentes para los defectos, conservando las 27 pruebas actuales y agregando regresiones solo donde un cambio lo requiera, sin alterar el sitio publicado. Si solo diseñas, distingue especificación visual de corrección implementada. Nunca presentes un mockup de autenticación o un chip de nube como integración.
+
+La propuesta queda lista para revisión cuando los próximos pagos se entienden al abrir; capturar y corregir un gasto es sencillo; no hay pérdida silenciosa de condiciones; los números concuerdan con los datos; las monedas/espacios no se confunden; ambos temas son legibles; teclado, reflujo y foco están comprobados o marcados pendientes; y un tercero puede continuar sin depender de esta conversación.
+
+Empieza auditando los adjuntos y después construye la propuesta. Quiero un resultado original, discreto, preciso y agradable de usar todos los días, con el cuidado puesto en las decisiones pequeñas que hacen que una aplicación se sienta terminada.
+===== FIN DEL ANEXO A =====
+
+
+===== ANEXO B · Plan_Maestro_App_Finanzas_v0_4.md =====
+Fuente recuperada el 23 de octubre de 2026. Versión documental 4. Se conserva el texto completo leído, con su fecha histórica.
+
+# Plan maestro de la aplicación de finanzas
+
+Versión 0.4 · 29 de septiembre de 2026 (hora de México) · Colaboración, cuotas y flujos de la primera beta
+
+Este documento incorpora las respuestas de Emi y la lectura de su página «Suscripciones». Distingue decisiones, recomendaciones provisionales y condiciones de publicación. Aún no se ha seleccionado un nombre, creado una cuenta de desarrollador ni publicado software.
+
+## 1. El producto
+
+Una aplicación personal de Sistemas Digitales que responde tres preguntas sin obligar al usuario a estudiar finanzas: **¿qué viene por pagar?, ¿en qué gasté? y ¿qué puedo mejorar para cumplir una meta?** Registrará suscripciones, pagos recurrentes, gastos cotidianos, ingresos elegidos por cada persona, presupuestos opcionales, metas de ahorro y deudas básicas. Los avisos y las observaciones serán claros y privados. La app y su motor de recomendaciones funcionarán sin ChatGPT ni una API obligatoria de IA.
+
+Se diseñará como producto comercial desde el inicio, con una **beta cerrada inicial** para comprobar que la experiencia funciona antes de cobrar y abrirla al público. El público inicial son personas en México: estudiantes universitarios, profesionistas y personas con ingresos regulares o variables, incluidos ejecutivos y empresarios que quieran ordenar sus finanzas **personales**. Emi pidió una recomendación sobre edad: propongo lanzar inicialmente para mayores de 18 años, para concentrar validación, privacidad, contratación y soporte en adultos. Es una recomendación de alcance del producto; no se presenta como una obligación universal de la ley o de las tiendas. Contabilidad empresarial, facturación y tesorería de una compañía constituyen otro alcance.
+
+| Decisión de Emi | Traducción al producto |
+| --- | --- |
+| App Store y Play Store, ambas plataformas | Una base de producto y pruebas reales en iPhone y Android antes del lanzamiento. |
+| Web «si es posible» | Reutilizar modelo y componentes; publicar la web cuando su seguridad, funcionamiento y presupuesto estén probados. |
+| México y español; soporte a inglés y francés | es-MX como idioma base; preparar internacionalización desde el primer día y revisar traducciones, pagos y fichas antes de ofrecer cada idioma. No elegir un cuarto idioma sin mercado definido. |
+| Mes calendario | Todos los resúmenes usan meses calendarios; la frecuencia de cada ingreso o cobro se configura por separado. |
+| Cuenta individual, respaldo, sincronización y presupuesto compartido | Espacio personal privado y espacio compartido opcional; acceso por membresía, exportación y recuperación verificadas. |
+| Múltiples monedas opcionales | Registrar moneda de cada importe; no sumar divisas distintas ni aplicar una tasa supuesta. MXN será el inicio predeterminado. |
+| Blanco y negro, modos claro y oscuro, movimiento sutil | Sistema visual original, icono propio, grises solo para jerarquía si Emi lo confirma, animaciones cortas y háptica discreta. |
+| Analítica aceptada | Solo eventos técnicos/de flujo, sin importes, nombres de comercios, notas ni detalle financiero; información y controles reales para los usuarios. |
+| Titular actual: Emi, sin cuentas de desarrollador | Resolver clasificación de tiendas y titular antes de pagar cuentas o prometer fecha de publicación. |
+| Equipo: Emi con Mac e iPhone | Se necesitarán pruebas reales en Android mediante participantes/dispositivos prestados o adquiridos. |
+
+La referencia visual de Sistemas Digitales se verificó directamente en `https://emilianomilla.site/negocios`: fondo blanco, tipografía negra de gran tamaño, logotipo SD, grises secundarios, separadores finos y botones de contorno o fondo negro. Es una observación visual de la página publicada, no una auditoría de su código, seguridad o versión móvil. La página de Notion se revisó el 29 de septiembre de 2026 (México); la lectura y sus límites se detallan en la sección 9.
+
+## 2. Experiencia inicial
+
+La navegación propuesta es **Mes · Recurrentes · Movimientos**, con un botón constante para anotar un gasto. En *Mes*, la primera tarjeta será **Próximos pagos**, seguida por **Gastado este mes**. **Restante del presupuesto de gastos** aparecerá solo cuando la persona configure un límite; durante las primeras semanas puede observar sin fijarlo. Cuando exista deuda, se mostrarán junto a esa cifra las **Cuotas por pagar**, con la aclaración «cuotas de deuda por separado»; el restante no se presentará como dinero libre ni saldo bancario. Una meta de ahorro mostrará aportaciones registradas y distancia al objetivo, sin deducir que gastar menos equivale automáticamente a dinero ahorrado.
+
+Para la visualización inicial se proponen barras horizontales de gasto **real** por categoría, con cantidad escrita. Con al menos dos períodos comparables se podría añadir evolución mensual. Un gráfico presupuesto contra gasto se muestra únicamente a quien creó un presupuesto. Un calendario o lista de próximos pagos responde mejor a la prioridad de no olvidarlos. El diseño monocromo usará texto, forma y contraste además de tonos.
+
+El registro rápido parte del **importe**, muestra favoritos como pasajes, comidas o bebidas y permite completar categoría y medio de pago en pocos toques. La fecha se puede retroceder para capturar más tarde lo que se gastó con prisa. Se conserva una nota opcional y se puede corregir una entrada. Efectivo y tarjeta se eligen como medios de pago; una tarjeta guardada para referencia usa alias y, si se desea, últimos cuatro dígitos, nunca credenciales bancarias. La foto de tickets queda como mejora: reconocer importes y comercio con fiabilidad en dos plataformas necesita permisos, revisión por el usuario y tratamiento de imágenes.
+
+Un recurrente guarda nombre, importe fijo o variable, periodicidad, próximo vencimiento, categoría, estado y medio de pago. Contemplará pruebas gratuitas, pausas, cambios de precio con fecha de efecto y cancelaciones futuras. Cada fecha produce un vencimiento histórico distinto. **Previsto**, **pagado** y **cancelado** no son sinónimos: un aviso no confirma el cargo y la compra con tarjeta no se vuelve a contar como gasto al pagar el estado de cuenta.
+
+Las recomendaciones iniciales son reglas legibles: aumento respecto al precio anterior, coste anual de recurrentes y avance matemático hacia una meta. Se mostrarán como máximo una a tres, con período, dato y cálculo. Un ejemplo sobre compras frecuentes describirá el patrón registrado sin juzgar un gasto pequeño o necesario. Esta base sigue la distinción entre [seguimiento de gastos, calendario de pagos y flujo de efectivo del CFPB](https://www.consumerfinance.gov/consumer-tools/educator-tools/your-money-your-goals/toolkit/).
+
+## 3. Alcance ordenado
+
+| Etapa | Funciones | Razón |
+| --- | --- | --- |
+| **Primera beta cerrada** | Cuenta individual; recurrentes completos y avisos; gasto e ingreso manual; favoritos y notas; Mes y barras por categoría; presupuestos optativos; una meta; registro básico de deuda, saldo y pagos; presupuesto compartido entre dos cuentas para la beta; etiquetas de tarjeta; exportación; sincronización y captura básica temporal sin internet; español. | Resuelve pagos próximos y claridad mensual con una operación diaria muy sencilla. |
+| **Preparación del lanzamiento público** | Pruebas de Android/iOS, restauración y seguridad; revisiones de inglés y francés, textos de tienda y soporte según idiomas ofrecidos; modelo gratuito/Pro y pagos en tienda si validamos disposición a pagar; documentos y clasificación de la cuenta. | Publicar requiere producto, infraestructura y declaraciones coherentes. |
+| **Ampliaciones** | Corte y fecha de pago de tarjeta, meses sin intereses e intereses; grupos de más participantes y saldos de reparto entre personas; lectura local de tickets; conexión bancaria; web de consulta/edición y, si se cobra allí, cobro web coordinado. | Cada función agrega reglas financieras, superficie de seguridad o trabajo por plataforma. Se evaluará y probará separadamente. |
+
+La deuda básica podrá representar saldo indicado por el usuario, cuotas y pagos. Emi confirmó colaboración real entre cuentas: la beta incorporará un presupuesto compartido, empezando por dos participantes para probarlo, además del espacio personal. La membresía y el historial de cambios forman parte del producto. Compartir un presupuesto no implica repartir gastos al 50 % ni compartir toda la cuenta. El cálculo de saldos entre participantes será una ampliación.
+
+Para recordatorios, el punto de partida a probar es **tres días antes y el día del vencimiento a las 9:00**, con un seguimiento único si sigue sin confirmarse. Todo será editable y silenciable. El aviso de pantalla bloqueada no incluirá importes. La agenda dentro de la app seguirá mostrando los vencimientos si una notificación se retrasa o no aparece. Se pedirán permisos al activar la función, y se reprogramarán alertas al editar, pausar o pagar.
+
+## 4. Tecnología y continuidad
+
+La opción provisional mejor ajustada a un desarrollador principal, iPhone y Android simultáneos y presupuesto contenido es **React Native + Expo + TypeScript**, con la lógica de dinero, recurrencias y recomendaciones en módulos separados de la interfaz. Expo [permite compartir trabajo con web](https://docs.expo.dev/workflow/web/), aunque web requiere controles y pruebas propios. Flutter sigue siendo una alternativa si la evaluación de diseño y mantenimiento cambia la decisión.
+
+Para cuentas y sincronización, **PostgreSQL/Supabase** es candidato: autenticación, datos por espacio y controles de acceso revisables según usuario y membresía vigente. En el teléfono se guardarán datos recientes y operaciones pendientes. Crear movimientos sin conexión exige identificadores estables, cola de envío, prevención de duplicados y tratamiento de conflictos; no se obtiene sincronización automática por combinar dos bases de datos. El calendario de pagos nace del modelo de datos, no del estado de las notificaciones.
+
+La suscripción comercial, cuando se configure, usará los sistemas de compra de Apple y Google. RevenueCat es un candidato para gestionar derechos entre plataformas, no un componente imprescindible para registrar gastos. Se compararán su coste, dependencia y migración antes de incorporarlo. La web y una eventual compra web requieren una política de acceso coherente y comprobación de reglas por región.
+
+Recomiendo **repositorio privado, propiedad de Emi**, inicialmente con licencia propietaria; puede abrir partes o cambiar la licencia después de revisar dependencias y estrategia. Privado no significa cautivo: el proyecto tendrá Git, README, instrucciones de compilación local, versiones fijadas, migraciones SQL, documentación de cálculos y recurrencias, prueba de reconstrucción por un tercero, exportación de datos, copias verificadas y secretos fuera del repositorio. La app funcionará sin ChatGPT. Puedo ayudar a programar, revisar y corregir en sesiones de trabajo, pero el servicio publicado necesita infraestructura y un responsable humano.
+
+## 5. Dinero y fechas sin ambigüedad
+
+Los importes se guardarán como unidades menores enteras o decimales exactos con moneda indicada; tasas de cambio, fecha y redondeo se registran solo cuando la persona decide convertir. No habrá un «total» engañoso de MXN más USD.
+
+**Gasto mensual** = movimientos de consumo registrados para el mes, incluidos recurrentes pagados una sola vez, menos reembolsos. La fecha de compra o cargo se distingue de la fecha en que se paga la tarjeta; esta última no vuelve a imputar el consumo. **Próximos pagos** = vencimientos pendientes dentro de fechas visibles. **Equivalente mensual** de una anualidad = costo anual ÷ 12 para comparación; el cobro real conserva su fecha e importe íntegros. **Avance de meta** = aportaciones efectivas ÷ objetivo. **Aporte sugerido** = (objetivo − aportado) ÷ períodos restantes, etiquetado como cálculo condicionado a los datos registrados. **Ahorro potencial** de reducir un servicio = diferencia de costes en un plazo explícito, nunca ahorro ya obtenido.
+
+Se probarán 29/30/31 y fin de febrero, zonas horarias, intervalos quincenales frente a cada catorce días, anualidades, servicios de importe variable, pausa, cambios de precio, devolución, pago tardío y reconexión. Compra a crédito, vencimiento de la tarjeta y pago de la tarjeta son eventos distintos; este último cambia efectivo/deuda, no vuelve a sumar consumo. [Actual Budget describe esta distinción](https://actualbudget.org/docs/budgeting/credit-cards/).
+
+## 6. Coste, tiendas y titular
+
+La infraestructura se puede prototipar con niveles gratuitos, pero un lanzamiento comercial con datos sincronizados necesita respaldos y correo de autenticación aptos para producción. [Supabase Pro parte de USD 25/mes](https://supabase.com/pricing), con un primer proyecto y respaldos diarios; pueden sumarse correo, dominio y consumos excedentes. La cuenta de [Apple cuesta USD 99/año](https://developer.apple.com/programs/enroll/) y [Google USD 25 una vez](https://support.google.com/googleplay/android-developer/answer/6112435?hl=en), antes de comisiones por compras dentro de la app. No es un presupuesto total de desarrollo ni de operación.
+
+**Hito que puede condicionar la publicación:** Google define servicios financieros como los relacionados con gestión de dinero, incluso consejo personalizado. Su política de requisitos, con vigencia indicada el **30 de septiembre de 2026**, establece cuenta de **organización** para proveedores de productos y servicios financieros. Apple señala que las apps de ámbitos muy regulados, como servicios financieros, o que requieren información sensible deben presentarse por la entidad legal que presta el servicio. Una marca comercial «Sistemas Digitales» no crea por sí misma esa entidad. No existe en estas fuentes una exención expresa por escribir gastos manualmente, pero la clasificación exacta del producto será una cuestión de alcance y revisión de las tiendas; tampoco se deduce de ello una licencia bancaria mexicana para este registro. [Google: política y alcance](https://support.google.com/googleplay/android-developer/answer/10788890?hl=en), [servicios financieros](https://support.google.com/googleplay/android-developer/answer/9876821?hl=en); [Apple: revisión 5.1.1(ix)](https://developer.apple.com/app-store/review/guidelines/).
+
+Ruta propuesta: construir y probar una beta técnica bajo control de Emi; documentar con precisión funciones y flujo de datos; consultar la clasificación aplicable antes de elegir cuentas de tienda; si se confirma organización, preparar una entidad verificable y D-U-N-S para el lanzamiento público. No se abrirán cuentas con una categoría inexacta para acelerar trámites. Si se decide cobrar, se diseñarán precio, contenido y cancelación transparente tras probar utilidad y disposición de pago.
+
+Con cuentas y sincronización habrá aviso de privacidad, términos, mapa de datos/proveedores, seguridad, exportación, borrado de cuenta, soporte y declaraciones fieles ante las tiendas. El texto mexicano deberá ajustarse a la [LFPDPPP vigente](https://www.diputados.gob.mx/LeyesBiblio/pdf/LFPDPPP.pdf) y a los tratamientos efectivamente realizados. Las traducciones de interfaz, fichas, paywall y soporte son entregables distintos.
+
+## 7. Seguridad, soporte y verificación
+
+El referente de auditoría móvil será [OWASP MASVS](https://mas.owasp.org/MASVS/): mínimo de datos, aislamiento por usuario, cifrado y gestión de secretos adecuados, ausencia de importes o notas en telemetría, copias restaurables, borrado comprobado y revisión de dependencias. Si se usa Supabase se probarán las políticas de acceso a cada tabla expuesta. No existe seguridad absoluta ni entrega garantizada de cada aviso.
+
+La beta deberá demostrar con personas reales que se pueden crear pagos, entender lo pendiente, registrar un gasto habitual en segundos y corregir errores. Como objetivos de prueba, no cifras observadas, se propone: una persona configura tres recurrentes en menos de cinco minutos; registra un favorito en menos de diez segundos; identifica el siguiente vencimiento sin explicación; y las pruebas de cambios de mes, precio y conexión no duplican cargos. Se registrarán fallos y comentarios en iPhone y Android.
+
+Yo puedo ayudarte a redactar respuestas de soporte, investigar fallos, revisar registros que me compartas y preparar correcciones. **No atiendo de forma autónoma una bandeja ni vigilo la app las 24 horas**. Emi figurará como responsable inicial de soporte; antes de publicar se prepararán un correo o formulario, preguntas frecuentes y un procedimiento para incidencias importantes.
+
+## 8. Próximas decisiones y trabajo inmediato
+
+1. **Notion:** significado de columnas confirmado: Fecha de Corte = fecha de cobro; CHECK = pago confirmado del vencimiento correspondiente. Macbook es crédito con cuota mensual; Dentista es mensual. Faltan próximas fechas vigentes, periodicidad de los otros siete registros y datos del crédito para una importación completa. Se puede diseñar y programar con datos ficticios mientras tanto.
+2. **Gastos compartidos:** confirmado presupuesto con colaboración real. Implementar y comprobar invitación, aceptación, acceso, cambios concurrentes y retirada de un miembro antes de probar con información real.
+3. **Límite de gasto:** Emi considera aceptable el escenario de infraestructura de aproximadamente USD 25/mes y prefiere betas de menor costo. Prototipo e integración de prueba en niveles gratuitos cuando resulte viable; decidir el paso a producción con un presupuesto completo. Esta respuesta no equivale a contratar un servicio ahora.
+4. **Identidad:** referencia de Sistemas Digitales ya verificada. Preparar un nombre de producto y variantes de identidad con icono editable, y aplicar la dirección visual descrita en la sección 12. La disponibilidad de nombres y marcas se comprobará antes de adoptar uno.
+
+Después seguirán, en orden, los flujos completos, el sistema visual, un prototipo probatorio y el repositorio ejecutable. Cada cambio tendrá su decisión, evidencia, efecto sobre datos/seguridad y prueba correspondiente. Este plan se revisará con las fuentes oficiales nuevamente antes de cualquier pago, integración financiera o envío a las tiendas.
+
+## 9. Auditoría de «Suscripciones» y diseño de importación
+
+La [página «Suscripciones»](https://app.notion.com/p/178081e58ab880cf9c90d09ab61a4741) contiene una base de datos en tabla y una gráfica incrustada de Chartbase. Al leer la base el 29 de septiembre de 2026 (México) había **nueve filas, todas con estado «Activa»**. Las columnas son «Suscripción», «Precio» (formato MXN), «Fecha de Corte», «Categorías », «Estado», «Tarjeta Vinculada» y «CHECK». Las categorías actuales son Salud, Proyectos, Finanzas, Servicios, Educación y Entretenimiento. Una gráfica externa está incrustada, pero no se obtuvo su configuración ni se verificó qué cálculo hace: no se copiará su resultado como cifra validada.
+
+La tabla incluye servicios digitales y ejemplos como **Macbook** y **Dentista**. Emi confirmó que Macbook es una cuota mensual de compra a crédito y Dentista un gasto mensual de salud. La entidad central será *compromiso de pago*, con subtipos: suscripción, servicio recurrente y cuota de deuda. En la interfaz podrán convivir en Recurrentes, con su tipo escrito. Las cuotas de deuda no se tratan como suscripciones indefinidas.
+
+| Campo actual | Campo propuesto | Regla de migración |
+| --- | --- | --- |
+| Suscripción | Nombre de recurrente | Conservar texto y enlace de origen para trazabilidad. |
+| Precio | Importe previsto en MXN | Conservar importe, marcar como previsto y pedir si es fijo o estimado; no registrar un gasto histórico. |
+| Fecha de Corte | Fecha de cobro | Emi confirmó el significado; conservar la fecha y pedir el próximo vencimiento vigente cuando la fecha esté desactualizada. |
+| Categorías  | Categoría inicial | Conservar el valor y permitir equivalencias al catálogo de la app. |
+| Estado | Estado inicial | Conservar Activa/Pausada/Cancelada; comprobar fechas de efecto cuando proceda. |
+| Tarjeta Vinculada | Alias del medio de pago | Las nueve filas están vacías; dejar sin medio de pago y no inferir una tarjeta. |
+| CHECK | Estado del vencimiento | Emi confirmó que significa pagado. Las nueve filas estaban sin marcar al leerlas; conservar el marcador como información de esa fecha, sin reconstruir pagos anteriores ni afirmar deuda vencida. |
+
+**Calidad observada:** no hay una columna de periodicidad. Emi confirmó frecuencia mensual de Macbook y Dentista; faltan los otros siete registros. Dentista no tiene fecha; hay fechas de cobro pasadas y futuras. No se deducirá que una fecha pasada sea impago ni se avanzará automáticamente a otro mes durante la importación. Tampoco existe historial de precios, pagos efectivos, moneda por fila, fecha de cancelación ni identificador de tarjeta. La suma simple de «Precio» no representa necesariamente el gasto de un mes porque se ignoran frecuencias y estados de pago.
+
+La primera importación deberá mostrar cada fila y solicitar solo los datos imprescindibles: **tipo, frecuencia y próximo vencimiento confirmado**; se podrá omitir una fila. El precio y categoría vendrán precargados, siempre editables. Para filas sin fecha se ofrecerá «sin recordatorio hasta definir fecha». Se guardará un identificador estable de origen y un registro de importación para evitar duplicados al repetir el proceso. No se alterará la tabla original. La app funcionará con registro manual para cualquier otro usuario y no requerirá una conexión permanente con Notion.
+
+Esta auditoría no equivale a leer movimientos bancarios ni a validar que los importes se hayan cobrado. La información personal de la página se usó solo para diseñar la experiencia y el mapeo; cualquier captura pública o demo empleará datos ficticios.
+
+
+## 10. Presupuesto compartido: alcance de la primera beta
+
+Cada persona tendrá su propia cuenta. El selector superior mostrará **Personal** o el nombre del presupuesto compartido. Todos los totales, movimientos, recurrentes y metas visibles corresponderán al espacio seleccionado. La acción de guardar mostrará ese nombre para evitar registrar un gasto personal en el compartido.
+
+Para la beta propongo un titular y un colaborador; se probará primero con dos cuentas. El titular administra límites y participantes. Ambos pueden registrar movimientos y corregir los compartidos, dejando autor, momento e historial de cambios. Una corrección de importe modifica el resumen y permanece rastreable. El invitado ve el alcance antes de aceptar. No se invitó a ninguna persona en esta etapa de diseño.
+
+Las invitaciones estarán ligadas a un correo verificado, caducarán y podrán revocarse; el token será de un solo uso. No se necesitará compartir contraseña. El espacio personal y su importación de Notion siguen aislados: cada fila se asigna explícitamente al espacio escogido. Las tarjetas personales se referencian mediante alias; compartir un gasto no comparte la ficha privada completa de una tarjeta.
+
+Un movimiento pertenece a un solo espacio y cuenta una vez en su total. Registrar quién lo pagó es distinto de identificar quién lo anotó. No se generarán copias paralelas en ambos presupuestos personales. La beta no calculará automáticamente lo que una persona debe a la otra; eso requiere definir reparto, aportaciones y reembolsos.
+
+**Sin conexión:** permitir consulta de la copia reciente y captura de nuevos gastos pendientes. Para la primera beta, editar registros existentes, confirmar pagos compartidos, cambiar participantes o aceptar invitaciones requerirá conexión. Se distinguirá información confirmada del servidor de las operaciones locales pendientes. Si otra persona cambió la misma versión, se mostrará el cambio antes de aceptar una corrección; no se sobrescribirá silenciosamente.
+
+**Retirada de acceso:** el titular puede retirar al colaborador y este puede salir. Se bloquean nuevas lecturas y escrituras del servidor y se conserva el historial de registros compartidos. La app limpia su copia compartida cuando detecta la retirada; no puede recuperar capturas o exportaciones previas ni borrar al instante un teléfono desconectado. Si un gasto quedó pendiente y se perdió acceso, la interfaz ofrece revisarlo en el espacio personal sin publicarlo en el compartido.
+
+**Base de implementación:** espacio, membresía vigente, invitación, movimiento, compromiso, vencimiento, confirmación y evento de cambios serán entidades independientes. Los controles de acceso se revisarán en el servidor para cada operación; no bastará ocultar un botón ni guardar la membresía en un token que pueda quedar desactualizado. [Supabase documenta RLS y las limitaciones de membresías en JWT](https://supabase.com/docs/guides/database/postgres/row-level-security). Restricciones únicas y transacciones servirán para evitar doble confirmación de un vencimiento y repetición de la misma operación. [PostgreSQL: restricciones](https://www.postgresql.org/docs/current/ddl-constraints.html). Son decisiones de arquitectura que deben implementarse y probarse; no prestaciones automáticas de sincronización.
+
+Se verificará con dos dispositivos: usuarios ajenos no acceden, cada miembro ve solo el espacio autorizado, dos confirmaciones simultáneas producen un único pago, las ediciones antiguas se detectan y la retirada bloquea operaciones posteriores. Dos personas pueden registrar por separado el mismo gasto real con identificadores diferentes: se podrán señalar coincidencias para revisión, sin fusionarlas por una suposición.
+
+## 11. Cinco flujos iniciales y reglas financieras
+
+| Flujo | Recorrido visible | Qué debe comprobar la beta |
+| --- | --- | --- |
+| Crear cuenta | Correo → verificación → moneda/idioma → espacio Personal → Agregar primer pago. | Cuenta existente, enlace vencido y falta de conexión tienen recuperación clara. La persona entra sin tutorial obligatorio ni solicitud de banco. |
+| Crear recurrente | Nombre → importe fijo o estimado → frecuencia → fecha de cobro → próximos vencimientos → guardar. | La vista previa explica las fechas; notificaciones se piden al activarlas. Denegar el permiso conserva la agenda. Pausas, pruebas y cambios de precio se editan en el detalle. |
+| Confirmar pago | Abrir vencimiento → Marcar pagado → fecha e importe real → confirmar. | Genera un único registro vinculado a ese vencimiento, conserva historial y permite corregir. No se confirma un cargo por emitir una notificación. |
+| Anotar gasto rápido | Importe → favorito o categoría → guardar en el espacio visible. | Fecha retroactiva, categoría Sin clasificar y medio de pago desconocido permiten registrar sin inventar datos. Si falta red, aparece Pendiente de sincronizar. La prueba de un favorito apunta a menos de diez segundos. |
+| Colaborar | Crear presupuesto → invitar por correo → otra cuenta acepta → selector Compartido → registrar. | Se explica quién puede ver y editar. Invitar no abre el espacio personal; el enlace vencido, la cuenta equivocada y una retirada de acceso tienen respuesta clara. |
+
+La fecha elegida será un **ancla de recurrencia**. Si se desea cobro el día 31, febrero usará su último día y marzo volverá al 31. Pagar tarde no mueve por sí mismo la regla del siguiente cobro. Una pausa afecta futuros vencimientos y avisos; los pagos ya registrados conservan sus datos. Importes variables requieren confirmar el importe real al marcar pagado.
+
+### Cuota de Macbook
+
+Se registrará como una cuota mensual de deuda. Si se conocen adquisición y precio total, la compra constituye consumo una vez; las cuotas posteriores son pagos de deuda. Si solo se conoce la cuota, no se inventará una compra histórica, saldo total, intereses ni número de cuotas restantes. La app podrá avisar y registrar la cuota aunque el saldo de deuda permanezca sin dato. No deducirá cuánto capital queda a partir de cuotas sin desglose.
+
+En **Mes**, la cuota aparecerá en Próximos pagos y una línea de **Cuotas pagadas**; la gráfica de consumo y Gastado este mes mantendrán su definición de gastos. El presupuesto de gastos y sus importes restantes estarán etiquetados como tales, con cuotas separadas; si las pruebas muestran que se necesita un plan conjunto de desembolsos, se diseñará una vista explícita de pagos, sin llamarla saldo bancario. Esta decisión evita ocultar obligaciones mensuales al tiempo que conserva cálculos coherentes.
+
+Cuando una cuota forme parte del total pendiente de una tarjeta, deberá vincularse como componente de ese pago y no sumarse de nuevo en Por pagar. El módulo avanzado de tarjetas solo se lanzará al poder verificar esa relación. Una deuda finita no se anualiza ni se renueva indefinidamente como una suscripción.
+
+### Dentista y CHECK
+
+Dentista será un gasto mensual de salud, con próximo día de cobro pendiente de definir. CHECK se traduce a **Pagado para un vencimiento concreto**. Un pago antiguo no marca pagados todos los meses y una casilla sin marcar no prueba que el banco no cobró. La importación conserva la información disponible y pide confirmar lo que falte.
+
+## 12. Dirección visual y costos por etapa
+
+La página de Sistemas Digitales observada sirve como referencia de familia visual: tipografía sans serif, contraste negro/blanco, textos breves, montos destacados y divisores finos. La app tendrá una composición propia para operar en móvil. La propuesta mantiene **Mes · Recurrentes · Movimientos**, selector de espacio arriba y acción de registro permanente. Presupuesto, meta y deuda aparecen dentro de Mes o su detalle, evitando nuevas pestañas para cada función.
+
+En Mes: primero lista de vencimientos ordenada por fecha; después gasto del mes y cuotas pagadas; restante del presupuesto de gastos junto a cuotas por pagar cuando corresponda; gráfica por categoría y una observación breve si los registros la sostienen. En Recurrentes: filas con nombre, tipo, próxima fecha e importe; el estado se escribe y no depende de un color. En Movimientos: lista por día y filtros discretos. Una tabla completa queda para consulta detallada o web.
+
+El tema claro usará blanco y negro con grises neutrales secundarios como los observados en la referencia; el oscuro invertirá superficies con contraste comprobado. Los grises son una propuesta de jerarquía, pendiente de validar visualmente con Emi. Tipografía y tamaño se probarán con ajustes de accesibilidad. Animaciones breves responderán a una acción; se respetará reducción de movimiento. Háptica sutil al guardar en plataformas compatibles. Nombre, logo e icono de tienda siguen pendientes: esta referencia no constituye una identidad final de la app.
+
+| Etapa | Decisión de costo |
+| --- | --- |
+| Prototipo y desarrollo con datos ficticios | Usar herramientas y niveles gratuitos cuando resulten suficientes. Objetivo de infraestructura USD 0/mes en esta etapa, sin prometer costo total cero. |
+| Beta cerrada con datos reales | Usar un nivel gratuito solo con aislamiento, exportación, respaldo/restauración y correo de acceso comprobados; documentar sus límites. |
+| Lanzamiento público | Escenario aceptable para Emi: Supabase Pro desde USD 25/mes como opción administrada, más correo, tiendas, dominio si se requiere y consumo aplicable. Precio de venta todavía sin definir. |
+
+[Supabase Free](https://supabase.com/pricing) no incluye respaldos automáticos y puede pausar proyectos tras una semana de inactividad; Pro ofrece respaldos diarios con retención de siete días. Por eso un nivel gratuito no elimina el trabajo operativo. No se ha contratado infraestructura ni pagado cuentas de desarrollador. Esta actualización cierra las aclaraciones de colaboración, columnas y presupuesto operativo; permite pasar al diseño de pantallas sin importar datos personales todavía.
+===== FIN DEL ANEXO B =====
+
+
+===== ANEXO C · DOCUMENTACIÓN ORIGINAL DEL CÓDIGO BASE =====
+
+----- ARCHIVO README.md · commit 1590eb3c52aae6b777287964fddd86dc10c1a379 -----
+# Mes · Finanzas
+
+Primera alfa de una aplicación de Sistemas Digitales. **Mes es un nombre provisional.** Interfaz original en blanco, negro y grises para próximos pagos, gastos cotidianos y metas. Código universal Expo / React Native / TypeScript, sin llamadas a modelos ni dependencia funcional de ChatGPT.
+
+## Estado de esta entrega · 0.1.2
+
+La app funciona con datos ficticios en memoria. Se reinicia al recargar. No introducir información financiera real. El acceso privado a la vista web es independiente de las futuras cuentas de la app. Exportar JSON conserva una copia para inspección; todavía no hay importador.
+
+Implementado: Mes, Recurrentes y Movimientos; gastos, ingresos, devoluciones y pagos de deuda; favoritos; editar y retirar movimientos; cobros semanales, mensuales y anuales; pausas; fechas de prueba y cancelación; historial de importes; presupuestos por espacio y moneda; una meta por espacio; modo claro/oscuro; exportación; selector entre Personal y Casa (ejemplo local). MXN, USD y EUR se muestran por separado, sin conversiones.
+
+Pendiente: autenticación, almacenamiento duradero, colaboración entre personas reales, sincronización, notificaciones, biometría, OCR, monedas adicionales, localización EN/FR, suscripciones comerciales, avisos legales y publicación en tiendas. No se han importado datos de Notion. El alias de tarjeta no conecta bancos ni guarda números de tarjeta.
+
+## Ejecutar
+
+Requisitos: Node.js 24 y npm. Versiones exactas en `package-lock.json`.
+
+```sh
+npm ci
+npm test
+npm run typecheck
+npm run build
+npm run dev
+```
+
+`npm run dev` sirve el último resultado web exportado. Después de cambios, ejecutar `npm run build` o usar `npm run web` para desarrollo con Metro. `npm start` inicia Expo; `npm run ios` necesita macOS y Xcode; `npm run android` necesita Android Studio/emulador o dispositivo. La compatibilidad de Expo Go depende del SDK disponible; preparar development builds para la beta.
+
+## Mapa del código
+
+- `src/domain/model.ts`: tipos, importes enteros, calendario, pagos, correcciones y resumen; no depende de React.
+- `src/domain/model.test.ts`: invariantes monetarias y de vencimientos.
+- `src/data/demo.ts`: ejemplos ficticios y estado vacío.
+- `src/ui/tokens.ts`: colores de ambos temas.
+- `App.tsx`: navegación, formularios, presentación y estado temporal de la alfa.
+- `scripts/build.mjs`: exportación web portable; `scripts/finalize-web.mjs`: metadatos e icono provisional.
+- `docs/ARCHITECTURE.md`: decisiones y siguiente etapa.
+- `docs/VALIDATION.md`: evidencia y comprobaciones pendientes.
+- `docs/AUDIT_0.1.2.md`: auditoría ampliada, matriz responsive y límites exactos de QA.
+- `AGENTS.md`: instrucciones para cualquier colaborador, humano o IA.
+
+`app.json` incluye identificadores provisionales; no implica registro de marca, bundle IDs ni cuentas de tiendas. El favicon vectorial es un estudio de marca, no el logo definitivo. No hay licencias de código abierto concedidas al código propio; revisar dependencias antes de distribuir.
+
+----- FIN DE README.md -----
+
+----- ARCHIVO AGENTS.md · commit 1590eb3c52aae6b777287964fddd86dc10c1a379 -----
+# Continuar Mes
+
+Leer README.md y docs/ARCHITECTURE.md antes de editar. Mantener los datos ficticios y el aviso de sesión temporal hasta implementar persistencia y autorización probadas.
+
+- No depender de una conversación ni de APIs de IA para cálculos financieros.
+- Importes enteros, moneda explícita, fechas civiles, pagos idempotentes. Probar casos límite cuando cambien estas reglas.
+- No sustituir cuentas reales por un selector de espacios; autorizar en servidor y probar aislamiento entre usuarios.
+- No almacenar números completos de tarjeta, CVV, contraseñas, claves de servicio ni tokens en código/fixtures/logs.
+- Mantener interfaz monocromática, lenguaje breve y decisiones del usuario. Mes es un nombre provisional.
+- Ejecutar `npm test`, `npm run typecheck` y `npm run build` tras cambios de comportamiento. Registrar claramente qué dispositivos/recorridos no se verificaron.
+- Separar cambios de esquema, migraciones, UI y permisos. Documentar decisiones y pasos de recuperación.
+- Todo nuevo colaborador debe poder ejecutar con npm ci; no añadir rutas de esta máquina a las dependencias del proyecto.
+
+----- FIN DE AGENTS.md -----
+
+----- ARCHIVO docs/ARCHITECTURE.md · commit 1590eb3c52aae6b777287964fddd86dc10c1a379 -----
+# Arquitectura y continuación
+
+## Decisiones de la alfa · 2026-10-02
+
+Expo React Native permite compartir UI y reglas entre iOS, Android y web. TypeScript estricto; dependencias fijadas con lockfile. No runtime de IA. El alojamiento actual sirve archivos estáticos; el mismo `dist` puede alojarse en otro proveedor. La fuente se conserva en Git privado; no depende de esta conversación para entenderse.
+
+La interfaz es un primer recorrido completo, con componentes comunes y tokens de color. Antes de conectar cuentas, dividir `App.tsx` por pantallas y formularios, y extraer comandos a una capa de aplicación. El dominio ya está separado y probado. No presentar el estado React como almacenamiento para finanzas reales.
+
+## Reglas financieras vigentes
+
+- Importes en unidades menores enteras, exactamente dos decimales para las tres monedas de esta alfa. No sumar monedas distintas ni asumir tipos de cambio.
+- Gasto neto = gastos − devoluciones. Ingresos y cuotas de deuda aparecen separados. Presupuesto restante = límite − gasto neto; no representa saldo bancario ni dinero libre.
+- Registrar una cuota no vuelve a registrar el precio total financiado. Aún no se conoce principal, interés, comisiones ni saldo de cada crédito: no inferirlos.
+- Un pago fijo con importe diferente exige reconocer explícitamente que es el total real; los abonos parciales no se modelan. Los importes variables se confirman como total real.
+- Cada pago vinculado usa `recurrente:fecha_prevista` como identidad idempotente. Confirmarlo dos veces no duplica el gasto ni adelanta dos meses.
+- Fechas civiles `AAAA-MM-DD`, rango admitido 1900–2100, zona local al generar hoy. La recurrencia mensual conserva el día ancla y usa el último día de meses cortos. Cancelar desde una fecha excluye esa fecha; última cuota es inclusiva.
+- Pausar desde hoy conserva vencimientos anteriores sin confirmar; suspende hoy y los siguientes. Confirmar es registrar un pago ya realizado, nunca ordenar un cobro.
+- Cambiar moneda requiere otro recurrente. Con pagos previos, cambiar tipo también. Corregir una fecha no puede regresar a un vencimiento pagado.
+- Retirar un pago restaura su instantánea como vencimiento pendiente independiente; conserva las condiciones actuales de la regla y los pagos posteriores. Cambiar fechas exige elegir entre mover el calendario desde ese vencimiento o conservar los pendientes anteriores y cambiar los futuros; ambos cambios quedan registrados.
+- Los presupuestos son independientes por espacio y moneda. Por ahora el límite se aplica a todos los meses mostrados; presupuesto histórico versionado sigue pendiente.
+- Los cambios de importe, frecuencia, variabilidad, tipo, cancelación y fin conservan instantáneas de los vencimientos anteriores a hoy; una reprogramación explícita puede mover el calendario. Cambiar frecuencia, incluso conservando la fecha, exige una decisión de calendario. El historial de precio registra cambios hechos al próximo importe. Las diferencias son informativas, sin recomendaciones de inversión ni comparaciones entre monedas.
+- El gráfico compara todos los importes netos no nulos por categoría, escalados por magnitud absoluta. Las devoluciones netas aparecen con signo negativo. No es una gráfica porcentual del total.
+- La meta registra aportes declarados; no comprueba ni mueve dinero. Un objetivo por espacio, con moneda propia. No suma ese ahorro de nuevo a los gastos.
+
+## Siguiente implementación: persistencia y cuentas
+
+1. Convertir comandos a funciones de aplicación; introducir repositorios detrás de interfaces. Sustituir la sesión de demostración por almacenamiento explícito, sin migrar silenciosamente ejemplos a cuentas reales.
+2. Implementar backend PostgreSQL/Supabase evaluado en el plan maestro. Tablas propuestas: profiles, spaces, memberships, invitations, categories, payment_methods, recurring_rules, recurring_occurrences, entries, budgets, goals, goal_contributions, audit_events y device_tokens. Migraciones en Git y entornos separados.
+3. Cada registro debe tener `space_id`; políticas RLS y pruebas de acceso para dos usuarios distintos. Un selector visual no es autorización. Propietario/editor, invitaciones de uso limitado, revocación y auditoría. Ninguna clave administrativa en el cliente.
+4. Materializar vencimientos por separado de la regla para preservar importes y obligaciones históricas. Índice único por regla/fecha en servidor; transacción para pago y avance. No trasladar la solución temporal de snapshots como único registro contable.
+5. Persistencia local nativa con SQLite; cola de comandos identificados, reintentos idempotentes y versiones de registros para detectar conflictos. Guardar sesión sólo en almacenamiento seguro del sistema. Resolver permisos revocados antes de reenviar comandos offline.
+6. Cuentas, recuperación, cierre de sesiones y eliminación/exportación verificable. Backups con prueba de restauración. Separar analítica de contenido financiero y documentar consentimientos.
+7. Notificaciones locales nativas sin importes en pantalla bloqueada, permisos solicitados al configurar el primer recordatorio. Programación por fecha civil/zona, reconciliación después de editar, pagar, cancelar, cambiar zona o reinstalar. No prometer entrega exacta.
+8. Beta en iPhone y Android físicos con dos cuentas reales y datos ficticios; evaluar biometría, teclado, lector de pantalla, texto ampliado, accesibilidad, offline y restauración antes de recibir datos reales.
+
+## Seguridad y publicación
+
+La alfa no contiene secretos, SDK de publicidad ni llamadas de red para registrar movimientos. Los metadatos del alojamiento pueden existir por separado. No afirmar cifrado extremo a extremo, certificaciones ni seguridad absoluta. Los futuros controles de producción necesitan pruebas.
+
+Antes del lanzamiento: modelo de amenazas, revisión de permisos/RLS, análisis de dependencias, política de privacidad y términos, retención y borrado, inventario de terceros, fichas de privacidad de Apple/Google, clasificación de la app, validación de titularidad y suscripciones. Volver a verificar requisitos actuales y resolver clasificación de aplicación financiera antes de pagar cuentas. No lanzar App Store/Play con una web empaquetada que simula colaboración.
+
+## Alcance pendiente de diseño
+
+Validar el uso con Emi; definir nombre y marca legal; logo final e icono de tiendas; tokens tipográficos y de espaciado completos; prototipo para tarjetas con corte, pago y cuotas; comparación mensual; observaciones de gasto frecuentes; favoritos editables y captura ultrarrápida. OCR después de medir utilidad. El nombre y diseño son propuestas revisables.
+
+----- FIN DE docs/ARCHITECTURE.md -----
+
+----- ARCHIVO docs/VALIDATION.md · commit 1590eb3c52aae6b777287964fddd86dc10c1a379 -----
+# Validación de la alfa 0.1.2 · 2026-10-03
+
+## Comprobado por comandos
+
+- TypeScript estricto sin errores.
+- 27 pruebas de dominio aprobadas: importes exactos, fechas y anclas, idempotencia, separación de monedas/espacios/deuda, pausa/reanudación, historial, selección del mismo tipo sin borrar condiciones, edición de créditos terminados, confirmación explícita de totales distintos, cambios de calendario sin pérdida silenciosa, retirada de pagos con instantáneas y conciliación de categorías con devoluciones.
+- Exportación web de Expo correcta.
+- Exportaciones JavaScript/Hermes de iOS y Android correctas. No equivalen a binarios firmados ni a pruebas físicas.
+
+## Comprobado en navegador de escritorio
+
+- La lista pasa de cinco filas a los seis pendientes y permite contraerla.
+- Una cuota fija de 1 frente a 1,200 previstos muestra error y requiere confirmar que el importe distinto es el total real. No admite abonos parciales.
+- Cerrar ese formulario modificado pide descartar o continuar editando.
+- Captura rápida: seleccionar Comida, registrar 150 en Personal, observar gasto de 3,129.50 a 3,279.50 y presupuesto restante de 4,870.50 a 4,720.50.
+- Inspección visual de inicio en escritorio: jerarquía, filas, gráfico y navegación sin superposiciones observadas.
+- El navegador registró errores de su extensión de metadatos; no se atribuyeron al código de la aplicación.
+
+## Pendiente de comprobación en dispositivos
+
+Antes de aceptar la beta, probar iPhone y Android físicos, anchos 320/390/768 px, teclado, zonas seguras, formularios largos, texto ampliado, lector de pantalla, foco y reducción de movimiento. La corrección de código no sustituye estas comprobaciones.
+
+## Correcciones de interfaz
+
+Moneda explícita y símbolo coherente; captura corta con destino visible; fecha elegible y método sin preselección de tarjeta; errores al inicio del formulario; protección de borradores y restauración de ejemplo; pagos conservados accesibles; estados finalizado/pausado/cancelado; todas las categorías netas incluidas; contraste de placeholders mejorado; botones de al menos 48 unidades; áreas seguras y preferencia de movimiento reducido.
+
+## Limitaciones conocidas
+
+Estado temporal de demostración: se reinicia al recargar. Sin cuentas propias, persistencia, sincronización, colaboración real ni notificaciones conectadas. Un presupuesto vigente por moneda/espacio sin versiones mensuales; una meta por espacio; favoritos fijos; rango de fechas 1900–2100 y cota de 12,000 ocurrencias; sin saldo bancario, intereses ni importador. Sólo datos ficticios. Marca definitiva, iconografía vectorial y lanzamiento comercial siguen pendientes; no declarar lista para datos reales ni tiendas.
+
+La auditoría ampliada y sus límites están en `AUDIT_0.1.2.md`; distingue comprobaciones visuales de la iteración anterior y revisión de código final.
+
+----- FIN DE docs/VALIDATION.md -----
+
+----- ARCHIVO docs/AUDIT_0.1.2.md · commit 1590eb3c52aae6b777287964fddd86dc10c1a379 -----
+# Auditoría de Mes 0.1.2
+
+Fecha: 3 de octubre de 2026. Alcance: alfa web y fuente Expo/React Native compartida. Datos ficticios. Revisión de código con dos lecturas independientes, pruebas automatizadas y recorridos en navegador.
+
+## Resultado y criterios
+
+27 pruebas de dominio aprobadas; TypeScript estricto sin errores; exportación web y paquetes JavaScript/Hermes iOS/Android correctos. No son binarios firmados ni una certificación de seguridad/accesibilidad.
+
+| Parámetro | Resultado y evidencia |
+|---|---|
+| Importes exactos | Verificado por pruebas: unidades menores enteras, 0.10 + 0.20 = 0.30. |
+| Monedas y espacios | Pruebas de separación; sin conversión implícita. En navegador: EUR muestra € y encabezado EUR. |
+| Deuda frente a consumo | Pruebas: cuotas e ingresos separados del gasto neto. |
+| Devoluciones y gráfico | Prueba: categorías netas concilian, incluidos importes negativos. |
+| Pago duplicado | Pruebas de identidad por regla y fecha; no duplica ni adelanta dos veces. |
+| Correcciones de pagos | Pruebas: retirar pagos conserva instantánea y pagos posteriores. |
+| Pausa/reanudación | Pruebas de conservación de anteriores y suspensión de cobros durante la pausa. |
+| Créditos terminados | Pruebas: notas editables sin generar cuotas. |
+| Tipo del recurrente | Prueba: pulsar el mismo tipo no borra fin de prueba/última cuota. |
+| Importe distinto | Pruebas: exige reconocer total real; abonos parciales no admitidos. Comparación por centavos, no por texto. |
+| Fechas/calendario | Pruebas de meses cortos, bisiestos y ancla; rango admitido 1900–2100. Al exceder el rango, el comando se rechaza. |
+| Fecha parcial en formulario | Corregido y observado a 320 px: escribir `2026-` muestra “Fecha por elegir” sin interrumpir la app. |
+| Recurrencias antiguas | Prueba semanal 2010–2026: incluye los cinco vencimientos de octubre; eliminado truncamiento a 600. Cota de 12,000 cubre el rango admitido. |
+| Cambio de frecuencia/fecha | Prueba: exige una decisión explícita; conservar pendientes mantiene fechas e importes. |
+| Cambio de precio/cancelación/fin | Prueba: instantáneas de vencimientos anteriores a hoy preservadas; una cancelación retroactiva no los borra. Una reprogramación expresamente elegida puede mover el calendario. |
+| Cero en metas | Prueba: 0, 0.00, 0,00 y espacios aceptados para ahorro/aporte opcional; gasto sigue exigiendo importe positivo. |
+| Borradores | Observado: cierre de formulario modificado muestra opciones; ahora desplaza a inicio y anuncia. |
+| Búsqueda vacía | Observado: mensaje correcto y botón Limpiar filtros. |
+| Todos los pendientes | Comprobado en 0.1.1: lista de seis accesible; conservación en código 0.1.2. |
+| Reflujo | Medido en Recurrentes: 320/390/430/768/800/1024/1440 px; ancho desplazable igual al viewport y ningún control fuera horizontalmente. |
+| Vista pequeña | Navegación Movimientos y formulario examinados a 320 px, sin desbordamiento horizontal de controles en la medición. |
+| Altura pequeña | Monedas a 390 × 390: contenido desplazable y cierre accesible. No equivale a probar un teclado de iPhone. |
+| Cabeceras y texto largo | Código corregido: título flexible, cierre que no se encoge, chips multilínea, filtros apilados, cifras que ajustan línea. Estrés de textos máximos pendiente. |
+| Acción principal móvil | Cambio final de código: pie de acción fuera del área desplazable, para no cubrir filas; escritorio conserva acción flotante. Revisión visual final pendiente. |
+| Contraste | Cálculos de tokens: texto secundario 5.57:1 sobre blanco y 8.22:1 sobre oscuro; bordes de campos separados de divisores. No declara cumplimiento integral. |
+| Áreas táctiles | Componentes de botón, icono y chips ≥48; ampliados ajustes, editar presupuesto y detalles. Revisión física/Dynamic Type pendiente. |
+| Movimiento reducido | Revisión de código: AccessibilityInfo controla modal/desplazamiento; CSS respeta preferencia. Prueba nativa pendiente. |
+| Foco y teclado | Modal usa mecanismo de react-native-web; nombre accesible añadido. Escape, ciclo de foco y retorno requieren prueba final dedicada. |
+| Safe areas/viewport | Código: bordes seguros y altura dinámica de navegador; iPhone/Android físicos pendientes. |
+| Seguridad y datos | Código propio no incluye claves ni datos reales, llamadas de IA ni números de tarjeta. No se realizó pentest ni prueba de backend inexistente. |
+| Portabilidad | Lockfile, instrucciones, dominio independiente y código fuente incluido. Arranque limpio en otro equipo pendiente. |
+| Rendimiento | Exportación web ~458 kB; no es benchmark. Listas grandes, memoria, red lenta y rendimiento físico pendientes. |
+| Localización | Español MX; MXN/USD/EUR. EN/FR y otros idiomas sin implementar; no se simula selector. |
+| Persistencia y permisos | Fuera de esta alfa: cuenta, almacenamiento durable, colaboración real, autorización en servidor, respaldo y recuperación. |
+| Distribución | Sitio privado; App Store/Google Play no publicados. |
+
+## Límite de la revisión visual
+
+Las mediciones de las siete anchuras y los recorridos indicados corresponden a la iteración web `index-dc88023fc314d9f649417400ff4d2ce5.js`. Después se añadieron el pie de acción móvil, ajustes de densidad/cabecera, nombres de modales y áreas táctiles; esa compilación final `index-0df75a1f78bb49eb081cff47dabaf108.js` pasó TypeScript y exportación. Antes de poder completar su inspección visual, la vista compartida de previsualización pasó a mostrar otro proyecto; se detuvo la interacción para no modificarlo. No se atribuyen esas pantallas a Mes.
+
+Pendientes concretos: repetir la matriz en la compilación final para las tres vistas y ambos temas, zoom 200 %, textos e importes máximos, teclado físico y virtual, lectores de pantalla, safe areas reales y pruebas con usuarios. Las mediciones realizadas no autorizan afirmar “todo funciona” ni “responsive perfecto”.
+
+## Fuentes de criterio
+
+- W3C, reflow: https://www.w3.org/WAI/WCAG22/Understanding/reflow.html
+- W3C, modal: https://www.w3.org/WAI/ARIA/apg/patterns/dialog-modal/
+- React Native, dimensiones y escalado: https://reactnative.dev/docs/usewindowdimensions
+- Documentación de Claude Design: https://support.claude.com/en/articles/14604416-get-started-with-claude-design
+
+Consultadas el 3 de octubre de 2026. Las recomendaciones de producto no se presentan como mandatos normativos ni porcentajes de mejora medidos.
+
+----- FIN DE docs/AUDIT_0.1.2.md -----
+
+===== FIN DEL ANEXO C =====
+
+CONTROL DE PROCEDENCIA E INTEGRIDAD
+Los hashes de A/B describen el texto completo recibido en lectura, no una promesa de identidad binaria con la descarga original. Los de C corresponden a bytes del commit indicado.
+[
+  {
+    "anexo": "A",
+    "nombre": "Prompt_Claude_Design_Mes.txt",
+    "version_documental": "1",
+    "library_file_id": "libfile_2a2bb0b6b56c8191af3833cd9135ad23",
+    "fuente_modificada": "2026-10-03T16:06:06.834370Z",
+    "sha256_texto_leido_utf8": "72f2263be1f0bbdc0c6fad77a41132e696b33d81a4495ceec2bda3bebcdc7699"
+  },
+  {
+    "anexo": "B",
+    "nombre": "Plan_Maestro_App_Finanzas_v0_4.md",
+    "version_documental": "4",
+    "library_file_id": "libfile_24cd9e76de98819192be1da74cc8e795",
+    "fuente_modificada": "2026-09-30T02:08:28.854746Z",
+    "sha256_texto_leido_utf8": "86b33133eaf035f5ea7c614e7f937bd365b50d84842905b2782a0787b92b05ba"
+  },
+  {
+    "anexo": "C",
+    "nombre": "README.md",
+    "commit": "1590eb3c52aae6b777287964fddd86dc10c1a379",
+    "sha256": "1cea8ffae14e7654241a73d38809967c327bf65e97df540348c4412e938d96d6"
+  },
+  {
+    "anexo": "C",
+    "nombre": "AGENTS.md",
+    "commit": "1590eb3c52aae6b777287964fddd86dc10c1a379",
+    "sha256": "99f159bedebfbbe92c9c624620b454c466f05e63bff0aabc9860dca85261b314"
+  },
+  {
+    "anexo": "C",
+    "nombre": "docs/ARCHITECTURE.md",
+    "commit": "1590eb3c52aae6b777287964fddd86dc10c1a379",
+    "sha256": "766f5d31347173cae9f2055aa8863715003314c46a0715ae7ee6b059889a068b"
+  },
+  {
+    "anexo": "C",
+    "nombre": "docs/VALIDATION.md",
+    "commit": "1590eb3c52aae6b777287964fddd86dc10c1a379",
+    "sha256": "0418fef188d7f09224f8844fd719e0ff937f09b9758d864a0efd51abad21087d"
+  },
+  {
+    "anexo": "C",
+    "nombre": "docs/AUDIT_0.1.2.md",
+    "commit": "1590eb3c52aae6b777287964fddd86dc10c1a379",
+    "sha256": "9219423a50fc2303d17440bea079c2f6a50effa75c4d5b1776335e9ba6cc1f0f"
+  }
+]
+
+Paquete base Mes_Base_v0_1_2_Para_Codex_2026_10_23.zip
+SHA-256 9d979630f6b39b4bb0935e22bca9088ca5a6eb72b89db0bf47b7359e9e9e0347
+
+FIN DEL DOCUMENTO DE CONTINUIDAD · 23 DE OCTUBRE DE 2026

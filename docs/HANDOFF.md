@@ -2,6 +2,8 @@
 
 Para continuar sin depender de la conversación que produjo este cambio. Primero lee `README.md`, `AGENTS.md`, `docs/ARCHITECTURE.md` y `docs/DESIGN.md`.
 
+La continuidad ampliada, incorporada el 3 de noviembre de 2026, está en [continuidad/README.md](continuidad/README.md): plan, requisitos, conversación disponible, originales, entorno y verificación. Este documento conserva el traspaso técnico de 0.1.3; la rama vigente de trabajo es `main`.
+
 ## Ejecutar y comprobar
 
 ```sh
@@ -20,23 +22,23 @@ node scripts/qa/scenarios.mjs   # capturas de los escenarios del brief
 
 ## Mapa del código
 
-| Ruta | Responsabilidad |
-|---|---|
-| `src/domain/model.ts` | Reglas financieras (sin cambios en 0.1.3). |
+| Ruta                   | Responsabilidad                                                                                                                                                                                                                     |
+| ---------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `src/domain/model.ts`  | Reglas financieras (sin cambios en 0.1.3).                                                                                                                                                                                          |
 | `src/domain/derive.ts` | Cálculos de presentación puros que reutilizan `model.ts`: separar pendientes, próximas fechas, qué queda tras un pago, condiciones que se perderían al cambiar de tipo, aumento de precio, vista previa de un cambio de calendario. |
-| `src/app/useMesApp.ts` | Estado temporal y comandos de interfaz (antes en `App.tsx`). Valida formularios por campo (`FieldError`), llama al dominio y ofrece deshacer seguro. |
-| `src/app/context.ts` | Contexto de la app (`useApp`). |
-| `src/ui/tokens.ts` | Tokens semánticos. |
-| `src/ui/format.ts` | Formato de importes, fechas e intervalos (sin cálculos financieros). |
-| `src/ui/icons.tsx` | Iconos SVG. |
-| `src/ui/components/` | Componentes base (ver `DESIGN.md` §4). |
-| `src/ui/rows.tsx` | Filas de vencimiento y de movimiento. |
-| `src/ui/screens/` | Mes, Recurrentes, Movimientos. |
-| `src/ui/sheets/` | Hojas: captura, recurrente, pago, detalle, presupuesto, meta, espacios, ajustes; selector de moneda y foco en errores (`shared.tsx`). |
-| `src/ui/SheetHost.tsx` | Una sola Modal cuyo contenido cambia (detalle → pago sin cerrar). |
-| `App.tsx` | Estructura: proveedores, barra superior o lateral, encabezado del período, franja de contexto, pie de acción, pestañas, aviso breve. |
-| `scripts/qa/` | QA reproducible (`matrix.mjs`) y escenarios (`scenarios.mjs`). |
-| `assets/brand/` | Marca provisional (maestros y variante de 16 px). |
+| `src/app/useMesApp.ts` | Estado temporal y comandos de interfaz (antes en `App.tsx`). Valida formularios por campo (`FieldError`), llama al dominio y ofrece deshacer seguro.                                                                                |
+| `src/app/context.ts`   | Contexto de la app (`useApp`).                                                                                                                                                                                                      |
+| `src/ui/tokens.ts`     | Tokens semánticos.                                                                                                                                                                                                                  |
+| `src/ui/format.ts`     | Formato de importes, fechas e intervalos (sin cálculos financieros).                                                                                                                                                                |
+| `src/ui/icons.tsx`     | Iconos SVG.                                                                                                                                                                                                                         |
+| `src/ui/components/`   | Componentes base (ver `DESIGN.md` §4).                                                                                                                                                                                              |
+| `src/ui/rows.tsx`      | Filas de vencimiento y de movimiento.                                                                                                                                                                                               |
+| `src/ui/screens/`      | Mes, Recurrentes, Movimientos.                                                                                                                                                                                                      |
+| `src/ui/sheets/`       | Hojas: captura, recurrente, pago, detalle, presupuesto, meta, espacios, ajustes; selector de moneda y foco en errores (`shared.tsx`).                                                                                               |
+| `src/ui/SheetHost.tsx` | Una sola Modal cuyo contenido cambia (detalle → pago sin cerrar).                                                                                                                                                                   |
+| `App.tsx`              | Estructura: proveedores, barra superior o lateral, encabezado del período, franja de contexto, pie de acción, pestañas, aviso breve.                                                                                                |
+| `scripts/qa/`          | QA reproducible (`matrix.mjs`) y escenarios (`scenarios.mjs`).                                                                                                                                                                      |
+| `assets/brand/`        | Marca provisional (maestros y variante de 16 px).                                                                                                                                                                                   |
 
 ## Reglas de interfaz que no deben perderse
 
@@ -69,11 +71,11 @@ Están trasladadas tal cual desde 0.1.2 a `useMesApp.ts`:
 
 ## Dependencias
 
-| Paquete | Tipo | Motivo |
-|---|---|---|
-| `react-native-svg` 15.15.4 | ejecución | Iconos vectoriales nativos y web; versión fijada por el SDK 57 de Expo (`npx expo install`). |
-| `playwright` 1.56.1 | desarrollo | QA reproducible de reflujo, foco y recorridos sobre la exportación web. Coincide con Chromium 1194. |
-| `axe-core` 4.10.3 | desarrollo | Comprobación automática de reglas WCAG en la QA. No sustituye una revisión con lector de pantalla. |
+| Paquete                    | Tipo       | Motivo                                                                                              |
+| -------------------------- | ---------- | --------------------------------------------------------------------------------------------------- |
+| `react-native-svg` 15.15.4 | ejecución  | Iconos vectoriales nativos y web; versión fijada por el SDK 57 de Expo (`npx expo install`).        |
+| `playwright` 1.56.1        | desarrollo | QA reproducible de reflujo, foco y recorridos sobre la exportación web. Coincide con Chromium 1194. |
+| `axe-core` 4.10.3          | desarrollo | Comprobación automática de reglas WCAG en la QA. No sustituye una revisión con lector de pantalla.  |
 
 No se añadió ningún kit visual ni dependencia de IA.
 
@@ -96,16 +98,16 @@ No se añadió ningún kit visual ni dependencia de IA.
 
 Especificación de estados para mantener la coherencia del diseño. **Nada de esto existe en 0.1.3** y la interfaz no lo simula.
 
-| Estado | Contenido mínimo | Regla |
-|---|---|---|
-| Invitación | «Emi te invitó a Casa» · correo verificado · permisos que tendrás | Uso limitado; caduca; se puede rechazar. |
-| Correo verificado | Confirmación enviada · reenviar · cambiar correo | Sin acceso a datos compartidos hasta verificar. |
-| Aceptación | Qué verá cada persona · el espacio personal sigue privado | Autor, pagador y participante son conceptos distintos; colaborar no implica dividir al 50 %. |
-| Permiso insuficiente | «No puedes editar este pago; pide acceso a Emi» | Autorización en servidor (RLS), no en el selector. |
-| Salida o revocación | Qué conserva cada parte · desde cuándo | Los movimientos ya registrados no se reescriben. |
-| Pendiente de sincronizar | «Guardado en este teléfono · se enviará al reconectar» | Nunca «Sincronizado» sin confirmación del servidor. |
-| Conflicto | Dos versiones lado a lado · elegir · conservar ambas | Sin pérdida silenciosa. |
-| Recuperación | Restaurar desde respaldo con fecha · qué se reemplaza | Prueba de restauración antes de lanzar. |
+| Estado                   | Contenido mínimo                                                  | Regla                                                                                        |
+| ------------------------ | ----------------------------------------------------------------- | -------------------------------------------------------------------------------------------- |
+| Invitación               | «Emi te invitó a Casa» · correo verificado · permisos que tendrás | Uso limitado; caduca; se puede rechazar.                                                     |
+| Correo verificado        | Confirmación enviada · reenviar · cambiar correo                  | Sin acceso a datos compartidos hasta verificar.                                              |
+| Aceptación               | Qué verá cada persona · el espacio personal sigue privado         | Autor, pagador y participante son conceptos distintos; colaborar no implica dividir al 50 %. |
+| Permiso insuficiente     | «No puedes editar este pago; pide acceso a Emi»                   | Autorización en servidor (RLS), no en el selector.                                           |
+| Salida o revocación      | Qué conserva cada parte · desde cuándo                            | Los movimientos ya registrados no se reescriben.                                             |
+| Pendiente de sincronizar | «Guardado en este teléfono · se enviará al reconectar»            | Nunca «Sincronizado» sin confirmación del servidor.                                          |
+| Conflicto                | Dos versiones lado a lado · elegir · conservar ambas              | Sin pérdida silenciosa.                                                                      |
+| Recuperación             | Restaurar desde respaldo con fecha · qué se reemplaza             | Prueba de restauración antes de lanzar.                                                      |
 
 **Recordatorios** (punto de partida a validar):
 

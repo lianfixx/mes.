@@ -2,6 +2,8 @@
 
 Alfa de una aplicación de Sistemas Digitales. **Mes es un nombre provisional.** Interfaz original en blanco, negro y grises para próximos pagos, gastos cotidianos y metas. Código universal Expo / React Native / TypeScript, sin llamadas a modelos ni dependencia funcional de ChatGPT.
 
+**Continuidad del proyecto:** [empieza aquí](docs/continuidad/README.md). Incluye plan maestro, contexto y decisiones de Emi, reglas y parámetros, registro de conversación disponible, originales del traspaso y guía del entorno cloud. El código vigente está en `main`; la aplicación sigue en 0.1.3. [Cómo reproducir el entorno](docs/entorno/README.md).
+
 ## Estado de esta entrega · 0.1.3
 
 0.1.3 refina el diseño y la interacción de 0.1.2 sin cambiar las reglas financieras (`src/domain/model.ts` intacto; 27 pruebas heredadas en verde).

@@ -1,0 +1,393 @@
+{
+  "observed_on": "2026-11-03",
+  "timezone": "America/Mexico_City",
+  "scope": "Fotografía de configuración leída antes de esta entrega. Los identificadores internos del borrador se omiten. No acredita publicación ni aplicación runtime.",
+  "name": "mes.",
+  "revision": 1,
+  "repositories": [
+    {
+      "repository_id": "lianfixx/mes.",
+      "ref": "db0e7761266004e8f3315e9eada54d2e84e1e80b",
+      "mount_path": "mes.",
+      "depth": null
+    }
+  ],
+  "install_script_file": "install-cloud.sh",
+  "start_skill_observed": "# Iniciar y validar Mes\n\n1. Usa el checkout existente en `/workspace/mes.`. No crees un worktree salvo que el usuario lo pida expresamente.\n2. Antes de editar, lee `AGENTS.md`, `README.md`, `docs/ARCHITECTURE.md`, `docs/DESIGN.md` y `docs/HANDOFF.md`. El documento privado de continuidad está en `/workspace/shared/mes/incoming/Mes_Continuidad_Codex_2026_10_23.txt`; úsalo solo como contexto, no lo añadas a Git ni lo publiques.\n3. Comprueba `git status --short --branch` y preserva cualquier cambio existente. La rama de desarrollo configurada es `main`.\n4. El proyecto requiere Node.js 24 y npm. Si faltan `node_modules` o `dist`, ejecuta desde `/workspace/mes.`:\n   - `npm ci --cache /tmp/mes-npm-cache --prefer-offline`\n   - `npm test`\n   - `npm run typecheck`\n   - `npm run format:check`\n   - `npm run build`\n5. Para servir la exportación web, ejecuta `npm run dev -- --port 5173 --strictPort` desde `/workspace/mes.`. Comprueba localmente un HTTP 200 en `http://127.0.0.1:5173/` usando el encabezado `Host: terminal.local` y verifica el título `Mes · Finanzas`. No publiques enlaces de preview para localhost.\n6. Después de cambios de comportamiento, repite pruebas, typecheck y build. Después de cambios de interfaz, ejecuta además `npm run qa -- --out \"$(mktemp -d /tmp/mes-qa-XXXXXX)\"`; `PLAYWRIGHT_BROWSERS_PATH` ya apunta al navegador preparado. Mantén los reportes ad hoc fuera de Git salvo que la tarea pida actualizar la evidencia versionada.\n7. La aplicación sigue siendo una demo con datos ficticios en memoria. No introduzcas datos financieros reales ni presentes como operativas las cuentas, persistencia, sincronización o colaboración.\n8. Detén únicamente los procesos que hayas iniciado.\n",
+  "network_policy": {
+    "type": "restricted",
+    "presets": ["package_managers"],
+    "egress_rules": [
+      {
+        "host": "cdn.playwright.dev"
+      },
+      {
+        "host": "playwright.download.prss.microsoft.com"
+      }
+    ],
+    "preset_egress_rules": [
+      {
+        "host": "github.com"
+      },
+      {
+        "host": "codeload.github.com"
+      },
+      {
+        "host": "github-cloud.githubusercontent.com"
+      },
+      {
+        "host": "github-cloud.s3.amazonaws.com"
+      },
+      {
+        "host": "lfs.github.com"
+      },
+      {
+        "host": "release-assets.githubusercontent.com"
+      },
+      {
+        "host": "git.chatgpt-team.site"
+      },
+      {
+        "host": "eu.git.chatgpt-team.site"
+      },
+      {
+        "host": "us.git.chatgpt-team.site"
+      },
+      {
+        "host": "git.chatgpt.site"
+      },
+      {
+        "host": "eu.git.chatgpt.site"
+      },
+      {
+        "host": "us.git.chatgpt.site"
+      },
+      {
+        "host": "git.appgardenapps.dev"
+      },
+      {
+        "host": "eu.git.appgardenapps.dev"
+      },
+      {
+        "host": "us.git.appgardenapps.dev"
+      },
+      {
+        "host": "git.appgardenapps.com"
+      },
+      {
+        "host": "pypi.org"
+      },
+      {
+        "host": "files.pythonhosted.org"
+      },
+      {
+        "host": "download.pytorch.org"
+      },
+      {
+        "host": "download-r2.pytorch.org"
+      },
+      {
+        "host": "registry.npmjs.org"
+      },
+      {
+        "host": "registry.yarnpkg.com"
+      },
+      {
+        "host": "buf.build"
+      },
+      {
+        "host": "crates.io"
+      },
+      {
+        "host": "index.crates.io"
+      },
+      {
+        "host": "static.crates.io"
+      },
+      {
+        "host": "static.rust-lang.org"
+      },
+      {
+        "host": "proxy.golang.org"
+      },
+      {
+        "host": "sum.golang.org"
+      },
+      {
+        "host": "dl.google.com"
+      },
+      {
+        "host": "repo.maven.apache.org"
+      },
+      {
+        "host": "repo1.maven.org"
+      },
+      {
+        "host": "plugins.gradle.org"
+      },
+      {
+        "host": "plugins-artifacts.gradle.org"
+      },
+      {
+        "host": "services.gradle.org"
+      },
+      {
+        "host": "downloads.gradle.org"
+      },
+      {
+        "host": "bcr.bazel.build"
+      },
+      {
+        "host": "mirror.bazel.build"
+      },
+      {
+        "host": "pkgconfig.freedesktop.org"
+      },
+      {
+        "host": "cpan.metacpan.org"
+      },
+      {
+        "host": "archive.ubuntu.com"
+      },
+      {
+        "host": "security.ubuntu.com"
+      },
+      {
+        "host": "ports.ubuntu.com"
+      },
+      {
+        "host": "ppa.launchpadcontent.net"
+      },
+      {
+        "host": "packages.microsoft.com"
+      },
+      {
+        "host": "apt.buildkite.com"
+      },
+      {
+        "host": "developer.download.nvidia.com"
+      },
+      {
+        "host": "deb.nodesource.com"
+      },
+      {
+        "host": "deb.debian.org"
+      },
+      {
+        "host": "security.debian.org"
+      },
+      {
+        "host": "apt.llvm.org"
+      },
+      {
+        "host": "bitbucket.org"
+      },
+      {
+        "host": "cpan.org"
+      },
+      {
+        "host": "auth.docker.io"
+      },
+      {
+        "host": "production.cloudfront.docker.com"
+      },
+      {
+        "host": "dot.net"
+      },
+      {
+        "host": "gcr.io"
+      },
+      {
+        "host": "ghcr.io"
+      },
+      {
+        "host": "gitlab.com"
+      },
+      {
+        "host": "goproxy.io"
+      },
+      {
+        "host": "hex.pm"
+      },
+      {
+        "host": "jcenter.bintray.com"
+      },
+      {
+        "host": "mcr.microsoft.com"
+      },
+      {
+        "host": "nodejs.org"
+      },
+      {
+        "host": "nuget.org"
+      },
+      {
+        "host": "packagecloud.io"
+      },
+      {
+        "host": "ppa.launchpad.net"
+      },
+      {
+        "host": "pub.dev"
+      },
+      {
+        "host": "pypi.python.org"
+      },
+      {
+        "host": "quay.io"
+      },
+      {
+        "host": "registry-1.docker.io"
+      },
+      {
+        "host": "rubygems.org"
+      },
+      {
+        "host": "sourceforge.net"
+      },
+      {
+        "host": "aka.ms"
+      },
+      {
+        "host": "api.nuget.org"
+      },
+      {
+        "host": "archive.apache.org"
+      },
+      {
+        "host": "azuresearch-usnc.nuget.org"
+      },
+      {
+        "host": "azuresearch-ussc.nuget.org"
+      },
+      {
+        "host": "builds.dotnet.microsoft.com"
+      },
+      {
+        "host": "builds.hex.pm"
+      },
+      {
+        "host": "cache.ruby-lang.org"
+      },
+      {
+        "host": "cdn.cocoapods.org"
+      },
+      {
+        "host": "cdn.jsdelivr.net"
+      },
+      {
+        "host": "cdn.quay.io"
+      },
+      {
+        "host": "cdn01.quay.io"
+      },
+      {
+        "host": "cdn02.quay.io"
+      },
+      {
+        "host": "cdn03.quay.io"
+      },
+      {
+        "host": "cdn04.quay.io"
+      },
+      {
+        "host": "cdn05.quay.io"
+      },
+      {
+        "host": "cdn06.quay.io"
+      },
+      {
+        "host": "conda.anaconda.org"
+      },
+      {
+        "host": "d3fo0g5hm7lbuv.cloudfront.net"
+      },
+      {
+        "host": "dl.k8s.io"
+      },
+      {
+        "host": "dlcdn.apache.org"
+      },
+      {
+        "host": "download.eclipse.org"
+      },
+      {
+        "host": "download.oracle.com"
+      },
+      {
+        "host": "download.swift.org"
+      },
+      {
+        "host": "downloads.haskell.org"
+      },
+      {
+        "host": "downloads.sourceforge.net"
+      },
+      {
+        "host": "get-ghcup.haskell.org"
+      },
+      {
+        "host": "get.rvm.io"
+      },
+      {
+        "host": "globalcdn.nuget.org"
+      },
+      {
+        "host": "go.dev"
+      },
+      {
+        "host": "hackage.haskell.org"
+      },
+      {
+        "host": "pkg-containers.githubusercontent.com"
+      },
+      {
+        "host": "pkgs.k8s.io"
+      },
+      {
+        "host": "prod-cdn.packages.k8s.io"
+      },
+      {
+        "host": "raw.githubusercontent.com"
+      },
+      {
+        "host": "registry.bower.io"
+      },
+      {
+        "host": "registry.terraform.io"
+      },
+      {
+        "host": "releases.bazel.build"
+      },
+      {
+        "host": "releases.hashicorp.com"
+      },
+      {
+        "host": "repo.anaconda.com"
+      },
+      {
+        "host": "repo.hex.pm"
+      },
+      {
+        "host": "repo.packagist.org"
+      },
+      {
+        "host": "sh.rustup.rs"
+      }
+    ]
+  },
+  "secrets": [],
+  "runtime_requirements": [],
+  "pending_runtime_requirements": [
+    {
+      "source": {
+        "type": "environment"
+      },
+      "delivery": {
+        "type": "direct_environment_variable",
+        "variable_name": "PLAYWRIGHT_BROWSERS_PATH"
+      },
+      "suggested_value": "/workspace/.cache/mes-playwright"
+    }
+  ]
+}
