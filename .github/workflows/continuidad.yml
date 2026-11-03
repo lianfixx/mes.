@@ -1,0 +1,37 @@
+name: Continuidad de Mes
+
+on:
+  push:
+    branches: [main, "codex/**", "claude/**"]
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  continuidad:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
+        with:
+          node-version: 24
+      - name: Pruebas del protocolo (sin instalar dependencias de app)
+        run: node --test scripts/continuity.test.mjs
+      - name: Verificar entrega y cobertura documental
+        env:
+          MES_EVENT_BASE: ${{ github.event.pull_request.base.sha || github.event.before }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          if [[ -z "$MES_EVENT_BASE" || "$MES_EVENT_BASE" =~ ^0+$ ]]; then
+            mes_base="$(git merge-base origin/main HEAD)"
+          else
+            mes_base="$(git merge-base "$MES_EVENT_BASE" HEAD)"
+          fi
+          node scripts/continuity.mjs check --base "$mes_base"

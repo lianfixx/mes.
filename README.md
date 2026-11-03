@@ -4,6 +4,8 @@ Alfa de una aplicación de Sistemas Digitales. **Mes es un nombre provisional.**
 
 **Continuidad del proyecto:** [empieza aquí](docs/continuidad/README.md). Incluye plan maestro, contexto y decisiones de Emi, reglas y parámetros, registro de conversación disponible, originales del traspaso y guía del entorno cloud. El código vigente está en `main`; la aplicación sigue en 0.1.3. [Cómo reproducir el entorno](docs/entorno/README.md).
 
+**Trabajar con Codex, Claude u otra IA:** [instalar la skill mes-continuidad](docs/continuidad/INSTALAR_SKILL.md), [protocolo compartido](skills/mes-continuidad/references/PROTOCOLO.md) y [auditoría de autoría/entregas](docs/continuidad/auditorias/2026-11-03-protocolo.md). Cada sesión registra quién hizo qué, cambios, pruebas y pendientes; `node scripts/continuity.mjs check` verifica registros, evidencias, skill y manifiesto.
+
 ## Estado de esta entrega · 0.1.3
 
 0.1.3 refina el diseño y la interacción de 0.1.2 sin cambiar las reglas financieras (`src/domain/model.ts` intacto; 27 pruebas heredadas en verde).

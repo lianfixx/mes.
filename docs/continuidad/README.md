@@ -2,6 +2,8 @@
 
 Actualizado el **3 de noviembre de 2026**, fecha de México. Proyecto de Emi / Sistemas Digitales. Este índice permite retomar el trabajo desde GitHub con el código, las decisiones y las fuentes disponibles.
 
+Para cualquier sesión nueva, usar [mes-continuidad](../../skills/mes-continuidad/SKILL.md): [instalación](INSTALAR_SKILL.md), [protocolo único](../../skills/mes-continuidad/references/PROTOCOLO.md), [sesiones](sesiones/), [autoría histórica](AUTORIA_HISTORICA.md) y [auditoría profunda](auditorias/2026-11-03-protocolo.md). El estado operativo se consulta con `node scripts/continuity.mjs status`. La [petición a Claude](solicitudes/2026-11-03-claude.md) está preparada, pendiente de un canal de envío.
+
 ## Estado al documentar
 
 La aplicación es **Mes 0.1.3**, una demo Expo / React Native / TypeScript con datos ficticios en memoria. El código recibido llega hasta `db0e7761266004e8f3315e9eada54d2e84e1e80b`. Los cambios de esta entrega son documentación, originales y evidencia; no agregan cuentas, persistencia ni funciones financieras.
@@ -45,4 +47,4 @@ El código completo mantenible está en la raíz del repositorio. `node_modules/
 
 ## Punto de continuación
 
-La preparación del entorno y la incorporación del diseño están realizadas. El siguiente hito de producto es preparar la beta con persistencia, cuentas y colaboración real, siguiendo [el plan](PLAN_Y_DECISIONES.md). Antes de usar datos reales siguen pendientes seguridad de dependencias, aislamiento, recuperación y pruebas físicas. No hay contratación de servicios, cobros, campañas ni publicación en tiendas derivados de esta documentación.
+La preparación del entorno, la incorporación del diseño y la continuidad inicial de `047355f` están realizadas. El protocolo entre IA añade una skill instalable, registro por actor, validación e integración con evidencia; sus límites constan en la auditoría. El siguiente hito de producto sigue siendo la beta con persistencia, cuentas y colaboración real, según [el plan](PLAN_Y_DECISIONES.md). Antes de usar datos reales siguen pendientes seguridad de dependencias, aislamiento, recuperación y pruebas físicas. No hay contratación de servicios, cobros, campañas ni publicación en tiendas derivados de esta documentación.

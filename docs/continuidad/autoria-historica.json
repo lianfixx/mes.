@@ -1,0 +1,139 @@
+{
+  "as_of_commit": "047355f648f9bd99b17a7b5d1f265fab6841e3f0",
+  "recorded_on": "2026-11-03",
+  "scope": "Metadatos Git observados y atribución explicada; sin reescritura de autores ni certeza inventada sobre modelos.",
+  "commits": [
+    {
+      "commit": "fcfa3ebfa08887ea0fe187cc8f789f7d48627f76",
+      "git_author": "Claude",
+      "git_committer": "Claude",
+      "authored_at": "2026-10-15T12:05:36Z",
+      "subject": "Mes 0.1.2 · base importada sin cambios (1590eb3)",
+      "executor": "Claude (atribución declarada en Git)",
+      "attribution_basis": "Metadatos de commit y rama; conversación/modelo de la sesión original no disponibles.",
+      "model": "no disponible",
+      "reviewer": "no reconstruido por commit",
+      "integrator": "No consta un integrador individual por commit; el 28 de octubre Codex conservó la rama entera en main."
+    },
+    {
+      "commit": "eb8bc6430df5c542e03cb2877b42d39ee50712c8",
+      "git_author": "Claude",
+      "git_committer": "Claude",
+      "authored_at": "2026-10-15T12:20:27Z",
+      "subject": "Dominio derivado para presentar pendientes, pagos y cambios sin alterarlos",
+      "executor": "Claude (atribución declarada en Git)",
+      "attribution_basis": "Metadatos de commit y rama; conversación/modelo de la sesión original no disponibles.",
+      "model": "no disponible",
+      "reviewer": "no reconstruido por commit",
+      "integrator": "No consta un integrador individual por commit; el 28 de octubre Codex conservó la rama entera en main."
+    },
+    {
+      "commit": "31bcce8c1775445b4583f1241cdbb2793a577b5e",
+      "git_author": "Claude",
+      "git_committer": "Claude",
+      "authored_at": "2026-10-23T19:11:36Z",
+      "subject": "Interfaz 0.1.3: tokens, componentes, pantallas y hojas refinadas",
+      "executor": "Claude (atribución declarada en Git)",
+      "attribution_basis": "Metadatos de commit y rama; conversación/modelo de la sesión original no disponibles.",
+      "model": "no disponible",
+      "reviewer": "no reconstruido por commit",
+      "integrator": "No consta un integrador individual por commit; el 28 de octubre Codex conservó la rama entera en main."
+    },
+    {
+      "commit": "440998cc6868f750f545bfcbdab6eed1da937dd5",
+      "git_author": "Claude",
+      "git_committer": "Claude",
+      "authored_at": "2026-10-23T19:15:00Z",
+      "subject": "Mes móvil: cabecera y contexto compactos para ver el próximo pago al abrir",
+      "executor": "Claude (atribución declarada en Git)",
+      "attribution_basis": "Metadatos de commit y rama; conversación/modelo de la sesión original no disponibles.",
+      "model": "no disponible",
+      "reviewer": "no reconstruido por commit",
+      "integrator": "No consta un integrador individual por commit; el 28 de octubre Codex conservó la rama entera en main."
+    },
+    {
+      "commit": "8c231f563b33e2c0257d3ddbc7c219213f167065",
+      "git_author": "Claude",
+      "git_committer": "Claude",
+      "authored_at": "2026-10-23T19:27:29Z",
+      "subject": "Accesibilidad verificada en web y QA reproducible",
+      "executor": "Claude (atribución declarada en Git)",
+      "attribution_basis": "Metadatos de commit y rama; conversación/modelo de la sesión original no disponibles.",
+      "model": "no disponible",
+      "reviewer": "no reconstruido por commit",
+      "integrator": "No consta un integrador individual por commit; el 28 de octubre Codex conservó la rama entera en main."
+    },
+    {
+      "commit": "3049e7b1a2cfaae89b1bdfee7f0f89b64f367946",
+      "git_author": "Claude",
+      "git_committer": "Claude",
+      "authored_at": "2026-10-23T19:30:43Z",
+      "subject": "Estados límite: usuario nuevo, retirar con foco, meta sin aportes",
+      "executor": "Claude (atribución declarada en Git)",
+      "attribution_basis": "Metadatos de commit y rama; conversación/modelo de la sesión original no disponibles.",
+      "model": "no disponible",
+      "reviewer": "no reconstruido por commit",
+      "integrator": "No consta un integrador individual por commit; el 28 de octubre Codex conservó la rama entera en main."
+    },
+    {
+      "commit": "6049a2d1e35ec554f2cb46db2469355ddf4cd403",
+      "git_author": "Claude",
+      "git_committer": "Claude",
+      "authored_at": "2026-10-23T19:33:40Z",
+      "subject": "Evidencia de QA: antes (0.1.2) y después (0.1.3), escenarios y marca",
+      "executor": "Claude (atribución declarada en Git)",
+      "attribution_basis": "Metadatos de commit y rama; conversación/modelo de la sesión original no disponibles.",
+      "model": "no disponible",
+      "reviewer": "no reconstruido por commit",
+      "integrator": "No consta un integrador individual por commit; el 28 de octubre Codex conservó la rama entera en main."
+    },
+    {
+      "commit": "0e4bf5c15a9a48e525d051e0747efbde03df5331",
+      "git_author": "Claude",
+      "git_committer": "Claude",
+      "authored_at": "2026-10-24T17:35:34Z",
+      "subject": "Documentación 0.1.3: diseño, auditoría, traspaso y versión",
+      "executor": "Claude (atribución declarada en Git)",
+      "attribution_basis": "Metadatos de commit y rama; conversación/modelo de la sesión original no disponibles.",
+      "model": "no disponible",
+      "reviewer": "no reconstruido por commit",
+      "integrator": "No consta un integrador individual por commit; el 28 de octubre Codex conservó la rama entera en main."
+    },
+    {
+      "commit": "d492e57b05f626e95d2858fc5c259325ea8d3f21",
+      "git_author": "Claude",
+      "git_committer": "Claude",
+      "authored_at": "2026-10-24T17:39:41Z",
+      "subject": "Web: una sola etiqueta description y theme-color en index.html",
+      "executor": "Claude (atribución declarada en Git)",
+      "attribution_basis": "Metadatos de commit y rama; conversación/modelo de la sesión original no disponibles.",
+      "model": "no disponible",
+      "reviewer": "no reconstruido por commit",
+      "integrator": "No consta un integrador individual por commit; el 28 de octubre Codex conservó la rama entera en main."
+    },
+    {
+      "commit": "db0e7761266004e8f3315e9eada54d2e84e1e80b",
+      "git_author": "Claude",
+      "git_committer": "Claude",
+      "authored_at": "2026-10-24T17:45:33Z",
+      "subject": "Mes: «Vence hoy» en cada fila cuando varios pagos vencen hoy",
+      "executor": "Claude (atribución declarada en Git)",
+      "attribution_basis": "Metadatos de commit y rama; conversación/modelo de la sesión original no disponibles.",
+      "model": "no disponible",
+      "reviewer": "no reconstruido por commit",
+      "integrator": "No consta un integrador individual por commit; el 28 de octubre Codex conservó la rama entera en main."
+    },
+    {
+      "commit": "047355f648f9bd99b17a7b5d1f265fab6841e3f0",
+      "git_author": "Emiliano Milla",
+      "git_committer": "Emiliano Milla",
+      "authored_at": "2026-11-03T23:25:13Z",
+      "subject": "Documenta continuidad completa, originales y entorno de Mes",
+      "executor": "Codex",
+      "attribution_basis": "Ejecución observada en el turno anterior de este hilo; Git conserva la identidad configurada de Emi.",
+      "model": "no disponible",
+      "reviewer": "no reconstruido por commit",
+      "integrator": "Codex"
+    }
+  ]
+}

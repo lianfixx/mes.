@@ -1,0 +1,69 @@
+Comando: node --test scripts/continuity.test.mjs
+Ejecutor: Codex root; pruebas escritas por /root/audit_continuity_protocol
+Resultado observado antes del checkpoint 2026-11-03T23:49:50Z
+Exit code: 0
+
+✔ a session permits unknown model identity without inventing attribution (4.439439ms)
+▶ invalid attribution, chronology and event identity are rejected
+  ✔ missing actor (0.371174ms)
+  ✔ duplicate actor (0.429652ms)
+  ✔ undeclared executor (0.204395ms)
+  ✔ executor without executor role (0.257103ms)
+  ✔ unknown event actor (0.310535ms)
+  ✔ duplicate event (0.284841ms)
+  ✔ invalid calendar date (0.195151ms)
+  ✔ event predates session (0.334002ms)
+  ✔ event follows checkpoint (0.276425ms)
+  ✔ check follows checkpoint (0.238294ms)
+  ✔ check predates session (0.189256ms)
+✔ invalid attribution, chronology and event identity are rejected (6.604177ms)
+▶ executed checks require consistent exit codes and durable inventoried evidence
+  ✔ passed with nonzero exit (0.407189ms)
+  ✔ failed with zero exit (0.355609ms)
+  ✔ passed without durable output (0.118725ms)
+  ✔ non-executed with exit (0.17886ms)
+  ✔ unlisted evidence (0.113996ms)
+✔ executed checks require consistent exit codes and durable inventoried evidence (1.661469ms)
+✔ evidence must exist, match its bytes and remain inside the repository (7.040141ms)
+✔ the repository manifest detects modified bytes and omitted files (73.694612ms)
+▶ unrecorded additions, modifications and deletions cannot pass the integration gate
+  ✔ added (210.46236ms)
+  ✔ modified (206.596579ms)
+  ✔ deleted (211.897012ms)
+✔ unrecorded additions, modifications and deletions cannot pass the integration gate (630.00168ms)
+✔ a rename records both the removed path and new path (208.354952ms)
+▶ sealed records cannot be rewritten or removed
+  ✔ rewrite (103.985432ms)
+  ✔ delete (104.979589ms)
+✔ sealed records cannot be rewritten or removed (210.196598ms)
+✔ an open session can append events but cannot rewrite its existing history (199.118888ms)
+✔ two concurrent actors retain separate records and cover their respective work (417.019368ms)
+✔ a combined conflict resolution needs its own integrator attribution (685.33878ms)
+✔ skill packages are portable, complete and byte-identical to their canonical files (90.213819ms)
+✔ incomplete and traversal ZIPs are rejected without extracting them (76.333085ms)
+✔ a ZIP symlink is rejected even if its target bytes match the canonical text (59.989862ms)
+✔ deliveries bind exact commits and file bytes and refuse a dirty sender (270.892173ms)
+▶ delivery tampering is rejected for SHA, base, inventory, commits and bytes
+  ✔ short HEAD (5.11841ms)
+  ✔ nonexistent base (3.230453ms)
+  ✔ base equals HEAD (10.068423ms)
+  ✔ backwards ancestry (9.792165ms)
+  ✔ omitted file (15.550647ms)
+  ✔ invented file (17.088633ms)
+  ✔ altered hash (46.343477ms)
+  ✔ missing commit (19.891174ms)
+✔ delivery tampering is rejected for SHA, base, inventory, commits and bytes (304.931914ms)
+▶ valid outer hashes cannot hide altered or missing evidence in the delivered commit
+  ✔ altered (263.401045ms)
+  ✔ missing (251.91247ms)
+✔ valid outer hashes cannot hide altered or missing evidence in the delivered commit (515.860472ms)
+✔ the delivery identity must match the session stored at its declared path (188.05525ms)
+✔ a Git delivery cannot smuggle an escaping symlink as an ordinary file (152.182175ms)
+ℹ tests 50
+ℹ suites 0
+ℹ pass 50
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 4239.483675

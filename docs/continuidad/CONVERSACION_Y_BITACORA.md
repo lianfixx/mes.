@@ -77,3 +77,11 @@ La [verificación del 3 de noviembre](VERIFICACION_2026-11-03.md) recoge los res
 ## Actualizar esta continuidad
 
 Cuando cambie el proyecto, registrar fecha, petición, decisión, rutas/commit y comprobaciones con sus límites. Preservar originales sin reescribirlos. Actualizar el estado vigente y enlazar el informe pertinente; no copiar una lista de pruebas anteriores como si se hubiera ejecutado de nuevo.
+
+## Petición posterior: auditoría y coordinación entre IA
+
+Emi pidió: «Auditalo para que cualquier IA, cómo claude una vez instalé la skill, docuemnte absolutamente cada coasa que hagamos y sepa que hizo cada quién y pueda integrarlo tú directamente (pídele a ti mismo o cualquier otra IA como caldue todo lo necesario) y audita de manera profunda por favor».
+
+Se abrió la [sesión de auditoría](sesiones/20261103t233649z-codex-auditoria-ia.json). Codex root implementó protocolo, skill, validador e integración; el subagente `/root/audit_continuity_protocol` revisó independientemente y escribió las pruebas del protocolo. No participó una sesión activa de Claude en esta auditoría. La atribución de los commits históricos se documenta por separado en [autoría](AUTORIA_HISTORICA.md); se mantiene el historial Git intacto.
+
+El [informe de auditoría](auditorias/2026-11-03-protocolo.md) distingue hallazgos, correcciones, pruebas y límites. La comunicación a Claude está [preparada y no enviada](solicitudes/2026-11-03-claude.md). A partir de este protocolo, los eventos operativos se guardan en sesiones individuales con sus evidencias, además de esta síntesis histórica.

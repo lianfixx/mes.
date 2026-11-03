@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "id": "reemplazar-fecha-herramienta-tarea",
+  "kind": "work",
+  "status": "in_progress",
+  "created_at": "2026-11-03T00:00:00Z",
+  "updated_at": "2026-11-03T00:00:00Z",
+  "repository": "lianfixx/mes.",
+  "request": {
+    "by": "Emi",
+    "text": "REEMPLAZAR por encargo visible",
+    "source": "mensaje de la sesión"
+  },
+  "baseline": {
+    "commit": "REEMPLAZAR con git rev-parse HEAD",
+    "branch": "REEMPLAZAR",
+    "dirty_paths": []
+  },
+  "actors": [
+    {
+      "id": "ejecutor",
+      "tool": "REEMPLAZAR",
+      "model": "no disponible",
+      "roles": ["executor"],
+      "identity_basis": "declaración de la sesión"
+    }
+  ],
+  "executor": "ejecutor",
+  "events": [
+    {
+      "id": "evento-001",
+      "at": "2026-11-03T00:00:00Z",
+      "actor": "ejecutor",
+      "kind": "request",
+      "summary": "REEMPLAZAR: recepción, alcance y estado inicial"
+    }
+  ],
+  "changes": [],
+  "checks": [],
+  "artifacts": [],
+  "inputs": [],
+  "corrections": [],
+  "handoff": { "summary": "", "delivery": "", "next_steps": [], "blockers": [] }
+}

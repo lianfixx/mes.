@@ -1,0 +1,34 @@
+{
+  "actor": "codex-root",
+  "node": "v24.19.0",
+  "checks": [
+    {
+      "command": "npm test",
+      "at": "2026-11-03T23:50:17.646Z",
+      "exit_code": 0,
+      "stdout": "\n> mes-finanzas@0.1.3 test\n> node --import tsx --test src/domain/model.test.ts src/domain/derive.test.ts src/ui/format.test.ts\n\n✔ split pending reconciles with the month total and keeps today as upcoming (12.104541ms)\n✔ overdue dues are grouped by rule and exclude today (3.336094ms)\n✔ upcoming dates respect last instalment, cancellation, pause and 2100 (0.441049ms)\n✔ after a payment the next due, or none for a finished loan, is reported (1.909102ms)\n✔ after paying a restored older due the current schedule is unchanged (0.7679ms)\n✔ only a real kind change reports the conditions it would drop (0.673274ms)\n✔ price insight shows difference, percentage and yearly monthly equivalent (0.440338ms)\n✔ schedule preview keeps pending dues, explains invalid choices and never mutates data (0.967789ms)\n✔ civil day differences ignore time zones and leap years (0.444563ms)\n✔ exact minor units and validation (2.009293ms)\n✔ calendar anchor survives short and leap months (1.399514ms)\n✔ weekly and yearly frequencies use calendar dates (0.222231ms)\n✔ confirming twice creates a single expense and advances once (11.543775ms)\n✔ debt payment is separate from consumption and totals isolate spaces/currencies (1.738083ms)\n✔ undo restores due date without losing unrelated records (1.138307ms)\n✔ pause/cancel omit projections without changing paid history (1.033994ms)\n✔ two stale payment commands cannot skip a month (0.284277ms)\n✔ editing cannot restore an already paid due date or reinterpret its currency (0.985744ms)\n✔ removing a payment cannot silently restore changed price conditions (2.826118ms)\n✔ pause preserves old unpaid dues and blocks skipping them on resume (0.840588ms)\n✔ changing an unpaid recurrent type removes irrelevant conditions (0.654969ms)\n✔ resume requires resolving pre-pause dues before future projection (0.968513ms)\n✔ selecting the same kind preserves loan end and trial dates (0.467577ms)\n✔ a smaller fixed payment requires explicit full-total correction (0.664735ms)\n✔ variable bills accept the actual full amount (0.167787ms)\n✔ finished loan permits metadata edits and has no new dues (0.975839ms)\n✔ undo after pause and resume restores an independent original due (1.979701ms)\n✔ changing schedule cannot silently discard pending obligations (0.820184ms)\n✔ explicit rescheduling moves one due and records the decision (0.235136ms)\n✔ older payment can be corrected without losing later paid installments (0.305355ms)\n✔ category net values reconcile with spending including refunds (0.279838ms)\n✔ draft dates cannot crash the display and unsupported years are rejected (13.133377ms)\n✔ optional zero amounts accept decimal and comma formats (0.24137ms)\n✔ financial edits preserve overdue amounts and retroactive cancellation cannot erase them (1.322095ms)\n✔ frequency changes require a calendar decision even with the same next date (1.927779ms)\n✔ long-running weekly dues reach the current month instead of truncating at 600 (6.175827ms)\n✔ money keeps two decimals, a typographic minus and explicit currency (7.539622ms)\n✔ hero parts and fitting never truncate the largest admitted amount (0.636371ms)\n✔ dates read naturally and never shift by time zone (1.054332ms)\nℹ tests 39\nℹ suites 0\nℹ pass 39\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 610.822198\n",
+      "stderr": ""
+    },
+    {
+      "command": "npm run typecheck",
+      "at": "2026-11-03T23:50:18.540Z",
+      "exit_code": 0,
+      "stdout": "\n> mes-finanzas@0.1.3 typecheck\n> tsc --noEmit\n\n",
+      "stderr": ""
+    },
+    {
+      "command": "npm run format:check",
+      "at": "2026-11-03T23:50:23.116Z",
+      "exit_code": 0,
+      "stdout": "\n> mes-finanzas@0.1.3 format:check\n> prettier --check App.tsx index.ts src scripts vite.config.ts\n\nChecking formatting...\nAll matched files use Prettier code style!\n",
+      "stderr": ""
+    },
+    {
+      "command": "npm run build",
+      "at": "2026-11-03T23:50:25.270Z",
+      "exit_code": 0,
+      "stdout": "\n> mes-finanzas@0.1.3 build\n> node scripts/build.mjs\n\nUsing src/app as the root directory for Expo Router.\nStarting Metro Bundler\n\nWeb Bundled 320ms index.ts (225 modules)\n\n› web bundles (1):\n_expo/static/js/web/index-92bd9c71a5e543a12e121cbdf6e55e98.js (580KB)\n\n› Files (2):\nindex.html (1.4KB)\nmetadata.json (49B)\n\nExported: dist\nWeb metadata and brand assets prepared.\n",
+      "stderr": ""
+    }
+  ]
+}

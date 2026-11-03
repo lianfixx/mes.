@@ -39,6 +39,8 @@ Esta secuencia organiza el trabajo pendiente; no implica que se haya ejecutado n
 
 ## Trabajo técnico que sigue
 
+La continuidad inicial quedó publicada en `047355f`. La auditoría posterior añade [skill, sesiones y contrato entre IA](../../skills/mes-continuidad/SKILL.md), con [hallazgos y comprobaciones](auditorias/2026-11-03-protocolo.md). Cada siguiente etapa debe usar ese protocolo; preparar el entorno o registrar una entrega no implementa por sí mismo la beta.
+
 1. Revisar el informe de dependencias y planear una actualización por separado, con regresiones. No confundir la disponibilidad del entorno con preparación para producción.
 2. Definir límites de repositorios y comandos de aplicación antes de reemplazar la sesión temporal. El dominio de dinero y fechas debe seguir independiente de React y de servicios externos.
 3. Evaluar PostgreSQL/Supabase, candidato documentado, con costos y operación reales. No está conectado. Esquema propuesto en [arquitectura](../ARCHITECTURE.md): perfiles, espacios, membresías, invitaciones, categorías, medios, reglas, vencimientos, movimientos, presupuestos, metas/aportes, auditoría y dispositivos.

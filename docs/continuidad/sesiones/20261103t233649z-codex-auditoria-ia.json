@@ -1,0 +1,399 @@
+{
+  "schema_version": 1,
+  "id": "20261103t233649z-codex-auditoria-ia",
+  "kind": "work",
+  "status": "ready",
+  "created_at": "2026-11-03T23:36:49Z",
+  "updated_at": "2026-11-03T23:52:01Z",
+  "repository": "lianfixx/mes.",
+  "request": {
+    "by": "Emi",
+    "text": "Auditalo para que cualquier IA, cómo claude una vez instalé la skill, docuemnte absolutamente cada coasa que hagamos y sepa que hizo cada quién y pueda integrarlo tú directamente (pídele a ti mismo o cualquier otra IA como caldue todo lo necesario) y audita de manera profunda por favor",
+    "source": "Mensaje visible de Emi en la sesión actual; continuación de la petición de documentar y subir Mes a GitHub."
+  },
+  "baseline": {
+    "commit": "047355f648f9bd99b17a7b5d1f265fab6841e3f0",
+    "branch": "main",
+    "dirty_paths": []
+  },
+  "actors": [
+    {
+      "id": "codex-root",
+      "tool": "Codex",
+      "model": "no disponible como identificador verificable",
+      "roles": ["executor", "integrator"],
+      "identity_basis": "Ejecución observada en este hilo; identidad Git configurada por separado."
+    },
+    {
+      "id": "codex-audit-continuity",
+      "tool": "Subagente Codex /root/audit_continuity_protocol",
+      "model": "no disponible como identificador verificable",
+      "roles": ["executor", "reviewer"],
+      "identity_basis": "Delegación y respuestas observadas mediante herramienta de colaboración; no es una revisión de Claude."
+    }
+  ],
+  "executor": "codex-root",
+  "events": [
+    {
+      "id": "evento-001",
+      "at": "2026-11-03T23:36:49Z",
+      "actor": "codex-root",
+      "kind": "request",
+      "summary": "Primer checkpoint de la auditoría: se registra retrospectivamente la inspección inicial ya realizada antes de existir este protocolo. La hora es la del checkpoint observado, no una hora inventada de recepción del mensaje."
+    },
+    {
+      "id": "evento-002",
+      "at": "2026-11-03T23:36:49Z",
+      "actor": "codex-root",
+      "kind": "inspection",
+      "summary": "Leídos AGENTS, README, arquitectura, índice, plan, reglas, bitácora y arranque. Git estaba limpio en 047355f. ls-remote confirmó main y la rama predeterminada histórica. git log mostró autor Git Emiliano Milla para el trabajo previo de Codex y Claude para diez commits anteriores. No existían skill, CLAUDE.md, sesiones ni CI de continuidad."
+    },
+    {
+      "id": "evento-003",
+      "at": "2026-11-03T23:36:49Z",
+      "actor": "codex-root",
+      "kind": "delegation",
+      "summary": "Se pidió auditoría independiente al subagente /root/audit_continuity_protocol, inicialmente solo lectura. Identificó siete huecos de autoría, instalación, contrato de entrega, checkpoints, validación, rama predeterminada y concurrencia. Se conservan como hallazgos con atribución; el root decide e integra."
+    },
+    {
+      "id": "evento-004",
+      "at": "2026-11-03T23:36:49Z",
+      "actor": "codex-root",
+      "kind": "inspection",
+      "summary": "Se consultaron los README oficiales anthropics/skills y openai/skills vía raw.githubusercontent.com; el segundo indica migración de ejemplos a plugins. Las páginas web de documentación directa devolvieron HTTP 403. Se verificaron por ls-remote los SHA de checkout v4.2.2 y setup-node v4.4.0. No hay CLI/conector activo de Claude; no se envió un mensaje a Claude."
+    },
+    {
+      "id": "evento-005",
+      "at": "2026-11-03T23:42:26Z",
+      "actor": "codex-root",
+      "kind": "change",
+      "summary": "Creado el CLI Node sin dependencias, skill canónica con protocolo/plantillas, puentes .agents/.claude, CLAUDE.md y workflow sin secretos. El CLI valida registros, hashes, cobertura, ZIP y entregas por objetos Git sin ejecutar contenido ni hacer merge/fetch automáticamente."
+    },
+    {
+      "id": "evento-006",
+      "at": "2026-11-03T23:42:26Z",
+      "actor": "codex-root",
+      "kind": "delegation",
+      "summary": "Autorizado al subagente a escribir únicamente scripts/continuity.test.mjs y ejecutar fixtures locales sin red. El root conserva la edición del CLI y los documentos para evitar escrituras concurrentes. Leída íntegramente la skill y el protocolo recién creados para aplicarlos al cierre."
+    },
+    {
+      "id": "evento-007",
+      "at": "2026-11-03T23:52:01Z",
+      "actor": "codex-audit-continuity",
+      "kind": "verification",
+      "summary": "El revisor reportó ocho negativos aceptados indebidamente por la primera versión (49 resultados, 39 pass y 10 fail incluyendo dos grupos). Root corrigió rol/fechas, symlinks, identidad y evidencia del commit; una ejecución propia posterior pasó 49/49."
+    },
+    {
+      "id": "evento-008",
+      "at": "2026-11-03T23:52:01Z",
+      "actor": "codex-audit-continuity",
+      "kind": "change",
+      "summary": "El revisor amplió la suite con dos ramas Git reales, conservación de sesiones y conflicto del manifiesto; después añadió conflicto de contenido y rechazo de resolución no atribuida. Solo editó scripts/continuity.test.mjs."
+    },
+    {
+      "id": "evento-009",
+      "at": "2026-11-03T23:52:01Z",
+      "actor": "codex-root",
+      "kind": "correction",
+      "summary": "Root corrigió el cálculo de cobertura para evaluar cada sesión contra sus bytes comprometidos y exigir atribución propia de la resolución. Acotó los snapshots al HEAD y a orígenes aceptados explícitos, después de que el revisor advirtiera el riesgo de --all. Se conservaron los límites para cherry-pick/squash sin objetos originales."
+    },
+    {
+      "id": "evento-010",
+      "at": "2026-11-03T23:52:01Z",
+      "actor": "codex-root",
+      "kind": "verification",
+      "summary": "Pasaron 50/50 comprobaciones del protocolo, 39 pruebas de app, TypeScript, formato y build. Se verificó paquete de cinco archivos, puentes iguales y enlaces internos sin roturas. No se repitió QA visual porque la UI no cambió. Evidencia real conservada en archivos con hash."
+    },
+    {
+      "id": "evento-011",
+      "at": "2026-11-03T23:52:01Z",
+      "actor": "codex-root",
+      "kind": "inspection",
+      "summary": "gh api al repositorio devolvió Forbidden. Se mantiene main explícitamente; no se cambió la rama predeterminada ni se verificó ejecución remota de Actions/protección de ramas. Git y API son capacidades distintas."
+    },
+    {
+      "id": "evento-012",
+      "at": "2026-11-03T23:52:01Z",
+      "actor": "codex-root",
+      "kind": "handoff",
+      "summary": "Cierre preparado para validar manifiesto/cobertura, commit y push autorizados por continuidad del encargo. Se entrega skill ZIP, contrato y petición concreta a Claude marcada preparada/no enviada. El SHA propio se resuelve desde Git/trailers y descriptor post-commit para evitar hashes circulares."
+    }
+  ],
+  "changes": [
+    {
+      "path": ".agents/skills/mes-continuidad/SKILL.md",
+      "action": "added",
+      "actor": "codex-root",
+      "reason": "Skill portable, protocolo, plantillas y entradas de proyecto."
+    },
+    {
+      "path": ".claude/skills/mes-continuidad/SKILL.md",
+      "action": "added",
+      "actor": "codex-root",
+      "reason": "Skill portable, protocolo, plantillas y entradas de proyecto."
+    },
+    {
+      "path": ".github/workflows/continuidad.yml",
+      "action": "added",
+      "actor": "codex-root",
+      "reason": "Comprobaciones de continuidad en CI sin secretos ni permisos de escritura."
+    },
+    {
+      "path": "AGENTS.md",
+      "action": "modified",
+      "actor": "codex-root",
+      "reason": "Documentar autoría, auditoría, solicitud a Claude y continuidad operativa."
+    },
+    {
+      "path": "CLAUDE.md",
+      "action": "added",
+      "actor": "codex-root",
+      "reason": "Documentar autoría, auditoría, solicitud a Claude y continuidad operativa."
+    },
+    {
+      "path": "README.md",
+      "action": "modified",
+      "actor": "codex-root",
+      "reason": "Documentar autoría, auditoría, solicitud a Claude y continuidad operativa."
+    },
+    {
+      "path": "SHA256SUMS.json",
+      "action": "modified",
+      "actor": "codex-root",
+      "reason": "Regenerar integridad de la entrega completa."
+    },
+    {
+      "path": "distribucion/mes-continuidad.zip",
+      "action": "added",
+      "actor": "codex-root",
+      "reason": "Skill portable, protocolo, plantillas y entradas de proyecto."
+    },
+    {
+      "path": "docs/continuidad/AUTORIA_HISTORICA.md",
+      "action": "added",
+      "actor": "codex-root",
+      "reason": "Documentar autoría, auditoría, solicitud a Claude y continuidad operativa."
+    },
+    {
+      "path": "docs/continuidad/CONVERSACION_Y_BITACORA.md",
+      "action": "modified",
+      "actor": "codex-root",
+      "reason": "Documentar autoría, auditoría, solicitud a Claude y continuidad operativa."
+    },
+    {
+      "path": "docs/continuidad/INSTALAR_SKILL.md",
+      "action": "added",
+      "actor": "codex-root",
+      "reason": "Documentar autoría, auditoría, solicitud a Claude y continuidad operativa."
+    },
+    {
+      "path": "docs/continuidad/PLAN_Y_DECISIONES.md",
+      "action": "modified",
+      "actor": "codex-root",
+      "reason": "Documentar autoría, auditoría, solicitud a Claude y continuidad operativa."
+    },
+    {
+      "path": "docs/continuidad/README.md",
+      "action": "modified",
+      "actor": "codex-root",
+      "reason": "Documentar autoría, auditoría, solicitud a Claude y continuidad operativa."
+    },
+    {
+      "path": "docs/continuidad/auditorias/2026-11-03-protocolo.md",
+      "action": "added",
+      "actor": "codex-root",
+      "reason": "Documentar autoría, auditoría, solicitud a Claude y continuidad operativa."
+    },
+    {
+      "path": "docs/continuidad/autoria-historica.json",
+      "action": "added",
+      "actor": "codex-root",
+      "reason": "Documentar autoría, auditoría, solicitud a Claude y continuidad operativa."
+    },
+    {
+      "path": "docs/continuidad/evidencia/2026-11-03-protocolo/comprobaciones-app.json",
+      "action": "added",
+      "actor": "codex-root",
+      "reason": "Conservar resultados ejecutados con evidencia durable."
+    },
+    {
+      "path": "docs/continuidad/evidencia/2026-11-03-protocolo/pruebas-protocolo.txt",
+      "action": "added",
+      "actor": "codex-root",
+      "reason": "Conservar resultados ejecutados con evidencia durable."
+    },
+    {
+      "path": "docs/continuidad/sesiones/20261103t233649z-codex-auditoria-ia.json",
+      "action": "added",
+      "actor": "codex-root",
+      "reason": "Documentar autoría, auditoría, solicitud a Claude y continuidad operativa."
+    },
+    {
+      "path": "docs/continuidad/solicitudes/2026-11-03-claude.md",
+      "action": "added",
+      "actor": "codex-root",
+      "reason": "Documentar autoría, auditoría, solicitud a Claude y continuidad operativa."
+    },
+    {
+      "path": "docs/entorno/ARRANQUE.md",
+      "action": "modified",
+      "actor": "codex-root",
+      "reason": "Documentar autoría, auditoría, solicitud a Claude y continuidad operativa."
+    },
+    {
+      "path": "scripts/continuity.mjs",
+      "action": "added",
+      "actor": "codex-root",
+      "reason": "Validar sesiones, evidencia, cobertura, paquetes y entregas por SHA sin ejecutar contenidos."
+    },
+    {
+      "path": "scripts/continuity.test.mjs",
+      "action": "added",
+      "actor": "codex-audit-continuity",
+      "reason": "Pruebas adversariales y de integración escritas por el revisor independiente."
+    },
+    {
+      "path": "skills/mes-continuidad/SKILL.md",
+      "action": "added",
+      "actor": "codex-root",
+      "reason": "Skill portable, protocolo, plantillas y entradas de proyecto."
+    },
+    {
+      "path": "skills/mes-continuidad/references/PROTOCOLO.md",
+      "action": "added",
+      "actor": "codex-root",
+      "reason": "Skill portable, protocolo, plantillas y entradas de proyecto."
+    },
+    {
+      "path": "skills/mes-continuidad/templates/ENTREGA.md",
+      "action": "added",
+      "actor": "codex-root",
+      "reason": "Skill portable, protocolo, plantillas y entradas de proyecto."
+    },
+    {
+      "path": "skills/mes-continuidad/templates/PETICION.md",
+      "action": "added",
+      "actor": "codex-root",
+      "reason": "Skill portable, protocolo, plantillas y entradas de proyecto."
+    },
+    {
+      "path": "skills/mes-continuidad/templates/SESSION.json",
+      "action": "added",
+      "actor": "codex-root",
+      "reason": "Skill portable, protocolo, plantillas y entradas de proyecto."
+    }
+  ],
+  "checks": [
+    {
+      "name": "Protocolo y ataques de integridad/integración",
+      "command": "node --test scripts/continuity.test.mjs",
+      "actor": "codex-root",
+      "at": "2026-11-03T23:49:50Z",
+      "outcome": "passed",
+      "exit_code": 0,
+      "evidence": [
+        "docs/continuidad/evidencia/2026-11-03-protocolo/pruebas-protocolo.txt"
+      ]
+    },
+    {
+      "name": "npm test",
+      "command": "npm test",
+      "actor": "codex-root",
+      "at": "2026-11-03T23:50:17.646Z",
+      "outcome": "passed",
+      "exit_code": 0,
+      "evidence": [
+        "docs/continuidad/evidencia/2026-11-03-protocolo/comprobaciones-app.json"
+      ]
+    },
+    {
+      "name": "npm run typecheck",
+      "command": "npm run typecheck",
+      "actor": "codex-root",
+      "at": "2026-11-03T23:50:18.540Z",
+      "outcome": "passed",
+      "exit_code": 0,
+      "evidence": [
+        "docs/continuidad/evidencia/2026-11-03-protocolo/comprobaciones-app.json"
+      ]
+    },
+    {
+      "name": "npm run format:check",
+      "command": "npm run format:check",
+      "actor": "codex-root",
+      "at": "2026-11-03T23:50:23.116Z",
+      "outcome": "passed",
+      "exit_code": 0,
+      "evidence": [
+        "docs/continuidad/evidencia/2026-11-03-protocolo/comprobaciones-app.json"
+      ]
+    },
+    {
+      "name": "npm run build",
+      "command": "npm run build",
+      "actor": "codex-root",
+      "at": "2026-11-03T23:50:25.270Z",
+      "outcome": "passed",
+      "exit_code": 0,
+      "evidence": [
+        "docs/continuidad/evidencia/2026-11-03-protocolo/comprobaciones-app.json"
+      ]
+    },
+    {
+      "name": "Instalación real en Claude",
+      "command": "Carga y activación en un cliente Claude",
+      "actor": "codex-root",
+      "at": "2026-11-03T23:52:01Z",
+      "outcome": "not_run",
+      "exit_code": null,
+      "evidence": [],
+      "reason": "No hay CLI/conector o sesión de Claude accesible. ZIP y recursos comprobados localmente; la skill no instala acceso por sí misma."
+    },
+    {
+      "name": "QA visual y teléfonos físicos en esta auditoría",
+      "command": "npm run qa / pruebas físicas",
+      "actor": "codex-root",
+      "at": "2026-11-03T23:52:01Z",
+      "outcome": "not_run",
+      "exit_code": null,
+      "evidence": [],
+      "reason": "La UI y el dominio no cambiaron. Se conservan las 84 comprobaciones web del turno anterior y sus límites; teléfonos físicos siguen pendientes."
+    }
+  ],
+  "artifacts": [
+    {
+      "path": "docs/continuidad/evidencia/2026-11-03-protocolo/pruebas-protocolo.txt",
+      "sha256": "bae4a358879906f1f63618365909c178b2161672d2b6160419623eddede4e47b",
+      "description": "Salida real de las 50 comprobaciones del protocolo, ejecutadas por root."
+    },
+    {
+      "path": "docs/continuidad/evidencia/2026-11-03-protocolo/comprobaciones-app.json",
+      "sha256": "9c6f0d00cf92d6bbe7f9c9ed505b010fe3f066eeee4dcc9e9f11b1b49c695088",
+      "description": "Comandos, timestamps, exit codes y salidas de las comprobaciones de aplicación."
+    }
+  ],
+  "inputs": [
+    {
+      "source": "main antes de la auditoría",
+      "commit": "047355f648f9bd99b17a7b5d1f265fab6841e3f0",
+      "disposition": "reviewed",
+      "reason": "Base preservada; la fuente financiera y sus dependencias no requieren modificación para este encargo."
+    }
+  ],
+  "corrections": [],
+  "handoff": {
+    "summary": "Protocolo 1.0.0 compartido para documentar cada acción material, atribuir roles y recibir/integrar entregas verificables. Siete huecos iniciales tratados; ocho fallos del primer validador corregidos; 50 comprobaciones de protocolo y 39 de app aprobadas.",
+    "delivery": "Skill en distribucion/mes-continuidad.zip y código/documentos en main. Cierre por commit con trailers Mes-Session/Mes-Actor; descriptor post-commit generado desde objetos Git. La publicación se verifica contra el SHA remoto, no se inventa en este registro previo al commit.",
+    "next_steps": [
+      "Instalar/habilitar la skill en el cliente de Claude y hacer su prueba de aceptación con acceso a main.",
+      "Trasladar la petición preparada a la sesión histórica de Claude cuando exista canal; registrar envío/respuesta sin duplicar el código ya integrado.",
+      "Usar sesiones nuevas y evidencia durable en cada siguiente trabajo; integrar por SHA y conservar autoría/conflictos.",
+      "Revisar/guardar y publicar el borrador cloud actualizado cuando se quiera activar el nuevo snapshot; no equivale a instalar una skill global.",
+      "Continuar el plan de la beta y revisar los avisos de dependencias pendientes antes de producción."
+    ],
+    "blockers": [
+      "La API de GitHub no permitió verificar Actions/protección de ramas ni administrar la rama predeterminada.",
+      "No hay conexión activa con Claude ni transcripción de su sesión original; la solicitud está preparada, no enviada."
+    ]
+  }
+}
