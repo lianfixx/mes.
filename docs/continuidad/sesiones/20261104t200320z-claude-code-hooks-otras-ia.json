@@ -1,0 +1,175 @@
+{
+  "schema_version": 1,
+  "id": "20261104t200320z-claude-code-hooks-otras-ia",
+  "kind": "work",
+  "status": "ready",
+  "created_at": "2026-11-04T19:33:20Z",
+  "updated_at": "2026-11-04T20:03:25Z",
+  "repository": "lianfixx/mes.",
+  "request": {
+    "by": "Emi",
+    "text": "Que los frenos de git funcionen también con Codex y ChatGPT.",
+    "source": "mensaje de la sesión de Claude Code, 4/11/2026"
+  },
+  "baseline": {
+    "commit": "9150561409a64f2d5c8805aa5f58f7b0109cf0dc",
+    "branch": "claude/kind-hopper-1ll614 (igual a main tras el merge del PR #2)",
+    "dirty_paths": []
+  },
+  "actors": [
+    {
+      "id": "claude-code",
+      "tool": "Claude Code (sesión en la nube)",
+      "model": "no disponible",
+      "roles": [
+        "executor",
+        "integrator"
+      ],
+      "identity_basis": "declaración de la sesión"
+    }
+  ],
+  "executor": "claude-code",
+  "events": [
+    {
+      "id": "evento-001",
+      "at": "2026-11-04T19:33:20Z",
+      "actor": "claude-code",
+      "kind": "request",
+      "summary": "Emi pide fusionar el PR de mes. y que las IA entiendan las reglas al empezar."
+    },
+    {
+      "id": "evento-002",
+      "at": "2026-11-04T19:35:20Z",
+      "actor": "claude-code",
+      "kind": "integration",
+      "summary": "PR #2 ya fusionado en main (9150561); se parte de ahí."
+    },
+    {
+      "id": "evento-003",
+      "at": "2026-11-04T19:43:20Z",
+      "actor": "claude-code",
+      "kind": "change",
+      "summary": "verificar.py inicio activa los hooks de git también fuera de Claude Code."
+    },
+    {
+      "id": "evento-004",
+      "at": "2026-11-04T20:03:20Z",
+      "actor": "claude-code",
+      "kind": "verification",
+      "summary": "Pruebas de las reglas comunes y salida de inicio ejecutadas; resultados en checks."
+    },
+    {
+      "id": "evento-005",
+      "at": "2026-11-04T20:03:25Z",
+      "actor": "claude-code",
+      "kind": "handoff",
+      "summary": "Entrega por PR a main."
+    }
+  ],
+  "changes": [
+    {
+      "path": "AGENTS.md",
+      "action": "modified",
+      "actor": "claude-code",
+      "reason": "Hooks de git activados por verificar.py inicio para cualquier IA"
+    },
+    {
+      "path": "SHA256SUMS.json",
+      "action": "modified",
+      "actor": "claude-code",
+      "reason": "Manifiesto regenerado"
+    },
+    {
+      "path": "docs/continuidad/evidencia/2026-11-04-hooks-otras-ia/inicio.txt",
+      "action": "added",
+      "actor": "claude-code",
+      "reason": "Evidencia durable de la verificación"
+    },
+    {
+      "path": "docs/continuidad/evidencia/2026-11-04-hooks-otras-ia/test_guard.txt",
+      "action": "added",
+      "actor": "claude-code",
+      "reason": "Evidencia durable de la verificación"
+    },
+    {
+      "path": "docs/continuidad/sesiones/20261104t200320z-claude-code-hooks-otras-ia.json",
+      "action": "added",
+      "actor": "claude-code",
+      "reason": "Registro de esta sesión"
+    },
+    {
+      "path": "ia/INSTRUCCIONES_PROYECTO.md",
+      "action": "modified",
+      "actor": "claude-code",
+      "reason": "Hooks de git activados por verificar.py inicio para cualquier IA"
+    },
+    {
+      "path": "ia/test_guard.py",
+      "action": "modified",
+      "actor": "claude-code",
+      "reason": "Hooks de git activados por verificar.py inicio para cualquier IA"
+    },
+    {
+      "path": "ia/verificar.py",
+      "action": "modified",
+      "actor": "claude-code",
+      "reason": "Hooks de git activados por verificar.py inicio para cualquier IA"
+    }
+  ],
+  "checks": [
+    {
+      "name": "Pruebas de las reglas comunes",
+      "command": "python3 ia/test_guard.py",
+      "actor": "claude-code",
+      "at": "2026-11-04T20:03:20Z",
+      "outcome": "passed",
+      "exit_code": 0,
+      "evidence": [
+        "docs/continuidad/evidencia/2026-11-04-hooks-otras-ia/test_guard.txt"
+      ]
+    },
+    {
+      "name": "Resumen de arranque",
+      "command": "python3 ia/verificar.py inicio",
+      "actor": "claude-code",
+      "at": "2026-11-04T20:03:20Z",
+      "outcome": "passed",
+      "exit_code": 0,
+      "evidence": [
+        "docs/continuidad/evidencia/2026-11-04-hooks-otras-ia/inicio.txt"
+      ]
+    },
+    {
+      "name": "Pruebas de la app",
+      "command": "npm test / npm run typecheck / npm run build",
+      "actor": "claude-code",
+      "at": "2026-11-04T20:03:20Z",
+      "outcome": "not_run",
+      "exit_code": null,
+      "evidence": [],
+      "reason": "Sin cambios de comportamiento de la app."
+    }
+  ],
+  "artifacts": [
+    {
+      "path": "docs/continuidad/evidencia/2026-11-04-hooks-otras-ia/test_guard.txt",
+      "sha256": "5a6b54ebc1d8a4c7ef58861a1c82c56bae80a9e5bb09bef292682ed69be9122a",
+      "description": "Salida de python3 ia/test_guard.py"
+    },
+    {
+      "path": "docs/continuidad/evidencia/2026-11-04-hooks-otras-ia/inicio.txt",
+      "sha256": "acfba84e9aaee2a3fd3f12adf65ec1415a4316f33b7e42d0025d07cc01d02f0f",
+      "description": "Salida de python3 ia/verificar.py inicio"
+    }
+  ],
+  "inputs": [],
+  "corrections": [],
+  "handoff": {
+    "summary": "Frenos de git disponibles para Codex, ChatGPT y Gemini en Mes.",
+    "delivery": "PR a main desde claude/kind-hopper-1ll614.",
+    "next_steps": [
+      "En cada sesión, usar la salida de inicio como punto de partida."
+    ],
+    "blockers": []
+  }
+}

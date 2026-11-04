@@ -1,0 +1,157 @@
+{
+  "schema_version": 1,
+  "id": "20261104t200945z-claude-code-correccion-flag-push",
+  "kind": "work",
+  "status": "ready",
+  "created_at": "2026-11-04T19:39:45Z",
+  "updated_at": "2026-11-04T20:09:50Z",
+  "repository": "lianfixx/mes.",
+  "request": {
+    "by": "Emi",
+    "text": "Corrección propia: regla de push forzado con flags mal formados.",
+    "source": "mensaje de la sesión de Claude Code, 4/11/2026"
+  },
+  "baseline": {
+    "commit": "439c9706a0a73f75d77fe8f3343144fe64b5aaf0",
+    "branch": "claude/kind-hopper-1ll614 (con el commit 439c970 aún sin fusionar)",
+    "dirty_paths": []
+  },
+  "actors": [
+    {
+      "id": "claude-code",
+      "tool": "Claude Code (sesión en la nube)",
+      "model": "no disponible",
+      "roles": [
+        "executor",
+        "integrator"
+      ],
+      "identity_basis": "declaración de la sesión"
+    }
+  ],
+  "executor": "claude-code",
+  "events": [
+    {
+      "id": "evento-001",
+      "at": "2026-11-04T19:39:45Z",
+      "actor": "claude-code",
+      "kind": "request",
+      "summary": "Emi pide fusionar el PR de mes. y que las IA entiendan las reglas al empezar."
+    },
+    {
+      "id": "evento-002",
+      "at": "2026-11-04T19:41:45Z",
+      "actor": "claude-code",
+      "kind": "integration",
+      "summary": "Se detecta que `-f-never` no estaba cubierto por la regla de push forzado; el push afectado fue lineal (sin pérdida)."
+    },
+    {
+      "id": "evento-003",
+      "at": "2026-11-04T19:49:45Z",
+      "actor": "claude-code",
+      "kind": "change",
+      "summary": "Patrón de flags cortos ampliado y caso de prueba añadido."
+    },
+    {
+      "id": "evento-004",
+      "at": "2026-11-04T20:09:45Z",
+      "actor": "claude-code",
+      "kind": "verification",
+      "summary": "Pruebas de las reglas comunes y salida de inicio ejecutadas; resultados en checks."
+    },
+    {
+      "id": "evento-005",
+      "at": "2026-11-04T20:09:50Z",
+      "actor": "claude-code",
+      "kind": "handoff",
+      "summary": "Entrega por PR a main."
+    }
+  ],
+  "changes": [
+    {
+      "path": "SHA256SUMS.json",
+      "action": "modified",
+      "actor": "claude-code",
+      "reason": "Manifiesto regenerado"
+    },
+    {
+      "path": "docs/continuidad/evidencia/2026-11-04-correccion-flag-push/inicio.txt",
+      "action": "added",
+      "actor": "claude-code",
+      "reason": "Evidencia durable de la verificación"
+    },
+    {
+      "path": "docs/continuidad/evidencia/2026-11-04-correccion-flag-push/test_guard.txt",
+      "action": "added",
+      "actor": "claude-code",
+      "reason": "Evidencia durable de la verificación"
+    },
+    {
+      "path": "docs/continuidad/sesiones/20261104t200945z-claude-code-correccion-flag-push.json",
+      "action": "added",
+      "actor": "claude-code",
+      "reason": "Registro de esta sesión"
+    },
+    {
+      "path": "ia/politica.json",
+      "action": "modified",
+      "actor": "claude-code",
+      "reason": "Regla de push forzado corregida"
+    }
+  ],
+  "checks": [
+    {
+      "name": "Pruebas de las reglas comunes",
+      "command": "python3 ia/test_guard.py",
+      "actor": "claude-code",
+      "at": "2026-11-04T20:09:45Z",
+      "outcome": "passed",
+      "exit_code": 0,
+      "evidence": [
+        "docs/continuidad/evidencia/2026-11-04-correccion-flag-push/test_guard.txt"
+      ]
+    },
+    {
+      "name": "Resumen de arranque",
+      "command": "python3 ia/verificar.py inicio",
+      "actor": "claude-code",
+      "at": "2026-11-04T20:09:45Z",
+      "outcome": "passed",
+      "exit_code": 0,
+      "evidence": [
+        "docs/continuidad/evidencia/2026-11-04-correccion-flag-push/inicio.txt"
+      ]
+    },
+    {
+      "name": "Pruebas de la app",
+      "command": "npm test / npm run typecheck / npm run build",
+      "actor": "claude-code",
+      "at": "2026-11-04T20:09:45Z",
+      "outcome": "not_run",
+      "exit_code": null,
+      "evidence": [],
+      "reason": "Sin cambios de comportamiento de la app."
+    }
+  ],
+  "artifacts": [
+    {
+      "path": "docs/continuidad/evidencia/2026-11-04-correccion-flag-push/test_guard.txt",
+      "sha256": "7e02501d93114ddde5e2ce3087cd24966531849e4a267cd2a285889207ea83a2",
+      "description": "Salida de python3 ia/test_guard.py"
+    },
+    {
+      "path": "docs/continuidad/evidencia/2026-11-04-correccion-flag-push/inicio.txt",
+      "sha256": "1a0bc0def0849562f8ee1d32469cbd62fff744634d304baccbcbec2b93a7a82e",
+      "description": "Salida de python3 ia/verificar.py inicio"
+    }
+  ],
+  "inputs": [],
+  "corrections": [],
+  "handoff": {
+    "summary": "Regla de push forzado corregida en Mes.",
+    "delivery": "PR a main desde claude/kind-hopper-1ll614.",
+    "next_steps": [
+      "En cada sesión, usar la salida de inicio como punto de partida."
+    ],
+    "blockers": []
+  }
+}
