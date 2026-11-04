@@ -1,0 +1,157 @@
+{
+  "schema_version": 1,
+  "id": "20261104t223104z-claude-code-puentes-yaml",
+  "kind": "work",
+  "status": "ready",
+  "created_at": "2026-11-04T22:01:04Z",
+  "updated_at": "2026-11-04T22:31:09Z",
+  "repository": "lianfixx/mes.",
+  "request": {
+    "by": "Emi",
+    "text": "Corrección propia: validar YAML de puentes de skill.",
+    "source": "mensaje de la sesión de Claude Code, 4/11/2026"
+  },
+  "baseline": {
+    "commit": "9bfe912c8148aab81dbab47fbd89e9be6a03a624",
+    "branch": "claude/kind-hopper-1ll614 (igual a main tras el merge del PR #3)",
+    "dirty_paths": []
+  },
+  "actors": [
+    {
+      "id": "claude-code",
+      "tool": "Claude Code (sesión en la nube)",
+      "model": "no disponible",
+      "roles": [
+        "executor",
+        "integrator"
+      ],
+      "identity_basis": "declaración de la sesión"
+    }
+  ],
+  "executor": "claude-code",
+  "events": [
+    {
+      "id": "evento-001",
+      "at": "2026-11-04T22:01:04Z",
+      "actor": "claude-code",
+      "kind": "request",
+      "summary": "Emi pide fusionar el PR de mes. y que las IA entiendan las reglas al empezar."
+    },
+    {
+      "id": "evento-002",
+      "at": "2026-11-04T22:03:04Z",
+      "actor": "claude-code",
+      "kind": "integration",
+      "summary": "Se detecta que dos puentes de skill de otros repositorios tenían YAML inválido."
+    },
+    {
+      "id": "evento-003",
+      "at": "2026-11-04T22:11:04Z",
+      "actor": "claude-code",
+      "kind": "change",
+      "summary": "check_skill valida YAML; Mes usa puentes propios, solo se actualiza la copia común."
+    },
+    {
+      "id": "evento-004",
+      "at": "2026-11-04T22:31:04Z",
+      "actor": "claude-code",
+      "kind": "verification",
+      "summary": "Pruebas de las reglas comunes y salida de inicio ejecutadas; resultados en checks."
+    },
+    {
+      "id": "evento-005",
+      "at": "2026-11-04T22:31:09Z",
+      "actor": "claude-code",
+      "kind": "handoff",
+      "summary": "Entrega por PR a main."
+    }
+  ],
+  "changes": [
+    {
+      "path": "SHA256SUMS.json",
+      "action": "modified",
+      "actor": "claude-code",
+      "reason": "Manifiesto regenerado"
+    },
+    {
+      "path": "docs/continuidad/evidencia/2026-11-04-puentes-yaml/inicio.txt",
+      "action": "added",
+      "actor": "claude-code",
+      "reason": "Evidencia durable de la verificación"
+    },
+    {
+      "path": "docs/continuidad/evidencia/2026-11-04-puentes-yaml/test_guard.txt",
+      "action": "added",
+      "actor": "claude-code",
+      "reason": "Evidencia durable de la verificación"
+    },
+    {
+      "path": "docs/continuidad/sesiones/20261104t223104z-claude-code-puentes-yaml.json",
+      "action": "added",
+      "actor": "claude-code",
+      "reason": "Registro de esta sesión"
+    },
+    {
+      "path": "ia/check_skill.py",
+      "action": "modified",
+      "actor": "claude-code",
+      "reason": "Validación de YAML de skills"
+    }
+  ],
+  "checks": [
+    {
+      "name": "Pruebas de las reglas comunes",
+      "command": "python3 ia/test_guard.py",
+      "actor": "claude-code",
+      "at": "2026-11-04T22:31:04Z",
+      "outcome": "passed",
+      "exit_code": 0,
+      "evidence": [
+        "docs/continuidad/evidencia/2026-11-04-puentes-yaml/test_guard.txt"
+      ]
+    },
+    {
+      "name": "Resumen de arranque",
+      "command": "python3 ia/verificar.py inicio",
+      "actor": "claude-code",
+      "at": "2026-11-04T22:31:04Z",
+      "outcome": "passed",
+      "exit_code": 0,
+      "evidence": [
+        "docs/continuidad/evidencia/2026-11-04-puentes-yaml/inicio.txt"
+      ]
+    },
+    {
+      "name": "Pruebas de la app",
+      "command": "npm test / npm run typecheck / npm run build",
+      "actor": "claude-code",
+      "at": "2026-11-04T22:31:04Z",
+      "outcome": "not_run",
+      "exit_code": null,
+      "evidence": [],
+      "reason": "Sin cambios de comportamiento de la app."
+    }
+  ],
+  "artifacts": [
+    {
+      "path": "docs/continuidad/evidencia/2026-11-04-puentes-yaml/test_guard.txt",
+      "sha256": "dbd9577fab27d70a0f2ef4cd3e10ffadec19030ef61127c1e532409ae9197838",
+      "description": "Salida de python3 ia/test_guard.py"
+    },
+    {
+      "path": "docs/continuidad/evidencia/2026-11-04-puentes-yaml/inicio.txt",
+      "sha256": "15ef821c714e1c06e7148b064d86078a4a646d6d622c1094d5aa8713cbaf684d",
+      "description": "Salida de python3 ia/verificar.py inicio"
+    }
+  ],
+  "inputs": [],
+  "corrections": [],
+  "handoff": {
+    "summary": "Copia común de check_skill actualizada en Mes.",
+    "delivery": "PR a main desde claude/kind-hopper-1ll614.",
+    "next_steps": [
+      "En cada sesión, usar la salida de inicio como punto de partida."
+    ],
+    "blockers": []
+  }
+}
