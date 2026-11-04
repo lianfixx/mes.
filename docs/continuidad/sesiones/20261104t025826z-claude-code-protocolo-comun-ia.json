@@ -1,0 +1,300 @@
+{
+  "schema_version": 1,
+  "id": "20261104t025826z-claude-code-protocolo-comun-ia",
+  "kind": "work",
+  "status": "ready",
+  "created_at": "2026-11-04T02:18:26Z",
+  "updated_at": "2026-11-04T03:33:37Z",
+  "repository": "lianfixx/mes.",
+  "request": {
+    "by": "Emi",
+    "text": "Auditar y documentar en GitHub las mejoras de las skills; hacerlas funcionar igual con ChatGPT, Gemini u otra IA; incluir los repositorios restantes; que toda IA documente siempre cualquier cambio bajo las mismas reglas y parámetros.",
+    "source": "mensaje de la sesión de Claude Code, 4/11/2026"
+  },
+  "baseline": {
+    "commit": "dd76d3a4c3f654de60ae7a138ec181880d3b464a",
+    "branch": "claude/kind-hopper-1ll614 (avanzada a origin/main dd76d3a)",
+    "dirty_paths": []
+  },
+  "actors": [
+    {
+      "id": "claude-code",
+      "tool": "Claude Code (sesión en la nube)",
+      "model": "no disponible",
+      "roles": [
+        "executor"
+      ],
+      "identity_basis": "declaración de la sesión"
+    }
+  ],
+  "executor": "claude-code",
+  "events": [
+    {
+      "id": "evento-001",
+      "at": "2026-11-04T02:18:26Z",
+      "actor": "claude-code",
+      "kind": "request",
+      "summary": "Recepción del encargo de Emi: auditoría, documentación y protocolo común entre IA para todos sus repositorios."
+    },
+    {
+      "id": "evento-002",
+      "at": "2026-11-04T02:23:26Z",
+      "actor": "claude-code",
+      "kind": "inspection",
+      "summary": "Lectura de skills/mes-continuidad (SKILL, PROTOCOLO, plantillas), AGENTS.md, CLAUDE.md, workflow continuidad.yml y la petición preparada a Claude. Se decide generalizar este protocolo como protocolo común 1.0.0 sin modificar la skill mes-continuidad."
+    },
+    {
+      "id": "evento-003",
+      "at": "2026-11-04T02:38:26Z",
+      "actor": "claude-code",
+      "kind": "change",
+      "summary": "Se añade la capa común ia/ (idéntica en 14 repos), GEMINI.md, .claude/settings.json, workflow registro-ia.yml y secciones en AGENTS.md/CLAUDE.md. En Mes el registro válido son las sesiones de docs/continuidad/sesiones/."
+    },
+    {
+      "id": "evento-004",
+      "at": "2026-11-04T03:33:32Z",
+      "actor": "claude-code",
+      "kind": "verification",
+      "summary": "python3 ia/test_guard.py, python3 ia/verificar.py reglas --check y node --test scripts/continuity.test.mjs ejecutados; resultados y evidencia en checks. Se atendieron los 17 hallazgos de una revisión independiente del código común."
+    },
+    {
+      "id": "evento-005",
+      "at": "2026-11-04T03:33:37Z",
+      "actor": "claude-code",
+      "kind": "handoff",
+      "summary": "Entrega en la rama claude/kind-hopper-1ll614 para integrar en main; no se respondió la petición histórica a Claude (esta sesión no es la sesión original)."
+    }
+  ],
+  "changes": [
+    {
+      "path": ".claude/settings.json",
+      "action": "added",
+      "actor": "claude-code",
+      "reason": "Frenos de Claude Code apuntan a ia/guard.py"
+    },
+    {
+      "path": ".github/CODEOWNERS",
+      "action": "added",
+      "actor": "claude-code",
+      "reason": "Workflow común y propietarios de las reglas"
+    },
+    {
+      "path": ".github/workflows/registro-ia.yml",
+      "action": "added",
+      "actor": "claude-code",
+      "reason": "Workflow común y propietarios de las reglas"
+    },
+    {
+      "path": "AGENTS.md",
+      "action": "modified",
+      "actor": "claude-code",
+      "reason": "Sección «Trabajo entre IA» que remite al protocolo común"
+    },
+    {
+      "path": "CLAUDE.md",
+      "action": "modified",
+      "actor": "claude-code",
+      "reason": "Referencia a las reglas comunes ia/REGLAS.md e ia/PROTOCOLO.md"
+    },
+    {
+      "path": "GEMINI.md",
+      "action": "added",
+      "actor": "claude-code",
+      "reason": "Entrada para Gemini CLI que importa AGENTS.md"
+    },
+    {
+      "path": "SHA256SUMS.json",
+      "action": "modified",
+      "actor": "claude-code",
+      "reason": "Manifiesto regenerado con node scripts/continuity.mjs manifest"
+    },
+    {
+      "path": "docs/continuidad/evidencia/2026-11-04-protocolo-comun/continuity_test.txt",
+      "action": "added",
+      "actor": "claude-code",
+      "reason": "Evidencia durable de la verificación"
+    },
+    {
+      "path": "docs/continuidad/evidencia/2026-11-04-protocolo-comun/reglas_check.txt",
+      "action": "added",
+      "actor": "claude-code",
+      "reason": "Evidencia durable de la verificación"
+    },
+    {
+      "path": "docs/continuidad/evidencia/2026-11-04-protocolo-comun/test_guard.txt",
+      "action": "added",
+      "actor": "claude-code",
+      "reason": "Evidencia durable de la verificación"
+    },
+    {
+      "path": "docs/continuidad/sesiones/20261104t025826z-claude-code-protocolo-comun-ia.json",
+      "action": "added",
+      "actor": "claude-code",
+      "reason": "Registro de esta sesión"
+    },
+    {
+      "path": "ia/.gitignore",
+      "action": "added",
+      "actor": "claude-code",
+      "reason": "Capa común entre IA (protocolo, reglas, frenos, hooks de git, plantillas)"
+    },
+    {
+      "path": "ia/AUDITORIA_2026-11-04.md",
+      "action": "added",
+      "actor": "claude-code",
+      "reason": "Capa común entre IA (protocolo, reglas, frenos, hooks de git, plantillas)"
+    },
+    {
+      "path": "ia/INSTRUCCIONES_PROYECTO.md",
+      "action": "added",
+      "actor": "claude-code",
+      "reason": "Capa común entre IA (protocolo, reglas, frenos, hooks de git, plantillas)"
+    },
+    {
+      "path": "ia/PROTOCOLO.md",
+      "action": "added",
+      "actor": "claude-code",
+      "reason": "Capa común entre IA (protocolo, reglas, frenos, hooks de git, plantillas)"
+    },
+    {
+      "path": "ia/REGLAS.md",
+      "action": "added",
+      "actor": "claude-code",
+      "reason": "Capa común entre IA (protocolo, reglas, frenos, hooks de git, plantillas)"
+    },
+    {
+      "path": "ia/check_skill.py",
+      "action": "added",
+      "actor": "claude-code",
+      "reason": "Capa común entre IA (protocolo, reglas, frenos, hooks de git, plantillas)"
+    },
+    {
+      "path": "ia/githooks/pre-commit",
+      "action": "added",
+      "actor": "claude-code",
+      "reason": "Capa común entre IA (protocolo, reglas, frenos, hooks de git, plantillas)"
+    },
+    {
+      "path": "ia/githooks/pre-push",
+      "action": "added",
+      "actor": "claude-code",
+      "reason": "Capa común entre IA (protocolo, reglas, frenos, hooks de git, plantillas)"
+    },
+    {
+      "path": "ia/guard.py",
+      "action": "added",
+      "actor": "claude-code",
+      "reason": "Capa común entre IA (protocolo, reglas, frenos, hooks de git, plantillas)"
+    },
+    {
+      "path": "ia/instalar.sh",
+      "action": "added",
+      "actor": "claude-code",
+      "reason": "Capa común entre IA (protocolo, reglas, frenos, hooks de git, plantillas)"
+    },
+    {
+      "path": "ia/plantillas/ENTREGA.md",
+      "action": "added",
+      "actor": "claude-code",
+      "reason": "Capa común entre IA (protocolo, reglas, frenos, hooks de git, plantillas)"
+    },
+    {
+      "path": "ia/plantillas/PETICION.md",
+      "action": "added",
+      "actor": "claude-code",
+      "reason": "Capa común entre IA (protocolo, reglas, frenos, hooks de git, plantillas)"
+    },
+    {
+      "path": "ia/politica.json",
+      "action": "added",
+      "actor": "claude-code",
+      "reason": "Capa común entre IA (protocolo, reglas, frenos, hooks de git, plantillas)"
+    },
+    {
+      "path": "ia/test_guard.py",
+      "action": "added",
+      "actor": "claude-code",
+      "reason": "Capa común entre IA (protocolo, reglas, frenos, hooks de git, plantillas)"
+    },
+    {
+      "path": "ia/verificar.py",
+      "action": "added",
+      "actor": "claude-code",
+      "reason": "Capa común entre IA (protocolo, reglas, frenos, hooks de git, plantillas)"
+    }
+  ],
+  "checks": [
+    {
+      "name": "Pruebas de las reglas comunes",
+      "command": "python3 ia/test_guard.py",
+      "actor": "claude-code",
+      "at": "2026-11-04T03:33:32Z",
+      "outcome": "passed",
+      "exit_code": 0,
+      "evidence": [
+        "docs/continuidad/evidencia/2026-11-04-protocolo-comun/test_guard.txt"
+      ]
+    },
+    {
+      "name": "REGLAS.md al día",
+      "command": "python3 ia/verificar.py reglas --check",
+      "actor": "claude-code",
+      "at": "2026-11-04T03:33:32Z",
+      "outcome": "passed",
+      "exit_code": 0,
+      "evidence": [
+        "docs/continuidad/evidencia/2026-11-04-protocolo-comun/reglas_check.txt"
+      ]
+    },
+    {
+      "name": "Protocolo de continuidad de Mes",
+      "command": "node --test scripts/continuity.test.mjs",
+      "actor": "claude-code",
+      "at": "2026-11-04T03:33:32Z",
+      "outcome": "passed",
+      "exit_code": 0,
+      "evidence": [
+        "docs/continuidad/evidencia/2026-11-04-protocolo-comun/continuity_test.txt"
+      ]
+    },
+    {
+      "name": "Pruebas de la app",
+      "command": "npm test / npm run typecheck / npm run build",
+      "actor": "claude-code",
+      "at": "2026-11-04T03:33:32Z",
+      "outcome": "not_run",
+      "exit_code": null,
+      "evidence": [],
+      "reason": "Sin cambios de comportamiento de la app; solo documentación y herramientas de ia/."
+    }
+  ],
+  "artifacts": [
+    {
+      "path": "docs/continuidad/evidencia/2026-11-04-protocolo-comun/test_guard.txt",
+      "sha256": "7cb54224853554a6d0c551682987d12b10f22e0e895877be97f992709577f0f6",
+      "description": "Salida de python3 ia/test_guard.py"
+    },
+    {
+      "path": "docs/continuidad/evidencia/2026-11-04-protocolo-comun/reglas_check.txt",
+      "sha256": "221ff27100caa0d8f645767d8085db1e015abc267d289062fa7bbe797f5e145a",
+      "description": "Salida de python3 ia/verificar.py reglas --check"
+    },
+    {
+      "path": "docs/continuidad/evidencia/2026-11-04-protocolo-comun/continuity_test.txt",
+      "sha256": "4fb800f535d52aeae91836f5db468b69626dbf69d19936bf1711a837274bfb90",
+      "description": "Salida de node --test scripts/continuity.test.mjs"
+    }
+  ],
+  "inputs": [],
+  "corrections": [],
+  "handoff": {
+    "summary": "Protocolo común entre IA 1.0.0 instalado en Mes junto al protocolo propio mes-continuidad, que se conserva intacto y más estricto.",
+    "delivery": "Rama claude/kind-hopper-1ll614 (commit con trailers Mes-Session/Mes-Actor).",
+    "next_steps": [
+      "Integrar la rama en main tras revisión.",
+      "Ejecutar sh ia/instalar.sh en cada copia local.",
+      "La petición histórica a Claude (docs/continuidad/solicitudes/2026-11-03-claude.md) sigue preparada y sin respuesta de la sesión original."
+    ],
+    "blockers": []
+  }
+}

@@ -1,0 +1,319 @@
+$ node --test scripts/continuity.test.mjs
+TAP version 13
+# Subtest: a session permits unknown model identity without inventing attribution
+ok 1 - a session permits unknown model identity without inventing attribution
+  ---
+  duration_ms: 2.31941
+  type: 'test'
+  ...
+# Subtest: invalid attribution, chronology and event identity are rejected
+    # Subtest: missing actor
+    ok 1 - missing actor
+      ---
+      duration_ms: 0.488238
+      type: 'test'
+      ...
+    # Subtest: duplicate actor
+    ok 2 - duplicate actor
+      ---
+      duration_ms: 0.295973
+      type: 'test'
+      ...
+    # Subtest: undeclared executor
+    ok 3 - undeclared executor
+      ---
+      duration_ms: 0.323798
+      type: 'test'
+      ...
+    # Subtest: executor without executor role
+    ok 4 - executor without executor role
+      ---
+      duration_ms: 0.177986
+      type: 'test'
+      ...
+    # Subtest: unknown event actor
+    ok 5 - unknown event actor
+      ---
+      duration_ms: 0.111185
+      type: 'test'
+      ...
+    # Subtest: duplicate event
+    ok 6 - duplicate event
+      ---
+      duration_ms: 0.272304
+      type: 'test'
+      ...
+    # Subtest: invalid calendar date
+    ok 7 - invalid calendar date
+      ---
+      duration_ms: 0.223547
+      type: 'test'
+      ...
+    # Subtest: event predates session
+    ok 8 - event predates session
+      ---
+      duration_ms: 0.320164
+      type: 'test'
+      ...
+    # Subtest: event follows checkpoint
+    ok 9 - event follows checkpoint
+      ---
+      duration_ms: 0.337253
+      type: 'test'
+      ...
+    # Subtest: check follows checkpoint
+    ok 10 - check follows checkpoint
+      ---
+      duration_ms: 0.142245
+      type: 'test'
+      ...
+    # Subtest: check predates session
+    ok 11 - check predates session
+      ---
+      duration_ms: 0.083737
+      type: 'test'
+      ...
+    1..11
+ok 2 - invalid attribution, chronology and event identity are rejected
+  ---
+  duration_ms: 5.573919
+  type: 'test'
+  ...
+# Subtest: executed checks require consistent exit codes and durable inventoried evidence
+    # Subtest: passed with nonzero exit
+    ok 1 - passed with nonzero exit
+      ---
+      duration_ms: 0.288906
+      type: 'test'
+      ...
+    # Subtest: failed with zero exit
+    ok 2 - failed with zero exit
+      ---
+      duration_ms: 0.130785
+      type: 'test'
+      ...
+    # Subtest: passed without durable output
+    ok 3 - passed without durable output
+      ---
+      duration_ms: 0.071203
+      type: 'test'
+      ...
+    # Subtest: non-executed with exit
+    ok 4 - non-executed with exit
+      ---
+      duration_ms: 0.064448
+      type: 'test'
+      ...
+    # Subtest: unlisted evidence
+    ok 5 - unlisted evidence
+      ---
+      duration_ms: 0.114152
+      type: 'test'
+      ...
+    1..5
+ok 3 - executed checks require consistent exit codes and durable inventoried evidence
+  ---
+  duration_ms: 0.945238
+  type: 'test'
+  ...
+# Subtest: evidence must exist, match its bytes and remain inside the repository
+ok 4 - evidence must exist, match its bytes and remain inside the repository
+  ---
+  duration_ms: 6.267129
+  type: 'test'
+  ...
+# Subtest: the repository manifest detects modified bytes and omitted files
+ok 5 - the repository manifest detects modified bytes and omitted files
+  ---
+  duration_ms: 106.530184
+  type: 'test'
+  ...
+# Subtest: unrecorded additions, modifications and deletions cannot pass the integration gate
+    # Subtest: added
+    ok 1 - added
+      ---
+      duration_ms: 248.686797
+      type: 'test'
+      ...
+    # Subtest: modified
+    ok 2 - modified
+      ---
+      duration_ms: 222.503151
+      type: 'test'
+      ...
+    # Subtest: deleted
+    ok 3 - deleted
+      ---
+      duration_ms: 237.87392
+      type: 'test'
+      ...
+    1..3
+ok 6 - unrecorded additions, modifications and deletions cannot pass the integration gate
+  ---
+  duration_ms: 709.99296
+  type: 'test'
+  ...
+# Subtest: a rename records both the removed path and new path
+ok 7 - a rename records both the removed path and new path
+  ---
+  duration_ms: 231.078919
+  type: 'test'
+  ...
+# Subtest: sealed records cannot be rewritten or removed
+    # Subtest: rewrite
+    ok 1 - rewrite
+      ---
+      duration_ms: 112.653622
+      type: 'test'
+      ...
+    # Subtest: delete
+    ok 2 - delete
+      ---
+      duration_ms: 120.927152
+      type: 'test'
+      ...
+    1..2
+ok 8 - sealed records cannot be rewritten or removed
+  ---
+  duration_ms: 234.289667
+  type: 'test'
+  ...
+# Subtest: an open session can append events but cannot rewrite its existing history
+ok 9 - an open session can append events but cannot rewrite its existing history
+  ---
+  duration_ms: 214.821273
+  type: 'test'
+  ...
+# Subtest: two concurrent actors retain separate records and cover their respective work
+ok 10 - two concurrent actors retain separate records and cover their respective work
+  ---
+  duration_ms: 375.514806
+  type: 'test'
+  ...
+# Subtest: a combined conflict resolution needs its own integrator attribution
+ok 11 - a combined conflict resolution needs its own integrator attribution
+  ---
+  duration_ms: 721.1469
+  type: 'test'
+  ...
+# Subtest: skill packages are portable, complete and byte-identical to their canonical files
+ok 12 - skill packages are portable, complete and byte-identical to their canonical files
+  ---
+  duration_ms: 112.712903
+  type: 'test'
+  ...
+# Subtest: incomplete and traversal ZIPs are rejected without extracting them
+ok 13 - incomplete and traversal ZIPs are rejected without extracting them
+  ---
+  duration_ms: 101.566879
+  type: 'test'
+  ...
+# Subtest: a ZIP symlink is rejected even if its target bytes match the canonical text
+ok 14 - a ZIP symlink is rejected even if its target bytes match the canonical text
+  ---
+  duration_ms: 97.538002
+  type: 'test'
+  ...
+# Subtest: deliveries bind exact commits and file bytes and refuse a dirty sender
+ok 15 - deliveries bind exact commits and file bytes and refuse a dirty sender
+  ---
+  duration_ms: 345.207329
+  type: 'test'
+  ...
+# Subtest: delivery tampering is rejected for SHA, base, inventory, commits and bytes
+    # Subtest: short HEAD
+    ok 1 - short HEAD
+      ---
+      duration_ms: 5.714891
+      type: 'test'
+      ...
+    # Subtest: nonexistent base
+    ok 2 - nonexistent base
+      ---
+      duration_ms: 5.400466
+      type: 'test'
+      ...
+    # Subtest: base equals HEAD
+    ok 3 - base equals HEAD
+      ---
+      duration_ms: 13.948859
+      type: 'test'
+      ...
+    # Subtest: backwards ancestry
+    ok 4 - backwards ancestry
+      ---
+      duration_ms: 11.881412
+      type: 'test'
+      ...
+    # Subtest: omitted file
+    ok 5 - omitted file
+      ---
+      duration_ms: 18.386446
+      type: 'test'
+      ...
+    # Subtest: invented file
+    ok 6 - invented file
+      ---
+      duration_ms: 15.856393
+      type: 'test'
+      ...
+    # Subtest: altered hash
+    ok 7 - altered hash
+      ---
+      duration_ms: 44.206625
+      type: 'test'
+      ...
+    # Subtest: missing commit
+    ok 8 - missing commit
+      ---
+      duration_ms: 18.437952
+      type: 'test'
+      ...
+    1..8
+ok 16 - delivery tampering is rejected for SHA, base, inventory, commits and bytes
+  ---
+  duration_ms: 370.182118
+  type: 'test'
+  ...
+# Subtest: valid outer hashes cannot hide altered or missing evidence in the delivered commit
+    # Subtest: altered
+    ok 1 - altered
+      ---
+      duration_ms: 336.480417
+      type: 'test'
+      ...
+    # Subtest: missing
+    ok 2 - missing
+      ---
+      duration_ms: 286.712936
+      type: 'test'
+      ...
+    1..2
+ok 17 - valid outer hashes cannot hide altered or missing evidence in the delivered commit
+  ---
+  duration_ms: 623.889781
+  type: 'test'
+  ...
+# Subtest: the delivery identity must match the session stored at its declared path
+ok 18 - the delivery identity must match the session stored at its declared path
+  ---
+  duration_ms: 227.468585
+  type: 'test'
+  ...
+# Subtest: a Git delivery cannot smuggle an escaping symlink as an ordinary file
+ok 19 - a Git delivery cannot smuggle an escaping symlink as an ordinary file
+  ---
+  duration_ms: 204.177939
+  type: 'test'
+  ...
+1..19
+# tests 50
+# suites 0
+# pass 50
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 4796.910102
+
+exit=0
