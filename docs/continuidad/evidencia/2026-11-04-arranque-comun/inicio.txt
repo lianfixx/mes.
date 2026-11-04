@@ -1,0 +1,11 @@
+$ python3 ia/verificar.py inicio
+Protocolo común entre IA activo en lianfixx/mes. (ia/PROTOCOLO.md).
+Antes de trabajar: leer AGENTS.md, ia/REGLAS.md e ia/PROTOCOLO.md, y la skill `mes-continuidad` (skills/mes-continuidad/SKILL.md).
+Fuente de verdad: el repositorio remoto, no la memoria. Hacer `git pull` antes de escribir.
+Todo cambio se registra en el mismo commit en `docs/continuidad/sesiones/<…>.json`, con la línea `Agente:` (quién lo hizo).
+Sin escritura en el repositorio: terminar con «Registro pendiente para el repositorio».
+Rama: claude/kind-hopper-1ll614. Último commit: 189c2eb · 2026-11-04 13:43 · Emiliano Milla · Integra el protocolo común entre IA (#1) (IA: Claude Code).
+Hooks de git: activos.
+Hay 8 archivos con cambios sin commit: revisar de quién son antes de seguir.
+
+exit=0
