@@ -1,0 +1,193 @@
+{
+  "schema_version": 1,
+  "id": "20261104t194508z-claude-code-arranque-comun-ia",
+  "kind": "work",
+  "status": "ready",
+  "created_at": "2026-11-04T19:15:08Z",
+  "updated_at": "2026-11-04T19:45:13Z",
+  "repository": "lianfixx/mes.",
+  "request": {
+    "by": "Emi",
+    "text": "Integrar el PR de mes. y hacer lo necesario para que las IA entiendan y apliquen las reglas al trabajar.",
+    "source": "mensaje de la sesión de Claude Code, 4/11/2026"
+  },
+  "baseline": {
+    "commit": "189c2eb869ddc7c506e97a3ac6391ae2e27bc4c6",
+    "branch": "claude/kind-hopper-1ll614 (igual a main tras el merge del PR #1)",
+    "dirty_paths": []
+  },
+  "actors": [
+    {
+      "id": "claude-code",
+      "tool": "Claude Code (sesión en la nube)",
+      "model": "no disponible",
+      "roles": [
+        "executor",
+        "integrator"
+      ],
+      "identity_basis": "declaración de la sesión"
+    }
+  ],
+  "executor": "claude-code",
+  "events": [
+    {
+      "id": "evento-001",
+      "at": "2026-11-04T19:15:08Z",
+      "actor": "claude-code",
+      "kind": "request",
+      "summary": "Emi pide fusionar el PR de mes. y que las IA entiendan las reglas al empezar."
+    },
+    {
+      "id": "evento-002",
+      "at": "2026-11-04T19:17:08Z",
+      "actor": "claude-code",
+      "kind": "integration",
+      "summary": "PR #1 fusionado en main con merge commit 189c2eb tras pasar «Continuidad de Mes» y «Registro y reglas entre IA»."
+    },
+    {
+      "id": "evento-003",
+      "at": "2026-11-04T19:25:08Z",
+      "actor": "claude-code",
+      "kind": "change",
+      "summary": "Se añade el arranque común (ia/verificar.py inicio y hook SessionStart) y el protocolo común pasa a 1.1.0."
+    },
+    {
+      "id": "evento-004",
+      "at": "2026-11-04T19:45:08Z",
+      "actor": "claude-code",
+      "kind": "verification",
+      "summary": "Pruebas de las reglas comunes y salida de inicio ejecutadas; resultados en checks."
+    },
+    {
+      "id": "evento-005",
+      "at": "2026-11-04T19:45:13Z",
+      "actor": "claude-code",
+      "kind": "handoff",
+      "summary": "Entrega por PR a main."
+    }
+  ],
+  "changes": [
+    {
+      "path": ".claude/settings.json",
+      "action": "modified",
+      "actor": "claude-code",
+      "reason": "Arranque común entre IA (verificar.py inicio, hook SessionStart, protocolo 1.1.0)"
+    },
+    {
+      "path": "AGENTS.md",
+      "action": "modified",
+      "actor": "claude-code",
+      "reason": "Arranque común entre IA (verificar.py inicio, hook SessionStart, protocolo 1.1.0)"
+    },
+    {
+      "path": "GEMINI.md",
+      "action": "modified",
+      "actor": "claude-code",
+      "reason": "Arranque común entre IA (verificar.py inicio, hook SessionStart, protocolo 1.1.0)"
+    },
+    {
+      "path": "SHA256SUMS.json",
+      "action": "modified",
+      "actor": "claude-code",
+      "reason": "Manifiesto regenerado"
+    },
+    {
+      "path": "docs/continuidad/evidencia/2026-11-04-arranque-comun/inicio.txt",
+      "action": "added",
+      "actor": "claude-code",
+      "reason": "Evidencia durable de la verificación"
+    },
+    {
+      "path": "docs/continuidad/evidencia/2026-11-04-arranque-comun/test_guard.txt",
+      "action": "added",
+      "actor": "claude-code",
+      "reason": "Evidencia durable de la verificación"
+    },
+    {
+      "path": "docs/continuidad/sesiones/20261104t194508z-claude-code-arranque-comun-ia.json",
+      "action": "added",
+      "actor": "claude-code",
+      "reason": "Registro de esta sesión"
+    },
+    {
+      "path": "ia/INSTRUCCIONES_PROYECTO.md",
+      "action": "modified",
+      "actor": "claude-code",
+      "reason": "Arranque común entre IA (verificar.py inicio, hook SessionStart, protocolo 1.1.0)"
+    },
+    {
+      "path": "ia/PROTOCOLO.md",
+      "action": "modified",
+      "actor": "claude-code",
+      "reason": "Arranque común entre IA (verificar.py inicio, hook SessionStart, protocolo 1.1.0)"
+    },
+    {
+      "path": "ia/test_guard.py",
+      "action": "modified",
+      "actor": "claude-code",
+      "reason": "Arranque común entre IA (verificar.py inicio, hook SessionStart, protocolo 1.1.0)"
+    },
+    {
+      "path": "ia/verificar.py",
+      "action": "modified",
+      "actor": "claude-code",
+      "reason": "Arranque común entre IA (verificar.py inicio, hook SessionStart, protocolo 1.1.0)"
+    }
+  ],
+  "checks": [
+    {
+      "name": "Pruebas de las reglas comunes",
+      "command": "python3 ia/test_guard.py",
+      "actor": "claude-code",
+      "at": "2026-11-04T19:45:08Z",
+      "outcome": "passed",
+      "exit_code": 0,
+      "evidence": [
+        "docs/continuidad/evidencia/2026-11-04-arranque-comun/test_guard.txt"
+      ]
+    },
+    {
+      "name": "Resumen de arranque",
+      "command": "python3 ia/verificar.py inicio",
+      "actor": "claude-code",
+      "at": "2026-11-04T19:45:08Z",
+      "outcome": "passed",
+      "exit_code": 0,
+      "evidence": [
+        "docs/continuidad/evidencia/2026-11-04-arranque-comun/inicio.txt"
+      ]
+    },
+    {
+      "name": "Pruebas de la app",
+      "command": "npm test / npm run typecheck / npm run build",
+      "actor": "claude-code",
+      "at": "2026-11-04T19:45:08Z",
+      "outcome": "not_run",
+      "exit_code": null,
+      "evidence": [],
+      "reason": "Sin cambios de comportamiento de la app."
+    }
+  ],
+  "artifacts": [
+    {
+      "path": "docs/continuidad/evidencia/2026-11-04-arranque-comun/test_guard.txt",
+      "sha256": "77ac0ee2f820693b853cf6460428a5bbea940007245429ada45daa2a57d90ef3",
+      "description": "Salida de python3 ia/test_guard.py"
+    },
+    {
+      "path": "docs/continuidad/evidencia/2026-11-04-arranque-comun/inicio.txt",
+      "sha256": "9cc469197158954653532336b0168694e101687019d9d49722c8f43deac37d72",
+      "description": "Salida de python3 ia/verificar.py inicio"
+    }
+  ],
+  "inputs": [],
+  "corrections": [],
+  "handoff": {
+    "summary": "Arranque común entre IA instalado en Mes junto al protocolo propio.",
+    "delivery": "PR a main desde claude/kind-hopper-1ll614.",
+    "next_steps": [
+      "En cada sesión, usar la salida de inicio como punto de partida."
+    ],
+    "blockers": []
+  }
+}
