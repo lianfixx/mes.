@@ -12,3 +12,7 @@ Leer README.md y docs/ARCHITECTURE.md antes de editar. Mantener los datos fictic
 - Interfaz: tokens de `src/ui/tokens.ts`, objetivos de 48 px, estados accesibles con props `aria-*` (no `accessibilityState`), componentes declarados a nivel de módulo. Ver `docs/DESIGN.md` y `docs/HANDOFF.md`.
 - Separar cambios de esquema, migraciones, UI y permisos. Documentar decisiones y pasos de recuperación.
 - Todo nuevo colaborador debe poder ejecutar con npm ci; no añadir rutas de esta máquina a las dependencias del proyecto.
+
+## Protocolo común entre IA
+
+Este repositorio sigue `ia/PROTOCOLO.md`; las reglas comunes y el control automático están en `ia/REGLAS.md`. Todo cambio se registra en `CHANGELOG.md` con la línea `- Agente:`.
